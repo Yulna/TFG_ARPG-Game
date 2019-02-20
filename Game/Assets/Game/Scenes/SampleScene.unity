@@ -1672,6 +1672,11 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 534669904}
+    - target: {fileID: 3901071316778667082, guid: a86c66cf513a9e94ca9f85fafbf81889,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4512531351802721609, guid: a86c66cf513a9e94ca9f85fafbf81889,
         type: 3}
       propertyPath: m_Controller
@@ -1712,26 +1717,15 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.37547126
       objectReference: {fileID: 0}
+    - target: {fileID: 6537668529607614376, guid: a86c66cf513a9e94ca9f85fafbf81889,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 534669904}
+    - target: {fileID: 6537668529607614376, guid: a86c66cf513a9e94ca9f85fafbf81889,
+        type: 3}
+      propertyPath: move_speed
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86c66cf513a9e94ca9f85fafbf81889, type: 3}
---- !u!1 &5059101934216733714 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4512531351811917733, guid: a86c66cf513a9e94ca9f85fafbf81889,
-    type: 3}
-  m_PrefabInstance: {fileID: 5059101934216733713}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5059101934216733715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5059101934216733714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e250c5cc0fe154b8559a02cc588966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magic1: {fileID: 2715068570714141067, guid: b5ab0c370b8924741915cc41c4a880b2, type: 3}
-  magic2: {fileID: 1052483378739466711, guid: a1a6c57bab077274e8e999cc17a5ff48, type: 3}
-  camera: {fileID: 534669904}

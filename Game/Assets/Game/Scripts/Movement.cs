@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour {
     void Update ()
     {
         //Note: Change this outside update
-        //Try contronling movement manually (no Navagent)->Coroutine may help
         if (agent.remainingDistance == 0)
         {
             pc_animator.SetBool("Moving", false);
@@ -43,8 +42,6 @@ public class Movement : MonoBehaviour {
                 Move(pa_alla);
             }
         }
-
-      
 
     }
 

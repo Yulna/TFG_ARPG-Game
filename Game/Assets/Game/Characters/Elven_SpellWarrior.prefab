@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4512531351802721609}
   - component: {fileID: 7795648477037837725}
   - component: {fileID: 3901071316778667082}
+  - component: {fileID: 6537668529607614376}
+  - component: {fileID: 8101562756581900907}
   m_Layer: 0
   m_Name: Elven_SpellWarrior
   m_TagString: Untagged
@@ -90,6 +92,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pa_alla: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
+--- !u!114 &6537668529607614376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4512531351811917733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67186b8b3ee47a74b9625a0e0da796d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  mana: 100
+  move_speed: 7
+  camera: {fileID: 0}
+--- !u!114 &8101562756581900907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4512531351811917733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1473051b843c4e94e8bcd5ab08415b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4512531351811919273
 GameObject:
   m_ObjectHideFlags: 0
