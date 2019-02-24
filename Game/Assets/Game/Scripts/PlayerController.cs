@@ -3,8 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Simple struc to simplify Raycast calls
+public struct RayHitInfo
+{
+    public bool hitted;
+    public Vector3 hit_point;
+    public int layer_hit;
+}
+
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    //Simple Singleton approach
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Debug.LogError("More than one player script detected");
+    }
+
 
     //Player Data
     public int health;
@@ -48,35 +68,44 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Processing Left Click");
-
-
-            int mask = LayerMask.GetMask("Floor");
-
-            RaycastHit hit;
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+            int mask = LayerMask.GetMask("Floor", "Enemy");
+            
+            RayHitInfo rayhit = HandleCameraRay(Input.mousePosition, mask);
+            if(rayhit.hitted)
             {
-                destination = hit.point;              
+                if (rayhit.layer_hit == LayerMask.NameToLayer("Floor"))
+                {
+                    Move(rayhit.hit_point);
+                }
+                else if (rayhit.layer_hit == LayerMask.NameToLayer("Enemy"))
+                {
+                    Debug.Log("Enemy Attacked");
 
-                Move(destination);
+                    Move(rayhit.hit_point);
+                }
             }
-
         }
     }
 
     //TODO: Think what this has to return
-    void HandleCameraRay(Vector3 screen_point, LayerMask mask)
+    public RayHitInfo HandleCameraRay(Vector3 screen_point, LayerMask mask)
     {
+        RayHitInfo ret;
+        ret.hitted = false;
+        ret.hit_point = Vector3.zero;
+        ret.layer_hit = -1;
+
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(screen_point);
 
         if (Physics.Raycast(ray, out hit, 100.0f, mask))
         {
-
-            
-
+            ret.hitted = true;
+            ret.hit_point = hit.point;
+            ret.layer_hit = hit.collider.gameObject.layer;    
         }
+      
+        return ret;
     }
 
 
@@ -87,5 +116,4 @@ public class PlayerController : MonoBehaviour
 
         agent.destination = destination;
     }
-
 }

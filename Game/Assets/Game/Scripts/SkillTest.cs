@@ -25,7 +25,8 @@ public class SkillTest : MonoBehaviour
             toogle_loop = !toogle_loop;
 
 
-        //Test 1: Coroutine 
+        //Test 1: Coroutine -- ~4500 objects to 60fps
+        //Not optimal and can't be called in a scriptable object, use discarded but left here for reference
         if(Input.GetKey(KeyCode.Alpha1) && magic1 != null)
         {
             Debug.Log("Using skill 1");
@@ -52,7 +53,8 @@ public class SkillTest : MonoBehaviour
         }
 
 
-        //Test 2: Skill prefab instance
+        //Test 2: Skill prefab instance <<-- ~5500 to 60fps
+        //Best approach for custom skill coded one by one.
         if (Input.GetKey(KeyCode.Alpha2) && magic2 != null)
         {
             Debug.Log("Using Skill 2");

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class EnemySimple : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int health;
 
-    // Update is called once per frame
-    void Update()
+   
+
+    public void Hurt(int value)
     {
-        
+        if (value > health)
+        {
+            health = 0;
+        }
+        else
+        {
+            health -= value;
+        }
     }
 }
