@@ -14,9 +14,10 @@ public struct RayHitInfo
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+
+    
     //Simple Singleton approach
     public static PlayerController instance;
-
     private void Awake()
     {
         if (instance == null)
@@ -25,12 +26,12 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("More than one player script detected");
     }
 
-
     //Player Data
     public int health;
-    public int mana;
+    public int resource;
     public int move_speed;
 
+    //Movement 
     Vector3 destination;
 
     //Camera
@@ -87,7 +88,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //TODO: Think what this has to return
     public RayHitInfo HandleCameraRay(Vector3 screen_point, LayerMask mask)
     {
         RayHitInfo ret;
@@ -115,5 +115,20 @@ public class PlayerController : MonoBehaviour
         pc_animator.SetFloat("Velocity Z", 10.0f);
 
         agent.destination = destination;
+    }
+
+    //Return true when we have enough resource to spend, false otherwise
+    public bool SpendResource(int value)
+    {
+        if (value > resource)
+        {
+            Debug.Log("Not enough resource");
+            return false;
+        }
+        else
+        {
+            resource -= value;
+            return true;
+        }
     }
 }
