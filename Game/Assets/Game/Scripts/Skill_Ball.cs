@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Skill Ball", menuName = "MyGame/Skills/Skill Ball")]
 public class Skill_Ball : Skill
 {
     
-    public override void SkillBehaviour()
+    public override void SkillBehaviour(GameObject display, ref CastInfo cast_info)
     {
-        transform.Translate(dir * 0.1f, Space.World);
-        curr_dist += dir.magnitude * 0.1f;
+        Debug.Log("skill ball update");
+        display.transform.Translate(cast_info.dir * speed, Space.World);
+        cast_info.curr_dist += cast_info.dir.magnitude * 0.1f;
+        if(skill_display.GetComponent<Collider>())
+        {
+            Debug.Log("Collider Detected");
+        }
     }
 }
