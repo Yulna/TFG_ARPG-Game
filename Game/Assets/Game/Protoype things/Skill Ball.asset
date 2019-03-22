@@ -12,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1a0dbdda38d174d8f27658ee972058, type: 3}
   m_Name: Skill Ball
   m_EditorClassIdentifier: 
-  skill_name: 
-  magnitude: 0
-  cost: 0
-  distance: 0
-  speed: 0
-  duration: 0
-  cooldown: 0
-  skill_display: {fileID: 0}
-  collider_test: {fileID: 0}
+  skill_name: Skill Ball
+  magnitude: 10
+  cost: 5
+  distance: 7
+  speed: 7
+  cooldown: 1
   obj_mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
+  projectile_display: {fileID: 2715068570714141067, guid: b5ab0c370b8924741915cc41c4a880b2,
+    type: 3}

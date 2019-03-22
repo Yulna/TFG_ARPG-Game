@@ -18,5 +18,8 @@ public class EnemySimple : MonoBehaviour
         {
             health -= value;
         }
+
+        if (health <= 0)
+            Destroy(gameObject);
     }
 }

@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct CastInfo
+{
+    //Casting info --> Need to be set each time it's casted
+    public Vector3 origin_pos;
+    public Vector3 end_pos;
+    public Vector3 dir;
+    public float curr_dist;
+}
+
 public class Skill : ScriptableObject
 {
     //General info  
@@ -10,36 +19,39 @@ public class Skill : ScriptableObject
     public int cost;                //Resource cost of the skill
     public float distance;          //Max range of the skill
     public float speed;             //Speed of the projectile
-    public float duration;          //Time skill is active (mainly for buffs)
+ //   public float duration;          //Time skill is active (mainly for buffs)
     public float cooldown;          //Cooldown of the skill
-    public GameObject skill_display;//Go with the art for the skill <-- Same GO
 
     public LayerMask obj_mask;
 
-    public bool SkillUpdate(GameObject display,ref CastInfo cast_info)
+
+    public CastInfo InitCastInfo(Vector3 origin, Vector3 dest)
     {
-        if (cast_info.curr_dist <= distance)
-        {
-            SkillBehaviour(display, ref cast_info);
-            return true;
-        }
-        else
-        {
-            OnSkillEnd();
-            return false;
-        }
-        Debug.LogWarning("Some Error ocurred during skill Update");
-        return false;
+        CastInfo ret = new CastInfo();
+        ret.origin_pos = origin;
+        ret.end_pos = dest;
+        ret.dir = ret.end_pos - ret.origin_pos;
+        ret.dir.Normalize();
+        return ret;
+    }
+
+    public virtual void CastSkill(Vector3 org, Vector3 dest)
+    {
+        Debug.LogWarning("No CastSkill() override");
+        PlayerController.instance.SpendResource(cost);
+        InitCastInfo(org, dest);
     }
 
     //Return true if the skill can be casted, false otherwise (Still in CD, no mana...)
-    public virtual void SkillBehaviour(GameObject display, ref CastInfo cast_info)
+    public virtual void SkillBehaviour(ref CastInfo cast_inf, GameObject display)
     {
-        Debug.LogWarning("No SkillBehaviour() override detected");
+        Debug.LogError("No SkillBehaviour() override detected");
     }
 
     public virtual void OnSkillEnd()
     {
         Debug.LogWarning("No OnSkillEnd() override detected");
     }
+
+
 }

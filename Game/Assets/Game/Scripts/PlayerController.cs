@@ -14,8 +14,6 @@ public struct RayHitInfo
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-
-    
     //Simple Singleton approach
     public static PlayerController instance;
     private void Awake()
