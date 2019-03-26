@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
 
     //Animation Data
     Animator pc_animator;
-
     //Pathfinding Data
     NavMeshAgent agent;
 

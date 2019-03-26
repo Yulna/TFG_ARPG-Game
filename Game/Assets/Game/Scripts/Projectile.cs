@@ -14,8 +14,6 @@ public class Projectile : MonoBehaviour
     public void CastProjectile(CastInfo info, float max_range, ProjectileBehaviour skill_behaviour)
     {
         cast_info = info;
-        col = gameObject.AddComponent<SphereCollider>();
-        col.radius = 0.5f;
         behaviour = skill_behaviour;
     }
 
@@ -34,5 +32,12 @@ public class Projectile : MonoBehaviour
        
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Projectile collision");
+        if(collision.collider.gameObject.CompareTag("Enemy"))
+        {
+            collision.collider.gameObject.GetComponent<EnemySimple>().Hurt(2);
+        }
+    }
 }

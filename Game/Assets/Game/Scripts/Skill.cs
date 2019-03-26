@@ -15,15 +15,9 @@ public class Skill : ScriptableObject
 {
     //General info  
     public string skill_name;
-    public int magnitude;           //Damage or healing of the skill
+    public Sprite skill_icon;
     public int cost;                //Resource cost of the skill
-    public float distance;          //Max range of the skill
-    public float speed;             //Speed of the projectile
- //   public float duration;          //Time skill is active (mainly for buffs)
     public float cooldown;          //Cooldown of the skill
-
-    public LayerMask obj_mask;
-
 
     public CastInfo InitCastInfo(Vector3 origin, Vector3 dest)
     {
@@ -47,11 +41,4 @@ public class Skill : ScriptableObject
     {
         Debug.LogError("No SkillBehaviour() override detected");
     }
-
-    public virtual void OnSkillEnd()
-    {
-        Debug.LogWarning("No OnSkillEnd() override detected");
-    }
-
-
 }

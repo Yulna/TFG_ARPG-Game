@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemySimple : MonoBehaviour
 {
-    public int health;
-
-   
+    public int health;  
 
     public void Hurt(int value)
     {
