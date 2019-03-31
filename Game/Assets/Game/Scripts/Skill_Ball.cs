@@ -30,7 +30,7 @@ public class Skill_Ball : Skill
 
     public override void CastSkill(Vector3 org, Vector3 dest)
     {
-        PlayerController.instance.SpendResource(cost);
+        CharacterController.instance.SpendResource(cost);
 
         GameObject projectile = Instantiate(projectile_display, org, Quaternion.identity);
         projectile.AddComponent<Projectile>();

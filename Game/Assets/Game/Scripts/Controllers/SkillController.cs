@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum SkillButton
+{
+    NUM_1,
+    NUM_2,
+    NUM_3,
+    NUM_4,
+    LMC,
+    RMC
+};
 
 public class SkillController : MonoBehaviour
 {
-    public enum SkillButton
-    {
-        NUM_1,
-        NUM_2,
-        NUM_3,
-        NUM_4,
-        LMC,
-        RMC
-    };
+   
 
     public GameObject skill_selection_UI;
     int selected_id;
@@ -50,17 +51,23 @@ public class SkillController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && equip_skills[(int)SkillButton.NUM_1] != null)
         {
-            RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));
-            equip_skills[(int)SkillButton.NUM_1].CastSkill(transform.position, hit_info.hit_point);
+         //   RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));
+         //   equip_skills[(int)SkillButton.NUM_1].CastSkill(transform.position, hit_info.hit_point);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && equip_skills[(int)SkillButton.NUM_2] != null)
         {
-            RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));
-            equip_skills[(int)SkillButton.NUM_2].CastSkill(transform.position, hit_info.hit_point);            
+          //  RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));
+          //  equip_skills[(int)SkillButton.NUM_2].CastSkill(transform.position, hit_info.hit_point);            
         }
 
     }
+
+    public void CastSkill(SkillButton skill_index, RayHitInfo hit_info)
+    {
+        equip_skills[(int)skill_index].CastSkill(transform.position, hit_info.hit_point); 
+    }
+
 
     public void SetSelected(int id)
     {

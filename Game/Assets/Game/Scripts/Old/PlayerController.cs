@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //Simple struc to simplify Raycast calls
-public struct RayHitInfo
+public struct RayHitInfo2
 {
     public bool hitted;
     public Vector3 hit_point;
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Processing Left Click");
             int mask = LayerMask.GetMask("Floor", "Enemy");
             
-            RayHitInfo rayhit = HandleCameraRay(Input.mousePosition, mask);
+            RayHitInfo2 rayhit = HandleCameraRay(Input.mousePosition, mask);
             if(rayhit.hitted)
             {
                 if (rayhit.layer_hit == LayerMask.NameToLayer("Floor"))
@@ -85,9 +85,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public RayHitInfo HandleCameraRay(Vector3 screen_point, LayerMask mask)
+    public RayHitInfo2 HandleCameraRay(Vector3 screen_point, LayerMask mask)
     {
-        RayHitInfo ret;
+        RayHitInfo2 ret;
         ret.hitted = false;
         ret.hit_point = Vector3.zero;
         ret.layer_hit = -1;
