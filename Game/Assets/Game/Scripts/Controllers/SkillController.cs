@@ -37,7 +37,7 @@ public class SkillController : MonoBehaviour
             skill_icons[i].color = Color.white;
             skill_icons[i].sprite = char_skill_list[i].skill_icon;
         }
- 
+        equip_skills[(int)SkillButton.LMC] = (Skill)ScriptableObject.CreateInstance("AttackMelee");
     }
 
     // Update is called once per frame
@@ -48,13 +48,6 @@ public class SkillController : MonoBehaviour
             //Enable/Disable Skill selection UI
             skill_selection_UI.SetActive(!skill_selection_UI.activeSelf);
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1) && equip_skills[(int)SkillButton.NUM_1] != null)
-        {
-         //   RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));
-         //   equip_skills[(int)SkillButton.NUM_1].CastSkill(transform.position, hit_info.hit_point);
-        }
-
         if (Input.GetKeyDown(KeyCode.Alpha2) && equip_skills[(int)SkillButton.NUM_2] != null)
         {
           //  RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));

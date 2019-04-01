@@ -71,6 +71,7 @@ public class CharacterController : MonoBehaviour
                     Debug.Log("Enemy Attacked");
                     move_controller.MoveToEnemy(ray_hit.enemy_hit.transform);
                     //TODO: Cast skill LMB(Attack)
+                    skill_controller.CastSkill(SkillButton.LMC, ray_hit);
                 }
             }                   
         }
@@ -137,4 +138,7 @@ public class CharacterController : MonoBehaviour
             return true;
         }
     }
+
+
+
 }

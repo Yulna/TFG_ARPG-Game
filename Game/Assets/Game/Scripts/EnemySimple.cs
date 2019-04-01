@@ -18,7 +18,7 @@ public class EnemySimple : MonoBehaviour
 
     void Update()
     {
-        dummy_timer += Time.deltaTime;
+      /*  dummy_timer += Time.deltaTime;
 
         if(dummy_timer >= 3.0f)
         {
@@ -34,7 +34,7 @@ public class EnemySimple : MonoBehaviour
             npc_agent.SetDestination(new_dest);
             dummy_timer = 0.0f;
             path_select = !path_select;
-        }
+        }*/
     
     }
 

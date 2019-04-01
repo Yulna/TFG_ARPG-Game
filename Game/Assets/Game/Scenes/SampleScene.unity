@@ -224,6 +224,11 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: equip_skills.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205514009379d3b44b91e338183ad51b, type: 3}
 --- !u!1001 &104921771
@@ -913,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6267f1ddcb19cd4bb9a5c0040d068df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1000
 --- !u!195 &426776096
 NavMeshAgent:
   m_ObjectHideFlags: 0
