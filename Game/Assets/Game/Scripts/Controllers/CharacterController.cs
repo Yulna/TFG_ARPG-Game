@@ -26,6 +26,7 @@ public class CharacterController : MonoBehaviour
     public Camera pc_camera;
 
     //Base Stats
+    [Header("Base Stats")]
     public float weapon_dmg;
     public int base_max_health;
     public int base_max_resource;
@@ -43,6 +44,7 @@ public class CharacterController : MonoBehaviour
     //TODO: Add static item bufflist, and dynamicbufflist
 
     //Controllers
+    [Header("Controllers")]
     public MovementController move_controller;
     public SkillController skill_controller;    
 
