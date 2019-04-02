@@ -18,7 +18,7 @@ public class MovementController : MonoBehaviour
     {
         pc_animator = GetComponent<Animator>();
         pc_agent = GetComponent<NavMeshAgent>();
-        pc_agent.speed = CharacterController.instance.base_move_speed;
+        pc_agent.speed = CharacterController.instance.base_stats[(int)StatId.MoveSpeed];
         _remain = 0;
         move_ended = true;
     }

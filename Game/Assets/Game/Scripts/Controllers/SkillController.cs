@@ -48,16 +48,12 @@ public class SkillController : MonoBehaviour
             //Enable/Disable Skill selection UI
             skill_selection_UI.SetActive(!skill_selection_UI.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && equip_skills[(int)SkillButton.NUM_2] != null)
-        {
-          //  RayHitInfo hit_info = PlayerController.instance.HandleCameraRay(Input.mousePosition, LayerMask.GetMask("Enemy", "Floor"));
-          //  equip_skills[(int)SkillButton.NUM_2].CastSkill(transform.position, hit_info.hit_point);            
-        }
-
+        //TODO: Update equiped skills for CD
     }
 
     public void CastSkill(SkillButton skill_index, RayHitInfo hit_info)
     {
+        //TODO: Check if we are in the middle of casting a skill
         equip_skills[(int)skill_index].CastSkill(transform.position, hit_info.hit_point); 
     }
 

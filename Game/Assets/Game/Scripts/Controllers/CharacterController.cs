@@ -10,6 +10,21 @@ public struct RayHitInfo
     public GameObject enemy_hit; //null if no nemy is hit
 }
 
+public enum StatId
+{
+    WeaponDmg,
+    MaxHealth,
+    MaxResource,
+    MoveSpeed,
+    AttackSpeed,
+    Armor,
+    PhysicRes,
+    FireRes,
+    WaterRes,
+    ShockRes,
+    EarthRes
+}
+
 public class CharacterController : MonoBehaviour
 {
     //Singleton
@@ -26,20 +41,22 @@ public class CharacterController : MonoBehaviour
     public Camera pc_camera;
 
     //Base Stats
+    //TODO: Make custom editor for inspector
     [Header("Base Stats")]
-    public float weapon_dmg;
-    public int base_max_health;
-    public int base_max_resource;
-    public int base_move_speed;
-    public float base_armor;
-    public float base_physic_res;
-    public float base_fire_res;
-    public float base_water_res;
-    public float base_shock_res;
-    public float base_earth_res;
+    public float[] base_stats = new float[11];
+    //public float weapon_dmg;
+    //public int base_max_health;
+    //public int base_max_resource;
+    //public int base_move_speed;
+    //public float base_armor;
+    //public float base_physic_res;
+    //public float base_fire_res;
+    //public float base_water_res;
+    //public float base_shock_res;
+    //public float base_earth_res;
 
-    int curr_health;
-    int curr_resource;
+    float curr_health;
+    float curr_resource;
 
     //TODO: Add static item bufflist, and dynamicbufflist
 
@@ -51,6 +68,9 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TODO: Remove when custom inspector is done
+        base_stats = new float[11];
+        base_stats[(int)StatId.MoveSpeed] = 7;
     }
 
     // Update is called once per frame
