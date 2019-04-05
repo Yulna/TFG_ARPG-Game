@@ -229,6 +229,12 @@ PrefabInstance:
       propertyPath: equip_skills.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4059247928484758968, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: move_speed
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205514009379d3b44b91e338183ad51b, type: 3}
 --- !u!1001 &104921771
@@ -1332,7 +1338,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 80101090}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1793434083}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1473051b843c4e94e8bcd5ab08415b85, type: 3}
@@ -1350,7 +1356,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 80101090}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1793434083}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e97b056443655724baecb47c751360c4, type: 3}
@@ -1477,6 +1483,19 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  buffed_stats:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  test_ms: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
   move_controller: {fileID: 566378371}
   skill_controller: {fileID: 566378367}
 --- !u!4 &649745706
@@ -2400,6 +2419,41 @@ MonoBehaviour:
   elven_char: {fileID: 0}
   goblin_char: {fileID: 0}
   main_camera: {fileID: 0}
+--- !u!1 &1793434083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5880981850615285063, guid: 205514009379d3b44b91e338183ad51b,
+    type: 3}
+  m_PrefabInstance: {fileID: 80101090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1793434084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793434083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a59d8176b3dfb64984275d67f6313f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game_event: {fileID: 11400000, guid: dd9c79c352c9b3d4ba4e14d55c8e4ef6, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 566378371}
+        m_MethodName: UpdateMoveSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1910225118 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 116074, guid: 9d1850479201a0541a4deb81578aeb4f,

@@ -12,13 +12,15 @@ public class MovementController : MonoBehaviour
     public Transform to_follow;
     public float _remain;
     public bool move_ended;
+    public StatVariable move_speed;
 
     // Start is called before the first frame update
     void Start()
     {
         pc_animator = GetComponent<Animator>();
         pc_agent = GetComponent<NavMeshAgent>();
-        pc_agent.speed = CharacterController.instance.base_stats[(int)StatId.MoveSpeed];
+        //pc_agent.speed = CharacterController.instance.base_stats[(int)StatId.MoveSpeed];
+        pc_agent.speed = move_speed.Buffed_value;
         _remain = 0;
         move_ended = true;
     }
@@ -57,6 +59,11 @@ public class MovementController : MonoBehaviour
         to_follow = enemy_transform;
         pc_agent.SetDestination(to_follow.position);
         move_ended = false;
+    }
+
+    public void UpdateMoveSpeed()
+    {
+        pc_agent.speed = move_speed.Buffed_value;
     }
 
 }

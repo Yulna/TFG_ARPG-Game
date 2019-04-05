@@ -12,9 +12,11 @@ public struct RayHitInfo
 
 public enum StatId
 {
-    WeaponDmg,
+    WeaponDmg = 0,
     MaxHealth,
+    HealthRegen,
     MaxResource,
+    ResourceRegen,
     MoveSpeed,
     AttackSpeed,
     Armor,
@@ -22,7 +24,8 @@ public enum StatId
     FireRes,
     WaterRes,
     ShockRes,
-    EarthRes
+    EarthRes,
+    _numId     //Will return number of stats id (doesn't dount self since enum starts with 0)
 }
 
 public class CharacterController : MonoBehaviour
@@ -43,7 +46,7 @@ public class CharacterController : MonoBehaviour
     //Base Stats
     //TODO: Make custom editor for inspector
     [Header("Base Stats")]
-    public float[] base_stats = new float[11];
+    public float[] base_stats = new float[(int)StatId._numId];
     //public float weapon_dmg;
     //public int base_max_health;
     //public int base_max_resource;
@@ -54,22 +57,25 @@ public class CharacterController : MonoBehaviour
     //public float base_water_res;
     //public float base_shock_res;
     //public float base_earth_res;
-
+    public StatVariable[] buffed_stats = new StatVariable[(int)StatId._numId];
+    public StatVariable test_ms;
+    
     float curr_health;
     float curr_resource;
 
-    //TODO: Add static item bufflist, and dynamicbufflist
+    Buff test_ms_buff;
 
     //Controllers
     [Header("Controllers")]
     public MovementController move_controller;
     public SkillController skill_controller;    
 
+
     // Start is called before the first frame update
     void Start()
     {
         //TODO: Remove when custom inspector is done
-        base_stats = new float[11];
+        base_stats = new float[(int)StatId._numId];
         base_stats[(int)StatId.MoveSpeed] = 7;
     }
 
@@ -115,7 +121,11 @@ public class CharacterController : MonoBehaviour
             }
         }
 
-
+        //Testing space
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+         
+        }
     }
 
     public RayHitInfo RayCastHandle(Vector3 screen_point, LayerMask mask)

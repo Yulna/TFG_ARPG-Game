@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public delegate void ProjectileBehaviour(ref CastInfo cast_info, GameObject dispaly);
+    public delegate void ProjectileBehaviour(ref CastInfo cast_info, GameObject display);
     CastInfo cast_info;
     SphereCollider col;
     // Action behaviour;
