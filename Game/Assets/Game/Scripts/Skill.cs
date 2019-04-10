@@ -18,7 +18,6 @@ public class Skill : ScriptableObject
     public Sprite skill_icon;
     public int cost;                //Resource cost of the skill
     public float cooldown;          //Cooldown of the skill
-    public List<Buff> buff_mod = new List<Buff>();
 
     public CastInfo InitCastInfo(Vector3 origin, Vector3 dest)
     {

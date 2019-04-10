@@ -9,7 +9,7 @@ public enum SkillButton
     NUM_2,
     NUM_3,
     NUM_4,
-    LMC,
+    LMB,
     RMC
 };
 
@@ -37,7 +37,7 @@ public class SkillController : MonoBehaviour
             skill_icons[i].color = Color.white;
             skill_icons[i].sprite = char_skill_list[i].skill_icon;
         }
-        equip_skills[(int)SkillButton.LMC] = (Skill)ScriptableObject.CreateInstance("AttackMelee");
+        equip_skills[(int)SkillButton.LMB] = (Skill)ScriptableObject.CreateInstance("AttackMelee");
     }
 
     // Update is called once per frame

@@ -7,7 +7,7 @@ public struct RayHitInfo
     public bool hitted;
     public Vector3 hit_point;
     public int layer_hit;
-    public GameObject enemy_hit; //null if no nemy is hit
+    public GameObject go_hit; //null if no nemy is hit
 }
 
 public enum StatId
@@ -44,39 +44,26 @@ public class CharacterController : MonoBehaviour
     public Camera pc_camera;
 
     //Base Stats
-    //TODO: Make custom editor for inspector
-    [Header("Base Stats")]
-    public float[] base_stats = new float[(int)StatId._numId];
-    //public float weapon_dmg;
-    //public int base_max_health;
-    //public int base_max_resource;
-    //public int base_move_speed;
-    //public float base_armor;
-    //public float base_physic_res;
-    //public float base_fire_res;
-    //public float base_water_res;
-    //public float base_shock_res;
-    //public float base_earth_res;
-    public StatVariable[] buffed_stats = new StatVariable[(int)StatId._numId];
+
+    [SerializeField]
+    private float[] base_stats = new float[(int)StatId._numId];
+    public StatVariable[] variables_stats = new StatVariable[(int)StatId._numId];
     public StatVariable test_ms;
     
     float curr_health;
     float curr_resource;
 
-    Buff test_ms_buff;
-
     //Controllers
-    [Header("Controllers")]
     public MovementController move_controller;
-    public SkillController skill_controller;    
-
+    public SkillController skill_controller;
+    public Inventory inventory;
 
     // Start is called before the first frame update
     void Start()
     {
         //TODO: Remove when custom inspector is done
         base_stats = new float[(int)StatId._numId];
-        base_stats[(int)StatId.MoveSpeed] = 7;
+        base_stats[(int)StatId.MoveSpeed] = 7;        
     }
 
     // Update is called once per frame
@@ -85,21 +72,28 @@ public class CharacterController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Processing Left Click");
-            int mask = LayerMask.GetMask("Floor", "Enemy");
+            int mask = LayerMask.GetMask("Floor", "Enemy", "Item");
 
             RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, mask);
             if(ray_hit.hitted)
             {
                 if (ray_hit.layer_hit == LayerMask.NameToLayer("Floor"))
                 {
+                    Debug.Log("moving with the floor");
                     move_controller.MoveToPosition(ray_hit.hit_point);
                 }
                 else if (ray_hit.layer_hit == LayerMask.NameToLayer("Enemy"))
                 {
                     Debug.Log("Enemy Attacked");
-                    move_controller.MoveToEnemy(ray_hit.enemy_hit.transform);
+                    move_controller.MoveToEnemy(ray_hit.go_hit.transform);
                     //TODO: Cast skill LMB(Attack)
-                    skill_controller.CastSkill(SkillButton.LMC, ray_hit);
+                    skill_controller.CastSkill(SkillButton.LMB, ray_hit);
+                }
+                else if (ray_hit.layer_hit == LayerMask.NameToLayer("Item"))
+                {
+                    Debug.Log("picking the item");
+                    ray_hit.go_hit.GetComponent<ItemWorld>().to_pick = true;
+                    move_controller.MoveToPosition(ray_hit.hit_point);
                 }
             }                   
         }
@@ -124,8 +118,10 @@ public class CharacterController : MonoBehaviour
         //Testing space
         if(Input.GetKeyDown(KeyCode.Space))
         {
-         
+           // Item new_item = new Item("Instance test");
+           // inventory.AddItem(new_item);
         }
+      
     }
 
     public RayHitInfo RayCastHandle(Vector3 screen_point, LayerMask mask)
@@ -137,20 +133,15 @@ public class CharacterController : MonoBehaviour
         {
             ret.hitted = true;
             ret.hit_point = hit.point;
-            ret.layer_hit = hit.collider.gameObject.layer;
-            if (ret.layer_hit == LayerMask.NameToLayer("Enemy"))
-            {
-                ret.enemy_hit = hit.collider.gameObject;
-            }
-            else
-                ret.enemy_hit = null;
+            ret.layer_hit = hit.collider.gameObject.layer;           
+            ret.go_hit = hit.collider.gameObject;            
         }
         else
         {
             ret.hitted = false;
             ret.hit_point = Vector3.zero;
             ret.layer_hit = -1;
-            ret.enemy_hit = null;
+            ret.go_hit = null;
         }
         return ret;
     }
@@ -171,6 +162,9 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-
+    public Transform GetPlayerTransform()
+    {
+       return move_controller.gameObject.transform;   
+    }
 
 }

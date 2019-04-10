@@ -37,11 +37,6 @@ public class Skill_Ball : Skill
         Projectile pro = projectile.GetComponent<Projectile>();
         pro.CastProjectile(InitCastInfo(org, dest), max_range, SkillBehaviour);
 
-        for (int i = 0; i < buff_mod.Count; i++)
-        {
-            
-        }
-
      /*   //pro.ReplaceBehaviour(ItemBehaviour);
         GameObject projectile_back = Instantiate(projectile_display, org, Quaternion.identity);
         projectile_back.AddComponent<Projectile>();

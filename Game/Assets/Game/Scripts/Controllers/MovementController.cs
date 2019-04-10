@@ -10,7 +10,6 @@ public class MovementController : MonoBehaviour
     Animator pc_animator;
     NavMeshAgent pc_agent;
     public Transform to_follow;
-    public float _remain;
     public bool move_ended;
     public StatVariable move_speed;
 
@@ -21,15 +20,12 @@ public class MovementController : MonoBehaviour
         pc_agent = GetComponent<NavMeshAgent>();
         //pc_agent.speed = CharacterController.instance.base_stats[(int)StatId.MoveSpeed];
         pc_agent.speed = move_speed.Buffed_value;
-        _remain = 0;
         move_ended = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        _remain = pc_agent.remainingDistance;
         if (pc_agent.remainingDistance <= pc_agent.stoppingDistance && !pc_agent.pathPending && !move_ended) 
         {
             Debug.Log("stop now!");
@@ -45,7 +41,7 @@ public class MovementController : MonoBehaviour
             pc_animator.SetFloat("Velocity Z", 10.0f);
             if (to_follow != null && to_follow.position != pc_agent.destination)
                 pc_agent.SetDestination(to_follow.position);            
-        }
+        }        
     }
 
     public void MoveToPosition(Vector3 destination)
@@ -65,5 +61,4 @@ public class MovementController : MonoBehaviour
     {
         pc_agent.speed = move_speed.Buffed_value;
     }
-
 }

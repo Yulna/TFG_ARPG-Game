@@ -10,41 +10,50 @@ public enum BuffType
     BUFF_PASSIVE
 }
 
+[System.Serializable]
 public class Buff 
 {
+    public Buff(BuffType b_type, float b_magnitude, StatVariable b_variable)
+    {
+        type = b_type;
+        magnitude = b_magnitude;
+        variable = b_variable;
+    }
+
     public BuffType type;
     public float magnitude;
-    public StatVariable to_buff;
-    public bool active;
+    public StatVariable variable;
+    [SerializeField]
+    private bool active;
 
     public virtual void EnableBuff()
     {
-        if (to_buff == null || active == true)
+        if (variable == null || active == true)
             return;
 
         if(type == BuffType.BUFF_STAT_ADD)
         {
-            to_buff.Sum_value += magnitude;
+            variable.Sum_value += magnitude;
         }
         if(type == BuffType.BUFF_STAT_MULT)
         {
-            to_buff.Mult_value *= magnitude;
+            variable.Mult_value *= magnitude;
         }
         active = true;
     }
 
     public virtual void DisableBuff()
     {
-        if (to_buff == null || active == false)
+        if (variable == null || active == false)
             return;
 
         if (type == BuffType.BUFF_STAT_ADD)
         {
-            to_buff.Sum_value -= magnitude;
+            variable.Sum_value -= magnitude;
         }
         if (type == BuffType.BUFF_STAT_MULT)
         {
-            to_buff.Mult_value /= magnitude;
+            variable.Mult_value /= magnitude;
         }
         active = false;
     }

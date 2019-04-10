@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+//TODO: Fix PropertyDrawer
 [CreateAssetMenu(menuName = "Chambers of Elrankat/StatVariable")]
+[System.Serializable]
 public class StatVariable : ScriptableObject
 {
     [SerializeField]
     protected float base_value;
-    private float sum_value;    
-    private float mult_value;   
+    [SerializeField]
+    private float sum_value;
+    [SerializeField]
+    private float mult_value;
+    [SerializeField]
     protected float buffed_value;
 
     public UnityEvent stat_Change;
@@ -46,5 +51,4 @@ public class StatVariable : ScriptableObject
     {
         buffed_value = (base_value + sum_value) * mult_value;
     }
-
 }
