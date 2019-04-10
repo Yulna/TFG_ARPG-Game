@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: MoveSpeed
   m_EditorClassIdentifier: 
   base_value: 7
+  sum_value: 2
+  mult_value: 2
+  buffed_value: 18
   stat_Change:
     m_PersistentCalls:
       m_Calls:
