@@ -61,9 +61,8 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //TODO: Remove when custom inspector is done
-        base_stats = new float[(int)StatId._numId];
-        base_stats[(int)StatId.MoveSpeed] = 7;        
+        //TODO: Reset variable stats to custom stats
+
     }
 
     // Update is called once per frame

@@ -8,14 +8,15 @@ using UnityEngine;
 [System.Serializable]
 public class Item
 {
-    public Item()
+    //If an item has no name (name == "") it will be considered null
+    public Item(string name = "")
     {
-        item_name = "no_name";
+        item_name = name;
     }
 
     public string item_name;
     public Sprite item_icon;
-    public GameObject item_world_display;
+    public GameObject item_world_display; //TODO: Change to another place // somewhere scriptable?
     public EquipSlot equip_slot_id;
     public Buff[] item_buffs;
 
@@ -34,6 +35,8 @@ public class Item
             item_buffs[i].DisableBuff();
         }
     }
+
+    //TODO: Item Display GO factory?¿
 
 }
 

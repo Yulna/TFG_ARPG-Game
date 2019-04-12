@@ -16,12 +16,10 @@ public enum EquipSlot
 [CreateAssetMenu(fileName = "New Item", menuName = "Chambers of Elrankat/Inventory")]
 public class Inventory : ScriptableObject
 {
-
     public static int max_space = 40;
     public List<Item> items = new List<Item>();
-    public Item[] items_array = new Item[max_space];
+    //public Item[] items = new Item[max_space];
 
-    //TODO: other list for equiped items
     public Item[] equiped_items = new Item[(int)EquipSlot._numSlots];
 
     public UnityEvent item_change;
@@ -32,6 +30,7 @@ public class Inventory : ScriptableObject
         {
             equiped_items[i].ActivateBuffs();
         }
+        item_change.Invoke();
     }
 
     private void OnDisable()
@@ -43,20 +42,18 @@ public class Inventory : ScriptableObject
     }
 
     public bool AddItem (Item new_item)
-    {
-        //for(int i = 0; i < max_space; i++)
-        //{
-        //    if(items_array[i] == null)
-        //    {
-        //        items_array[i] = new_item;
-        //        return true;
-        //    }
-        //}
-        //Debug.Log("Inventory full");
-        //return false;
-
+    {        
         if (items.Count < max_space)
         {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].item_name == null || items[i].item_name == "")
+                {
+                    items[i] = new_item;
+                    item_change.Invoke();
+                    return true;
+                }
+            }
             items.Add(new_item);
             item_change.Invoke();
             return true;
@@ -70,18 +67,6 @@ public class Inventory : ScriptableObject
 
     public bool RemoveItem(Item item)
     {
-        //for (int i = 0; i < max_space; i++)
-        //{
-        //    if (items_array[i] == item)
-        //    {
-        //        items_array[i] = null;
-        //        return true;
-        //    }
-        //}
-        //Debug.Log("Item not in inventory");
-        //return false;
-
-
         if (items.Contains(item))
         {
             items.Remove(item);
@@ -97,17 +82,17 @@ public class Inventory : ScriptableObject
 
     public void EquipItem(int index)
     {
-        Debug.Log("item equiped");
-        if (items.Count < index)
+        if (items.Count < index || items[index].item_name == null || items[index].item_name == "")
             return;
 
+
+        Debug.Log("item equiped");
         EquipSlot slot_to_equip = items[index].equip_slot_id;
 
-         if(equiped_items[(int)slot_to_equip].item_name == "")
+         if(equiped_items[(int)slot_to_equip].item_name == "" || equiped_items[(int)slot_to_equip].item_name == null)
          {
             equiped_items[(int)slot_to_equip] = items[index];
             items[index] = null;
-            item_change.Invoke();
          }
          else
          {
@@ -121,10 +106,42 @@ public class Inventory : ScriptableObject
         return;
     }
 
+    public void UnEquipItem(EquipSlot slot_id)
+    {
+        if (equiped_items[(int)slot_id].item_name == "" || equiped_items[(int)slot_id].item_name == null)
+        {
+            Debug.Log("No item equiped");
+            return;
+        }
+
+        //Iterate item list and replace the fisrt void item with the current equiped one
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].item_name == "" || items[i].item_name == null)
+            {
+                equiped_items[(int)slot_id].DeactivateBuffs();
+                items[i] = equiped_items[(int)slot_id];
+                equiped_items[(int)slot_id] = null;
+                item_change.Invoke();
+                return;
+            }
+        }      
+        
+        Debug.Log("Not enough space in the inventory");      
+        return;
+    }
+
     public Sprite GetSpriteFromIndex(int index)
     {
-        if (items[index] != null)
+        if (index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
             return items[index].item_icon;
+        else
+            return null;
+    }
+    public Sprite GetSpriteFromEquiped(EquipSlot slot_id)
+    {
+        if (equiped_items[(int)slot_id] != null && equiped_items[(int)slot_id].item_name != null && equiped_items[(int)slot_id].item_name != "")
+            return equiped_items[(int)slot_id].item_icon;
         else
             return null;
     }

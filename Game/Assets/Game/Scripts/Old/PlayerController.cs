@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Animation Stoper
-        //TODO: Look on ways to stop outside update
         if (agent.remainingDistance == 0)
         {
             pc_animator.SetBool("Moving", false);

@@ -13,213 +13,6 @@ MonoBehaviour:
   m_Name: InventoryTest
   m_EditorClassIdentifier: 
   items:
-  - item_name: no_name
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  items_array:
-  - item_name: Test
-    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  equiped_items:
   - item_name: Sword of swordness
     item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
     item_world_display: {fileID: 0}
@@ -228,11 +21,105 @@ MonoBehaviour:
     - type: 1
       magnitude: 2
       variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
-      active: 1
+      active: 0
     - type: 0
       magnitude: 2
       variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
-      active: 1
+      active: 0
+  - item_name: Sword of swordness
+    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+  - item_name: Sword of swordness
+    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+  - item_name: 
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: Sword of swordness
+    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+  - item_name: Sword of swordness
+    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+  - item_name: Sword of swordness
+    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+  - item_name: Sword of swordness
+    item_icon: {fileID: 21300000, guid: a206088da7068d84fa5e5b6554f0c389, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 2
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 0
+  equiped_items:
+  - item_name: MAgic thingy
+    item_icon: {fileID: 21300000, guid: bcf6f858e24028a47ba42be10595afea, type: 3}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
   - item_name: 
     item_icon: {fileID: 0}
     item_world_display: {fileID: 0}
@@ -266,6 +153,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

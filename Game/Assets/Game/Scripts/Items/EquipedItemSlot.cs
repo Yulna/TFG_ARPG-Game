@@ -4,24 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class EquipedItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public Inventory pc_inventory;
-    public int item_index;
+    public EquipSlot slot_id;
     public Image slot_image;
     public GameObject item_info_display;
-    //public GameObject equiped_data;
 
-    private void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
+        if (slot_image == null)
+        {
+            Debug.LogError("Inventory display slot has no image assinged");
+            return;
+        }
+        item_info_display.SetActive(false);
         slot_image.enabled = false;
-        item_info_display.SetActive(false);       
-        slot_image.sprite = pc_inventory.GetSpriteFromIndex(item_index);
+        slot_image.sprite = pc_inventory.GetSpriteFromEquiped(slot_id);
         if (slot_image.sprite != null)
-            slot_image.enabled = true;     
-    }
+            slot_image.enabled = true;
 
-    //TODO: Make comparasion with equiped items
+    }  
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         item_info_display.SetActive(true);
@@ -33,25 +38,24 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if(pointerEventData.button == PointerEventData.InputButton.Right)
+        if (pointerEventData.button == PointerEventData.InputButton.Right)
         {
-            pc_inventory.EquipItem(item_index);
+            //Unequip item
+            pc_inventory.UnEquipItem(slot_id);
         }
     }
 
     public void UpdateInfo()
     {
-        if (slot_image == null)
+        if(slot_image == null)
         {
             Debug.LogError("Inventory display slot has no image assinged");
             return;
         }
-        Debug.Log("Updating item UI");
-        slot_image.sprite = pc_inventory.GetSpriteFromIndex(item_index);
+        slot_image.sprite = pc_inventory.GetSpriteFromEquiped(slot_id);
         if (slot_image.sprite != null)
             slot_image.enabled = true;
         else
             slot_image.enabled = false;
     }
-
 }

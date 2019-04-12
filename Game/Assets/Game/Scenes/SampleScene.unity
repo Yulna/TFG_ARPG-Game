@@ -2431,7 +2431,6 @@ MonoBehaviour:
   item_index: 0
   slot_image: {fileID: 1374698601}
   item_info_display: {fileID: 715742302}
-  equip_test: 0
 --- !u!114 &681423670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5852,6 +5851,7 @@ GameObject:
   - component: {fileID: 2142102733}
   - component: {fileID: 2142102732}
   - component: {fileID: 2142102731}
+  - component: {fileID: 2142102734}
   - component: {fileID: 2142102730}
   m_Layer: 5
   m_Name: Equip_head
@@ -5890,14 +5890,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142102728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71abd42fc81febb4e86fe7df92ae0f00, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a59d8176b3dfb64984275d67f6313f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pc_inventory: {fileID: 0}
-  item_index: 0
-  slot_image: {fileID: 731224330}
-  item_info_display: {fileID: 0}
-  equip_test: 0
+  game_event: {fileID: 11400000, guid: 120a4a609b474614ebb29f690bf1896d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2142102734}
+        m_MethodName: UpdateInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2142102731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5977,3 +5989,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142102728}
   m_CullTransparentMesh: 0
+--- !u!114 &2142102734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142102728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4cf5c920260384182a80b493de4b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc_inventory: {fileID: 11400000, guid: 6dc2b5ea1218dc14c80dc5d2bede6417, type: 2}
+  slot_id: 0
+  slot_image: {fileID: 731224330}
+  item_info_display: {fileID: 0}
