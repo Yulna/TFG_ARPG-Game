@@ -19,6 +19,7 @@ public class SkillController : MonoBehaviour
 
     public GameObject skill_selection_UI;
     int selected_id;
+    public StatVariable attack_speed;
 
     [Header("Currently equipped skills")]
     public Skill[] equip_skills;

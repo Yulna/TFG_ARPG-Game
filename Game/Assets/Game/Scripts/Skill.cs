@@ -4,7 +4,7 @@ using UnityEngine;
 
 public struct CastInfo
 {
-    //Casting info --> Need to be set each time it's casted
+    //Casting info --> Need to be set for each skill casted
     public Vector3 origin_pos;
     public Vector3 end_pos;
     public Vector3 dir;
@@ -16,6 +16,8 @@ public class Skill : ScriptableObject
     //General info  
     public string skill_name;
     public Sprite skill_icon;
+    public StatVariable weapon_dmg;
+    public float skill_dmg_mult;
     public int cost;                //Resource cost of the skill
     public float cooldown;          //Cooldown of the skill
 

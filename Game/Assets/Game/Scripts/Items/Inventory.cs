@@ -14,6 +14,7 @@ public enum EquipSlot
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Chambers of Elrankat/Inventory")]
+[System.Serializable]
 public class Inventory : ScriptableObject
 {
     public static int max_space = 40;
