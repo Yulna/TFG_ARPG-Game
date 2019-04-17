@@ -60,11 +60,16 @@ public class SkillController : MonoBehaviour
         }
         //TODO: Update equiped skills for CD
 
+        //TESt region
+        //TODO: remove it
         if(Input.GetKeyDown(KeyCode.P))
         {
             test.AddCastBehaviour(SkillCastMod);
         }
-     
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            test.RemoveCastBehaviour(SkillCastMod);
+        }
     }
 
     public void CastSkill(SkillButton skill_index, RayHitInfo hit_info)
@@ -105,6 +110,7 @@ public class SkillController : MonoBehaviour
         test.CastSkill(GetCastInfo(gameObject.transform.position, hit.hit_point));
     }
 
+    //TODO: remove
     public void SkillCastMod(CastInfo cast_info)
     {
         GameObject display = Instantiate(test.skill_display, cast_info.origin_pos, Quaternion.identity);

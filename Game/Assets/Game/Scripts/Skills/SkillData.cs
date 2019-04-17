@@ -52,9 +52,14 @@ public class SkillData : ScriptableObject
     }
 
     //Cast and behviour modifiers methods
-    public void AddCastBehaviour(SkillCast new_cast)
+    public void AddCastBehaviour( SkillCast new_cast)
     {
         skill_cast_del += new_cast;
+
     }
 
+    public void RemoveCastBehaviour( SkillCast old_cast)
+    {
+        skill_cast_del -= old_cast;
+    }
 }
