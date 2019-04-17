@@ -117,8 +117,11 @@ public class CharacterController : MonoBehaviour
         //Testing space
         if(Input.GetKeyDown(KeyCode.Space))
         {
-           // Item new_item = new Item("Instance test");
-           // inventory.AddItem(new_item);
+            RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
+            if (ray_hit.hitted)
+            {
+                skill_controller.TestingTEst(ray_hit);
+            }
         }
       
     }

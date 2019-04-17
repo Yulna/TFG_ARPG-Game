@@ -2,14 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct CastInfo
-{
-    //Casting info --> Need to be set for each skill casted
-    public Vector3 origin_pos;
-    public Vector3 end_pos;
-    public Vector3 dir;
-    public float curr_dist;
-}
+
 
 public class Skill : ScriptableObject
 {
