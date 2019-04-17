@@ -15,7 +15,8 @@ MonoBehaviour:
   skill_name: 
   skill_icon: {fileID: 0}
   weapon_dmg: {fileID: 0}
-  skill_display: {fileID: 0}
+  skill_display: {fileID: 2715068570714141067, guid: b5ab0c370b8924741915cc41c4a880b2,
+    type: 3}
   skill_dmg_mult: 0
   cast_time_mult: 0
   cost: 0
