@@ -358,6 +358,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 748ac438261ca704a888808033dd5131,
         type: 2}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: char_skill_list.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 748ac438261ca704a888808033dd5131,
+        type: 2}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: char_skill_list.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 748ac438261ca704a888808033dd5131,
+        type: 2}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: equip_skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 748ac438261ca704a888808033dd5131,
+        type: 2}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: equip_skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: dd2093ea07b13c141a957d5ea81f7d77,
+        type: 2}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: attack_speed
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12,
+        type: 2}
     - target: {fileID: 4059247928484758968, guid: 205514009379d3b44b91e338183ad51b,
         type: 3}
       propertyPath: move_speed

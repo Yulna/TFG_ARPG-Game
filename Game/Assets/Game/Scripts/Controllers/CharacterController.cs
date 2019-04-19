@@ -150,7 +150,7 @@ public class CharacterController : MonoBehaviour
 
 
     //Return true when we have enough resource to spend, false otherwise
-    public bool SpendResource(int value)
+    public bool SpendResource(float value)
     {
         if (value > curr_resource)
         {

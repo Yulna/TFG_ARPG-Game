@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234f49d0819ea854f9faa0cab5cc52b2, type: 3}
-  m_Name: SkillTest
+  m_Script: {fileID: 11500000, guid: d3cc83225a64368408bd046112fdcdaf, type: 3}
+  m_Name: Spirit Refuge
   m_EditorClassIdentifier: 
   skill_name: 
   skill_icon: {fileID: 0}
-  skill_type: 0
+  skill_type: 2
   weapon_dmg: {fileID: 0}
   skill_display: {fileID: 2715068570714141067, guid: b5ab0c370b8924741915cc41c4a880b2,
     type: 3}
@@ -22,3 +22,5 @@ MonoBehaviour:
   cast_time_mult: -1
   cost: 0
   cooldown: 0
+  range: 5
+  duration: 10

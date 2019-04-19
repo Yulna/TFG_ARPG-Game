@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SkillType
+{
+    UNDEFINED,
+    SKILL_SWORDMANSHIP,
+    SKILL_MAGICAL
+}
+
 [CreateAssetMenu(fileName = "Skill Ball", menuName = "Chambers of Elrankat/Skills/Void Skill")]
 public class SkillData : ScriptableObject
 {
     //General info  
     public string skill_name;
     public Sprite skill_icon;
+    public SkillType skill_type;
     public StatVariable weapon_dmg;
     public GameObject skill_display;
     public float skill_dmg_mult;
@@ -40,16 +48,17 @@ public class SkillData : ScriptableObject
         instance.InitInstance(SkillBehaviour, cast_info);
     }
 
-    public virtual void SkillBehaviour(ref CastInfo cast_info, GameObject display)
+    public virtual void SkillBehaviour(ref CastInfo cast_info, GameObject instance)
     {
         //TEST
-        display.transform.Translate(cast_info.dir * 0.2f, Space.World);
+        instance.transform.Translate(cast_info.dir * 0.2f, Space.World);
 
         cast_info.curr_dist += cast_info.dir.magnitude * 0.1f;
         //TEST
-
+        
         Debug.Log("Default skill launched");
     }
+
 
     //Cast and behviour modifiers methods
     public void AddCastBehaviour( SkillCast new_cast)

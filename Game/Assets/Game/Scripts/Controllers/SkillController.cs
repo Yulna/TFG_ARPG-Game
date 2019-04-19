@@ -20,6 +20,7 @@ public struct CastInfo
     public Vector3 end_pos;
     public Vector3 dir;
     public float curr_dist;
+    public float curr_duration;
 }
 
 public class SkillController : MonoBehaviour
@@ -29,13 +30,14 @@ public class SkillController : MonoBehaviour
     public GameObject skill_selection_UI;
     int selected_id;
     public StatVariable attack_speed;
+    public float cast_timer;
 
     [Header("Currently equipped skills")]
-    public Skill[] equip_skills;
+    public SkillData[] equip_skills;
     public Image[] equip_icons;
 
     [Header("All character skills")]
-    public Skill[] char_skill_list;
+    public SkillData[] char_skill_list;
     public Image[] skill_icons;
 
 
@@ -47,12 +49,13 @@ public class SkillController : MonoBehaviour
             skill_icons[i].color = Color.white;
             skill_icons[i].sprite = char_skill_list[i].skill_icon;
         }
-        equip_skills[(int)SkillButton.LMB] = (Skill)ScriptableObject.CreateInstance("AttackMelee");
+    //    equip_skills[(int)SkillButton.LMB] = (SkillData)ScriptableObject.CreateInstance("AttackMelee");
     }
 
     // Update is called once per frame
     void Update()
     {
+        cast_timer -= Time.deltaTime;
         if(Input.GetKeyUp(KeyCode.S))
         {
             //Enable/Disable Skill selection UI
@@ -74,10 +77,19 @@ public class SkillController : MonoBehaviour
 
     public void CastSkill(SkillButton skill_index, RayHitInfo hit_info)
     {
-        //TODO: Check if we are in the middle of casting a skill
-        CharacterController.instance.SpendResource(equip_skills[(int)skill_index].cost);
-
-        equip_skills[(int)skill_index].CastSkill(transform.position, hit_info.hit_point); 
+        if (cast_timer > 0)
+        {
+            Debug.Log("Already casting a skill");
+        }
+        else
+        {
+            if (equip_skills[(int)skill_index].cast_time_mult == 0)
+                cast_timer = 0;
+            else
+                cast_timer = 1 / (equip_skills[(int)skill_index].cast_time_mult * attack_speed.Buffed_value);
+            CharacterController.instance.SpendResource(equip_skills[(int)skill_index].cost);
+            equip_skills[(int)skill_index].CastSkill(GetCastInfo(transform.position, hit_info.hit_point));
+        }
     }
 
 
@@ -101,6 +113,7 @@ public class SkillController : MonoBehaviour
         ret.dir = ret.end_pos - ret.origin_pos;
         ret.dir.Normalize();
         ret.curr_dist = 0;
+        ret.curr_duration = 0;
 
         return ret;
     }
