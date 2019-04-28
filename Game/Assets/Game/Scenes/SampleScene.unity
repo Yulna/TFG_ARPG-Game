@@ -374,7 +374,7 @@ PrefabInstance:
         type: 3}
       propertyPath: equip_skills.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 748ac438261ca704a888808033dd5131,
+      objectReference: {fileID: 11400000, guid: 31935c704c81c1649a6a388f3a81b5ac,
         type: 2}
     - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
         type: 3}
@@ -387,6 +387,12 @@ PrefabInstance:
       propertyPath: attack_speed
       value: 
       objectReference: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12,
+        type: 2}
+    - target: {fileID: 2264258283461722249, guid: 205514009379d3b44b91e338183ad51b,
+        type: 3}
+      propertyPath: equip_skills.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ca8b736187084a34d956831b97483eb4,
         type: 2}
     - target: {fileID: 4059247928484758968, guid: 205514009379d3b44b91e338183ad51b,
         type: 3}
@@ -904,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 475524, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.2746353
+      value: -15.29
       objectReference: {fileID: 0}
     - target: {fileID: 475524, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -912,7 +918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 475524, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.47
+      value: 22.83
       objectReference: {fileID: 0}
     - target: {fileID: 475524, guid: b0297681c8568974da8dc86f4cdc853c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1289,6 +1295,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
+  base_attack_range: 2
+  base_attack_speed: 1
+  view_range: 10
+  memory_time: 5
+  attack_timer: 0
+  memory_timer: 0
+  player_found: 0
+  attack_range: {fileID: 0}
+  attack_speed: {fileID: 0}
 --- !u!195 &426776096
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1303,7 +1318,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1834,7 +1849,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
   - {fileID: 11400000, guid: 888710f020eb8524ca6a19d0a606bbfc, type: 2}
   - {fileID: 11400000, guid: 19fba87b5b477bf48b32ccde9fd2632d, type: 2}
-  test_ms: {fileID: 0}
+  curr_health: 0
+  curr_resource: 0
+  dmg_half_reduction: 0
   move_controller: {fileID: 566378371}
   skill_controller: {fileID: 1793434085}
   inventory: {fileID: 11400000, guid: 6dc2b5ea1218dc14c80dc5d2bede6417, type: 2}
@@ -3265,6 +3282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 957151854}
+  - component: {fileID: 957151855}
   m_Layer: 0
   m_Name: Magic Object
   m_TagString: Untagged
@@ -3286,6 +3304,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &957151855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957151853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ffd4e5844242548b63c5c8c4bdac7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item_model: {fileID: 0}
+  item_sprite: {fileID: 0}
+  dmg_type: 8
 --- !u!1001 &1040231740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3391,7 +3424,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 22323eec6ea189c499fc4ec29983ecca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

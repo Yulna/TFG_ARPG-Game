@@ -9,20 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3cc83225a64368408bd046112fdcdaf, type: 3}
-  m_Name: Spirit Refuge
+  m_Script: {fileID: 11500000, guid: b5683b1d10f1f8a4a9a37435dcf84bb5, type: 3}
+  m_Name: Dragon Breath
   m_EditorClassIdentifier: 
   skill_name: 
   skill_icon: {fileID: 0}
-  skill_type: 2
+  skill_type: 0
   weapon_dmg: {fileID: 0}
-  skill_display: {fileID: 1901245927194888, guid: bb98861c48ad2024ca93498c7dd93a6c,
+  skill_display: {fileID: 1973075987484898, guid: bccc7a794e75b2a44a4b0dac69160b7b,
     type: 3}
   skill_dmg_mult: 0
-  cast_time_mult: -1
+  cast_time_mult: 0
   cost: 0
   cooldown: 0
-  range: 5
-  duration: 10
-  effect_area: 3
-  effect_area_mult: 1
+  range: 4
+  range_mult: 1
+  angle: 90
+  angle_mult: 1

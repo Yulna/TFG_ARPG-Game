@@ -8,6 +8,9 @@ public class CharacterControllerEditor : Editor
     //Sats properties
     private SerializedProperty stats_base_property;
     private SerializedProperty stats_variable_property;
+    private SerializedProperty curr_health_property;
+    private SerializedProperty curr_resource_property;
+    private SerializedProperty dmg_half_reduction_property;
 
     //Controllers
     private SerializedProperty skill_controller_property;
@@ -25,6 +28,10 @@ public class CharacterControllerEditor : Editor
         move_controller_property = serializedObject.FindProperty("move_controller");
         inventory_property = serializedObject.FindProperty("inventory");
         camera_property = serializedObject.FindProperty("pc_camera");
+        curr_health_property = serializedObject.FindProperty("curr_health");
+        curr_resource_property = serializedObject.FindProperty("curr_resource");
+        dmg_half_reduction_property = serializedObject.FindProperty("dmg_half_reduction");
+
     }
 
     public override void OnInspectorGUI()
@@ -33,15 +40,23 @@ public class CharacterControllerEditor : Editor
 
         EditorGUILayout.LabelField("Player Stats", EditorStyles.boldLabel);
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField("Base");
+        EditorGUILayout.LabelField("Name");
         EditorGUILayout.LabelField("Variable");
         EditorGUILayout.EndHorizontal();
         for (int i = 0; i < (int)StatId._numId; i++)
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PropertyField(stats_base_property.GetArrayElementAtIndex(i),new GUIContent(StatToString((StatId)i)));
+            EditorGUILayout.PrefixLabel(new GUIContent(StatToString((StatId)i)));
+         //   EditorGUILayout.PropertyField(stats_base_property.GetArrayElementAtIndex(i),new GUIContent(StatToString((StatId)i)));
             EditorGUILayout.PropertyField(stats_variable_property.GetArrayElementAtIndex(i), GUIContent.none);
             EditorGUILayout.EndHorizontal();
+        }
+
+        {
+            EditorGUILayout.Separator();
+            EditorGUILayout.PropertyField(curr_health_property);
+            EditorGUILayout.PropertyField(curr_resource_property);
+            EditorGUILayout.PropertyField(dmg_half_reduction_property);
         }
 
         { 
@@ -51,6 +66,8 @@ public class CharacterControllerEditor : Editor
             EditorGUILayout.PropertyField(move_controller_property);
             EditorGUILayout.PropertyField(inventory_property);
         }
+
+
         EditorGUILayout.ObjectField(camera_property);
         serializedObject.ApplyModifiedProperties();
     }

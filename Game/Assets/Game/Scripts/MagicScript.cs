@@ -7,6 +7,7 @@ public class MagicScript : MonoBehaviour
 
     public GameObject item_model;
     public Sprite item_sprite;
+    public DamageType dmg_type;
 
     int count;
     // Start is called before the first frame update
@@ -24,6 +25,11 @@ public class MagicScript : MonoBehaviour
             ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
             iw_comp.item_data.item_name = "Item generated %i" + count;
             
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            CharacterController.instance.DamagePlayer(100, dmg_type);
         }
     }
 

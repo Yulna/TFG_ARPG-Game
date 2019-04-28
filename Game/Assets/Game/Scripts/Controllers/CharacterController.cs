@@ -28,6 +28,16 @@ public enum StatId
     _numId     //Will return number of stats id (doesn't dount self since enum starts with 0)
 }
 
+public enum DamageType
+{
+    DmgTrue = 0,
+    DmgPhysical = StatId.PhysicRes,
+    DmgFire = StatId.FireRes,
+    DmgWater = StatId.WaterRes,
+    DmgShock = StatId.ShockRes,
+    DmgEarth = StatId.EarthRes
+}
+
 public class CharacterController : MonoBehaviour
 {
     //Singleton
@@ -48,10 +58,13 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private float[] base_stats = new float[(int)StatId._numId];
     public StatVariable[] variables_stats = new StatVariable[(int)StatId._numId];
-    public StatVariable test_ms;
     
+    [SerializeField]
     float curr_health;
+    [SerializeField]
     float curr_resource;
+    [SerializeField]
+    float dmg_half_reduction;
 
     //Controllers
     public MovementController move_controller;
@@ -61,8 +74,9 @@ public class CharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
+        dmg_half_reduction = 100;
+        curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
+        curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
     }
 
     // Update is called once per frame
@@ -113,9 +127,25 @@ public class CharacterController : MonoBehaviour
                 skill_controller.CastSkill(SkillButton.NUM_2, ray_hit);
             }
         }
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
+            if (ray_hit.hitted)
+            {
+                skill_controller.CastSkill(SkillButton.NUM_3, ray_hit);
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
+            if (ray_hit.hitted)
+            {
+                skill_controller.CastSkill(SkillButton.NUM_4, ray_hit);
+            }
+        }
 
         //Testing space
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
             if (ray_hit.hitted)
@@ -167,6 +197,35 @@ public class CharacterController : MonoBehaviour
     public Transform GetPlayerTransform()
     {
        return move_controller.gameObject.transform;   
+    }
+
+
+    public void DamagePlayer(float dmg_value, DamageType type)
+    {
+        float true_damage;
+
+        if (type != DamageType.DmgTrue)
+        {
+
+            float armor_mitigation = dmg_half_reduction / (dmg_half_reduction + variables_stats[(int)StatId.Armor].Buffed_value);
+            float res_mitigation = dmg_half_reduction / (dmg_half_reduction + variables_stats[(int)type].Buffed_value);
+
+            true_damage = dmg_value * armor_mitigation * res_mitigation;
+        }
+        else
+        {
+            true_damage = dmg_value;
+        }
+
+        if (true_damage > curr_health)
+            curr_health = 0;
+        else
+            curr_health -= true_damage;
+
+        //Just to prevent display errors
+        //Don't want display to mark 0 health because health value is 0.XX
+        if (curr_health < 1 && curr_health > 0)
+            curr_health = 1;
     }
 
 }
