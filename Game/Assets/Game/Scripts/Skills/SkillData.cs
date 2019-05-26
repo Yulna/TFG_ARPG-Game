@@ -52,10 +52,8 @@ public class SkillData : ScriptableObject
     {
         //TEST
         instance.transform.Translate(cast_info.dir * 0.2f, Space.World);
-
         cast_info.curr_dist += cast_info.dir.magnitude * 0.1f;
-        //TEST
-        
+        //TEST        
         Debug.Log("Default skill launched");
     }
 
@@ -64,7 +62,6 @@ public class SkillData : ScriptableObject
     public void AddCastBehaviour( SkillCast new_cast)
     {
         skill_cast_del += new_cast;
-
     }
 
     public void RemoveCastBehaviour( SkillCast old_cast)

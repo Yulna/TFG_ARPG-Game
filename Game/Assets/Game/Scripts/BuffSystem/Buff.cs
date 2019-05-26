@@ -4,8 +4,8 @@ using UnityEngine;
 
 public enum BuffType
 {
-    BUFF_STAT_ADD,
-    BUFF_STAT_MULT,
+    BUFF_STAT_ADD = 0,
+    BUFF_STAT_MULT = 1,
     BUFF_SKILL_MOD,
     BUFF_PASSIVE
 }
@@ -15,9 +15,12 @@ public class Buff
 {
     public Buff(BuffType b_type, float b_magnitude, StatVariable b_variable)
     {
-        type = b_type;
-        magnitude = b_magnitude;
+        type = b_type;        
         variable = b_variable;
+        if (type == BuffType.BUFF_STAT_ADD)
+            magnitude = (int)b_magnitude;
+        else
+            magnitude = b_magnitude;
     }
 
     public BuffType type;

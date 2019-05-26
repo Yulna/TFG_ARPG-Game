@@ -29,14 +29,12 @@ public class SkillDataThunder : SkillData
     {
         Collider[] hit_colliders = Physics.OverlapSphere(cast_info.end_pos, effect_area * effect_area_mult);
 
-     /*   int i = 0;
+        int i = 0;
         while (i < hit_colliders.Length)
         {
             if (hit_colliders[i].gameObject.tag == "Enemy")
                 hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
             i++;
         }
-*/
-
     }
 }

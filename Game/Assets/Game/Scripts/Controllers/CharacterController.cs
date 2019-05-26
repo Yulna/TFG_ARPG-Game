@@ -156,6 +156,11 @@ public class CharacterController : MonoBehaviour
       
     }
 
+    public StatVariable GetStat(StatId id)
+    {
+        return variables_stats[(int)id];
+    }
+
     public RayHitInfo RayCastHandle(Vector3 screen_point, LayerMask mask)
     {
         RayHitInfo ret;
@@ -206,7 +211,6 @@ public class CharacterController : MonoBehaviour
 
         if (type != DamageType.DmgTrue)
         {
-
             float armor_mitigation = dmg_half_reduction / (dmg_half_reduction + variables_stats[(int)StatId.Armor].Buffed_value);
             float res_mitigation = dmg_half_reduction / (dmg_half_reduction + variables_stats[(int)type].Buffed_value);
 

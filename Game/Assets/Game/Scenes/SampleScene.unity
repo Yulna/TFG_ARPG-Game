@@ -1300,10 +1300,9 @@ MonoBehaviour:
   view_range: 10
   memory_time: 5
   attack_timer: 0
+  drop_chance: 0
   memory_timer: 0
   player_found: 0
-  attack_range: {fileID: 0}
-  attack_speed: {fileID: 0}
 --- !u!195 &426776096
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3283,6 +3282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 957151854}
   - component: {fileID: 957151855}
+  - component: {fileID: 957151856}
   m_Layer: 0
   m_Name: Magic Object
   m_TagString: Untagged
@@ -3316,9 +3316,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7ffd4e5844242548b63c5c8c4bdac7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item_model: {fileID: 0}
+  item_world_prefab: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
   item_sprite: {fileID: 0}
   dmg_type: 8
+--- !u!114 &957151856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957151853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5cf47068bb93b4ca93b0a2d9ab2dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items_display_head:
+  - {fileID: 195884, guid: 9f78e8c3007d3dd46a0681fc1a4330da, type: 3}
+  items_display_chest: []
+  items_display_arms: []
+  items_display_legs:
+  - {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b, type: 3}
+  items_display_feet:
+  - {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b, type: 3}
+  items_display_weapon: []
+  armor_stat_table: 
+  weapon_stat_table: 
+  add_min_roll:
+  - 20
+  - 200
+  - 2
+  - 50
+  - 5
+  - 1
+  - 0.2
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  add_max_roll:
+  - 100
+  - 600
+  - 20
+  - 500
+  - 40
+  - 3
+  - 0.6
+  - 80
+  - 80
+  - 80
+  - 80
+  - 80
+  - 80
+  mult_min_roll:
+  - 1.5
+  - 1.2
+  - 1.1
+  - 1.2
+  - 1.2
+  - 1.05
+  - 1.05
+  - 1.1
+  - 1.2
+  - 1.2
+  - 1.2
+  - 1.2
+  - 1.2
+  mult_max_roll:
+  - 3
+  - 2.5
+  - 2
+  - 2.75
+  - 2.25
+  - 1.5
+  - 1.5
+  - 2.25
+  - 2.25
+  - 2.25
+  - 2.25
+  - 2.25
+  - 2.25
 --- !u!1001 &1040231740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4759,7 +4839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725655673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.725505, y: 2.529468, z: 5.683157}
+  m_LocalPosition: {x: -3.1, y: 2.529468, z: 12.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

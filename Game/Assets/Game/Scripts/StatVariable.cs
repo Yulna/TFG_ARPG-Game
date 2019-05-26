@@ -9,13 +9,13 @@ using UnityEngine.Events;
 public class StatVariable : ScriptableObject
 {
     [SerializeField]
-    protected float base_value;
+    private float base_value;
     [SerializeField]
     private float sum_value;
     [SerializeField]
     private float mult_value;
     [SerializeField]
-    protected float buffed_value;
+    private float buffed_value;
 
     public UnityEvent stat_Change;
 
@@ -44,8 +44,6 @@ public class StatVariable : ScriptableObject
     {
         get { UpdateBuffedValue(); return buffed_value; }
     }
-
-
 
     void UpdateBuffedValue()
     {

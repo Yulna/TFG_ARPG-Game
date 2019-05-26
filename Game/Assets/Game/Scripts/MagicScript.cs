@@ -5,7 +5,7 @@ using UnityEngine;
 public class MagicScript : MonoBehaviour
 {
 
-    public GameObject item_model;
+    public GameObject item_world_prefab;
     public Sprite item_sprite;
     public DamageType dmg_type;
 
@@ -21,10 +21,12 @@ public class MagicScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            GameObject new_item = Instantiate(item_model, transform.position, transform.rotation);
+            Item drop_item = GameManager.instance.GetRandomLoot();
+
+            GameObject new_item = Instantiate(drop_item.item_world_display, transform.position, transform.rotation);
             ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
-            iw_comp.item_data.item_name = "Item generated %i" + count;
-            
+            iw_comp.item_data = drop_item;
+
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -42,9 +44,22 @@ public class MagicScript : MonoBehaviour
         ret.equip_slot_id = EquipSlot.Head;
 
         //TODO put random buff
+        ret.item_buffs = new Buff[2];
         
+        for(int i = 0; i < ret.item_buffs.Length; i++)
+        {
+            ret.item_buffs[i] = GetBuff();
+        }
 
         return ret;
     }
     
+    Buff GetBuff()
+    {
+        Buff ret = new Buff(BuffType.BUFF_STAT_ADD,2,CharacterController.instance.variables_stats[(int)StatId.WeaponDmg]);
+
+
+        return ret;
+    }
+
 }

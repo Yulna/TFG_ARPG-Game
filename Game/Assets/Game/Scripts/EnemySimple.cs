@@ -14,24 +14,21 @@ public class EnemySimple : MonoBehaviour
     NavMeshAgent npc_agent;
     Transform pc_transform;
 
+    public int drop_chance;
+
     [SerializeField]
     float memory_timer;
     [SerializeField]
     bool player_found;
 
-    public StatVariable attack_range;
-    public StatVariable attack_speed;
+    private bool alive = true;
 
     private void Start()
     {
+        alive = true;
         npc_agent = GetComponent<NavMeshAgent>();
         player_found = false;
-        pc_transform = CharacterController.instance.move_controller.transform;
-
-        attack_range = ScriptableObject.CreateInstance<StatVariable>();
-        attack_range.Base_value = base_attack_range;
-        attack_speed = ScriptableObject.CreateInstance<StatVariable>();
-        attack_speed.Base_value = base_attack_speed;        
+        pc_transform = CharacterController.instance.move_controller.transform;          
     }
 
     void Update()
@@ -66,10 +63,11 @@ public class EnemySimple : MonoBehaviour
 
             if(PathCompleted())
             {
-                if(Vector3.Distance(pc_transform.position,transform.position) <= attack_range.Buffed_value)
+
+                if (Vector3.Distance(pc_transform.position,transform.position) <= base_attack_range)
                 {
-                    attack_timer = 1 / attack_speed.Buffed_value;
-                    Collider[] hit_colliders = Physics.OverlapSphere(transform.position, attack_range.Buffed_value);
+                    attack_timer = 1 / base_attack_speed;
+                    Collider[] hit_colliders = Physics.OverlapSphere(transform.position, base_attack_range);
 
                     for(int i = 0; i < hit_colliders.Length; i++)
                     {
@@ -110,12 +108,31 @@ public class EnemySimple : MonoBehaviour
         }
 
         if (health <= 0)
-            Destroy(gameObject);
+            Die();
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(gameObject.transform.position, view_range);
+    }
+
+    private void Die()
+    {
+        int drop_dice = Random.Range(0, 99);
+
+        if (drop_dice < drop_chance && alive)
+        {
+
+            Item drop_item = GameManager.instance.GetRandomLoot();
+
+            GameObject new_item = Instantiate(drop_item.item_world_display, transform.position, transform.rotation);
+            ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
+            iw_comp.item_data = drop_item;
+
+        }
+
+        alive = false;
+        Destroy(gameObject);
     }
 }

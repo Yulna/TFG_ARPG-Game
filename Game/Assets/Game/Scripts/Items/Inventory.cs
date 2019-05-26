@@ -10,7 +10,18 @@ public enum EquipSlot
     Arms,
     Legs,
     Feet,
+    Weapon,
     _numSlots
+}
+
+//Rarity holds the value of the buff the rarity receives
+public enum ItemRarity
+{
+    Undefined = 0,
+    Common = 1,
+    Rare = 2,
+    Epic = 4,
+    Unique = 5 
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Chambers of Elrankat/Inventory")]
