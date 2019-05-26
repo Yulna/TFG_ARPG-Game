@@ -3332,15 +3332,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5cf47068bb93b4ca93b0a2d9ab2dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items_display_head:
-  - {fileID: 195884, guid: 9f78e8c3007d3dd46a0681fc1a4330da, type: 3}
-  items_display_chest: []
-  items_display_arms: []
-  items_display_legs:
-  - {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b, type: 3}
-  items_display_feet:
-  - {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b, type: 3}
-  items_display_weapon: []
+  items_display_head: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
+  items_display_chest: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
+  items_display_arms: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
+  items_display_legs: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
+  items_display_feet: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
+  items_display_weapon: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+    type: 3}
   armor_stat_table: 
   weapon_stat_table: 
   add_min_roll:

@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     public Item GetRandomLoot()
     {        
-        EquipSlot rand_slot = (EquipSlot)Random.Range(0, (int)EquipSlot._numSlots - 1);
+        EquipSlot rand_slot = (EquipSlot)Random.Range(0, (int)EquipSlot._numSlots);
 
         int rarity_dice = Random.Range(0,5);
 
@@ -96,82 +96,43 @@ public class GameManager : MonoBehaviour
         ret_item.item_world_display = items_display_legs;
         ret_item.item_name = "test item";
 
-        ret_item.item_buffs = GetBuffsFromSlot(ret_item.equip_slot_id ,ItemRarity.Epic);
+        ret_item.item_buffs = GetItemBuffs(ItemRarity.Epic, ret_item.equip_slot_id);
 
         return ret_item;
     }
 
-
-    public Buff[] GetBuffsFromSlot(EquipSlot slot_id, ItemRarity rarity)
-    {
-        switch(slot_id)
-        {
-            case EquipSlot.Head:
-                return GetArmorBuffs(rarity);
-                break;
-            case EquipSlot.Chest:
-                return GetArmorBuffs(rarity);
-                break;
-            case EquipSlot.Arms:
-                return GetArmorBuffs(rarity);
-                break;
-            case EquipSlot.Legs:
-                return GetArmorBuffs(rarity);
-                break;
-            case EquipSlot.Feet:
-                 return GetArmorBuffs(rarity);
-                break;
-            case EquipSlot.Weapon:
-                return GetArmorBuffs(rarity);
-                break;
-            default:
-                return new Buff[1];
-                break;
-        }
-
-    }
-/*
     public Buff[] GetItemBuffs(ItemRarity rarity, EquipSlot slot_id)
     {
         if(slot_id == EquipSlot._numSlots)
         {
             Debug.LogError("Trying to generate an item without known slot");
             return new Buff[1];
-        }
+        }     
+
+        int buff_num = (int)rarity + 1; //+1 == base stat (armor for armor, damage for weapons)
+        Buff[] ret = new Buff[buff_num];
 
         //Get corresponding loot table
         bool[] available_buffs;
         if (slot_id == EquipSlot.Weapon)
         {
             available_buffs = (bool[])weapon_stat_table.Clone();
+            //add a base damage roll
+            int damage_roll = Random.Range(20, 120);
+            ret[0] = new Buff(BuffType.BUFF_STAT_ADD, damage_roll, CharacterController.instance.GetStat(StatId.WeaponDmg));
         }
         else //All other slots are amror slots
         {
             available_buffs = (bool[])armor_stat_table.Clone();
+            //add a base armor roll
+            int armor_roll = Random.Range(20, 80);
+            ret[0] = new Buff(BuffType.BUFF_STAT_ADD, armor_roll, CharacterController.instance.GetStat(StatId.Armor));
         }
 
-
-
-
-    }*/
-
-    public Buff[] GetArmorBuffs(ItemRarity rarity)
-    {   
-
-        bool[] available_buffs = (bool[])armor_stat_table.Clone(); 
-        int buff_num = (int)rarity + 1; //+1 == base armor
-        Buff[] ret = new Buff[buff_num];
-  
-
-        //add a base armor roll
-        int armor_roll = Random.Range(20, 80);
-        ret[0] = new Buff(BuffType.BUFF_STAT_ADD, armor_roll, CharacterController.instance.GetStat(StatId.Armor));
-
-
-        int buff_dice = Random.Range(0, (int)StatId._numId - 1);
-        for (int i = 1; i < buff_num;)
-        {            
-            if(available_buffs[buff_dice])
+        int buff_dice = Random.Range(0, (int)StatId._numId);
+        for (int i = 1, loop_stoper = 0; i < buff_num;)
+        {
+            if (available_buffs[buff_dice])
             {
                 available_buffs[buff_dice] = false;
 
@@ -179,12 +140,13 @@ public class GameManager : MonoBehaviour
                 int buff_type_dice = Random.Range(0, 2);
 
                 //TODO randomize add and mult
-                ret[i] = new Buff((BuffType)buff_type_dice, 
-                    Random.Range(value_table[buff_dice,buff_type_dice,(int)BuffRange.MinRange], value_table[buff_dice, buff_type_dice, (int)BuffRange.MaxRange]),
+                ret[i] = new Buff((BuffType)buff_type_dice,
+                    Random.Range(value_table[buff_dice, buff_type_dice, (int)BuffRange.MinRange], value_table[buff_dice, buff_type_dice, (int)BuffRange.MaxRange]),
                     CharacterController.instance.GetStat((StatId)buff_dice));
 
                 buff_dice = Random.Range(0, (int)StatId._numId);
                 i++;
+                loop_stoper = 0;
                 continue;
             }
             else
@@ -193,11 +155,13 @@ public class GameManager : MonoBehaviour
                     buff_dice = 0;
                 else
                     buff_dice++;
-                continue;
+                loop_stoper++;
+                if (loop_stoper < (int)StatId._numId)
+                    continue;
+                else
+                    break;
             }
         }
-        
         return ret;
     }
-
 }
