@@ -54,7 +54,8 @@ public class SkillDataExplosion : SkillData
             }
             //Explosion particle spawn
             GameObject instance_explosion = Instantiate(explosion_display, instance.transform.position, Quaternion.identity);
-            Destroy(instance_explosion, instance_explosion.GetComponent<ParticleSystem>().main.duration);
+            instance_explosion.transform.localScale = new Vector3(effect_area * effect_area_mult, effect_area * effect_area_mult, effect_area * effect_area_mult);
+            Destroy(instance_explosion, 5);
             Destroy(instance);
         }
     }

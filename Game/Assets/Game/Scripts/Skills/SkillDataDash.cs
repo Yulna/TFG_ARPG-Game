@@ -10,6 +10,7 @@ public class SkillDataDash : SkillData
     public float range_mult;
     public float precision;
     public float speed;
+    public GameObject dash_trail;
 
 
     public override void SkillCastBehaviour(CastInfo cast_info)
@@ -24,7 +25,7 @@ public class SkillDataDash : SkillData
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.InitInstance(SkillBehaviour, cast_info);
 
-        if (!CharacterController.instance.move_controller.StartJump(instance.GetInstanceID()))
+        if (!CharacterController.instance.move_controller.StartJump(instance.gameObject))
         {
             Debug.Log("Dash failed");
             CharacterController.instance.SpendResource(-cost);
@@ -38,6 +39,9 @@ public class SkillDataDash : SkillData
             if (hit_colliders[i].gameObject.tag == "Enemy")            
                 hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);            
         }
+
+        GameObject trail = Instantiate(dash_trail, cast_info.origin_pos + cast_info.dir, Quaternion.LookRotation(cast_info.dir, Vector3.up));
+        Destroy(trail, 5);
     }
 
 
@@ -46,7 +50,6 @@ public class SkillDataDash : SkillData
         //Instant cast/damage spell void behaviour to prevent warnings
         if (Vector3.Distance(instance.transform.position, cast_info.end_pos) > precision)
         {
-
             instance.transform.position = CharacterController.instance.GetPlayerTransform().position;
 
             Vector3 push_dir = cast_info.end_pos - instance.transform.position;

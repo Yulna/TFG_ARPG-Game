@@ -12,6 +12,7 @@ public class SkillDataWindFury : SkillData
     public float curr_duration;
     public bool is_active;
 
+
     public override void SkillCastBehaviour(CastInfo cast_info)
     {
         if (!is_active)
@@ -19,12 +20,12 @@ public class SkillDataWindFury : SkillData
             GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.identity);
             SkillInstance instance = display.AddComponent<SkillInstance>();
             instance.InitInstance(SkillBehaviour, cast_info);
+            atk_speed.Mult_value *= as_percent_aug;
         }
 
         //Don't use instance duration since we want to ONLY have one of this skill buff active at a time
         curr_duration = 0;
-        is_active = true;
-        atk_speed.Mult_value *= as_percent_aug;
+        is_active = true;        
     }
 
 

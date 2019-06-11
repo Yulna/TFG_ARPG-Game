@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
+
 
 public class EquipedItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -10,7 +12,8 @@ public class EquipedItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public EquipSlot slot_id;
     public Image slot_image;
     public GameObject item_info_display;
-
+    public TextMeshProUGUI item_info_name;
+    public TextMeshProUGUI item_info_description;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,8 @@ public class EquipedItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }  
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        item_info_description.SetText(pc_inventory.GetDescriptionFromSlot(slot_id));
+        item_info_name.SetText(pc_inventory.GetNameFromSlot(slot_id));
         item_info_display.SetActive(true);
     }
     public void OnPointerExit(PointerEventData pointerEventData)

@@ -16,7 +16,7 @@ MonoBehaviour:
   skill_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-  skill_display: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9,
+  skill_display: {fileID: 7517931502307400111, guid: 714334665bf85894d8f900fe271200ad,
     type: 3}
   skill_dmg_mult: 1
   cast_time_mult: 0
@@ -28,5 +28,5 @@ MonoBehaviour:
   effect_area: 2
   effect_area_mult: 1
   projectile_speed: 0.2
-  explosion_display: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
+  explosion_display: {fileID: 7517931502307400111, guid: 9b30b3cd0f31a4144a9ad57ac2d08aa6,
     type: 3}

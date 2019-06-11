@@ -30,17 +30,17 @@ public class StatVariable : ScriptableObject
     public float Base_value
     {
         get { return base_value; }
-        set { base_value = value; stat_Change.Invoke(); UpdateBuffedValue(); }
+        set { base_value = value;  UpdateBuffedValue(); stat_Change.Invoke(); }
     }
     public float Sum_value
     {
         get { return sum_value; }
-        set { sum_value = value; stat_Change.Invoke(); UpdateBuffedValue(); }
+        set { sum_value = value;  UpdateBuffedValue(); stat_Change.Invoke(); }
     }
     public float Mult_value
     {
         get { return mult_value; }
-        set { mult_value = value; stat_Change.Invoke(); UpdateBuffedValue(); }
+        set { mult_value = value;  UpdateBuffedValue(); stat_Change.Invoke(); }
     }
     public float Buffed_value
     {

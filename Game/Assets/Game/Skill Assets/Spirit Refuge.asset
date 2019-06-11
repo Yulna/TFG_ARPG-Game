@@ -16,13 +16,13 @@ MonoBehaviour:
   skill_icon: {fileID: 21300000, guid: 10bbd67773bf8b74cb8258f85dfe656d, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-  skill_display: {fileID: 1901245927194888, guid: bb98861c48ad2024ca93498c7dd93a6c,
+  skill_display: {fileID: 7517931502307400111, guid: b28f28bbef5de8f47b23a5eca01fd4fa,
     type: 3}
   skill_dmg_mult: 0
   cast_time_mult: 0
   cost: 20
   cooldown: 0
-  health_regen: {fileID: 0}
+  health_regen: {fileID: 11400000, guid: 7a3ea64a2b34a7c42869005922aa4a8f, type: 2}
   heal_mult: 0
   range: 5
   duration: 10

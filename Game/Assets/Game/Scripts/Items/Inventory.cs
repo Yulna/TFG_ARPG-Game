@@ -37,23 +37,21 @@ public class Inventory : ScriptableObject
 
     public UnityEvent item_change;
 
-    private void OnEnable()
-    {
-        for (int i = 0; i < equiped_items.Length; i++)
-        {
-            equiped_items[i].ActivateBuffs();
-        }
-        item_change.Invoke();
-
-        //Init inventory array
-    }
-
     private void OnDisable()
     {
         for (int i = 0; i < equiped_items.Length; i++)
         {
             equiped_items[i].DeactivateBuffs();
         }
+    }
+
+    public void ActivateEquipBuffs()
+    {
+        for (int i = 0; i < equiped_items.Length; i++)
+        {
+            equiped_items[i].ActivateBuffs();
+        }
+        item_change.Invoke();
     }
 
     public bool AddItem (Item new_item)
@@ -179,11 +177,25 @@ public class Inventory : ScriptableObject
         else
             return null;
     }
+    public string GetDescriptionFromSlot(EquipSlot slot_id)
+    {
+        if ((int)slot_id < (int)EquipSlot._numSlots && equiped_items[(int)slot_id] != null && equiped_items[(int)slot_id].item_name != null && equiped_items[(int)slot_id].item_name != "")
+            return equiped_items[(int)slot_id].GetItemDescription();
+        else
+            return null;
+    }
 
     public string GetNameFromIndex(int index)
     {
         if (index < items.Count && index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
             return items[index].item_name;
+        else
+            return null;
+    }
+    public string GetNameFromSlot(EquipSlot slot_id)
+    {
+        if ((int)slot_id < (int)EquipSlot._numSlots && equiped_items[(int)slot_id] != null && equiped_items[(int)slot_id].item_name != null && equiped_items[(int)slot_id].item_name != "")
+            return equiped_items[(int)slot_id].item_name;
         else
             return null;
     }

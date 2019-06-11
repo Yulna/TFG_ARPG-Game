@@ -13,12 +13,13 @@ public class MovementController : MonoBehaviour
     public bool move_ended;
     public StatVariable move_speed;
 
-    public int dash_instance_id;
+    public GameObject dash_instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        dash_instance_id = 0;
+        dash_instance = null;
+        //dash_instance_id = 0;
         pc_animator = GetComponent<Animator>();
         pc_agent = GetComponent<NavMeshAgent>();
         //pc_agent.speed = CharacterController.instance.base_stats[(int)StatId.MoveSpeed];
@@ -65,17 +66,19 @@ public class MovementController : MonoBehaviour
         pc_agent.speed = move_speed.Buffed_value;
     }
 
-    public bool StartJump(int instance_id)
+    public bool StartJump(GameObject instance)
     {
-        if(dash_instance_id == 0)
-        {
-            dash_instance_id = instance_id;
-            return true;
-        }
-        return false;
+        if(dash_instance != instance)
+            Destroy(dash_instance);
+        if (dash_instance == instance)
+            return false;
+
+        dash_instance = instance;
+        return true;
+
     }
     public void EndJump()
     {
-        dash_instance_id = 0;
+        dash_instance = null;
     }
 }

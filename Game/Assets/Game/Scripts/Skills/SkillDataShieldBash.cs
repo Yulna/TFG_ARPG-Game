@@ -30,7 +30,7 @@ public class SkillDataShieldBash : SkillData
 
         }
 
-        Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
+        Destroy(display, 2.5f);
     }
 
 

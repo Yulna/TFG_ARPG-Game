@@ -72,6 +72,7 @@ public class SkillController : MonoBehaviour
         {
             //Enable/Disable Skill selection UI
             skill_selection_UI.SetActive(!skill_selection_UI.activeSelf);
+            CharacterController.instance.ui_open = skill_selection_UI.activeSelf;
         }
         //TODO: Update equiped skills for CD
 

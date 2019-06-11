@@ -74,16 +74,19 @@ public class CharacterController : MonoBehaviour
     //UI
     public GameObject inventory_canvas;
     public GameObject character_stats_canvas;
+    public bool ui_open;
 
     // Start is called before the first frame update
     void Start()
     {
         dmg_half_reduction = 100;
-        curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
-        curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
-
+        ui_open = false;
+        inventory.ActivateEquipBuffs();
         inventory_canvas.SetActive(false);
         character_stats_canvas.SetActive(false);
+
+        curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
+        curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
     }
 
     // Update is called once per frame
@@ -109,7 +112,7 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
             character_stats_canvas.SetActive(!character_stats_canvas.activeSelf);
         //Don't read inputs if UI active
-        if (inventory_canvas.activeSelf || character_stats_canvas.activeSelf)
+        if (inventory_canvas.activeSelf || character_stats_canvas.activeSelf || ui_open)
             return;
 
         //Read game inputs
@@ -202,11 +205,15 @@ public class CharacterController : MonoBehaviour
         RayHitInfo ret;
         RaycastHit hit;
         Ray ray = pc_camera.ScreenPointToRay(screen_point);
+        Vector3 offset_correction = new Vector3(0, 1.5f, 0);
         if (Physics.Raycast(ray, out hit, 100.0f, mask))
         {
             ret.hitted = true;
-            ret.hit_point = hit.point;
-            ret.layer_hit = hit.collider.gameObject.layer;           
+            ret.layer_hit = hit.collider.gameObject.layer;
+            if (ret.layer_hit == LayerMask.NameToLayer("Enemy"))
+                ret.hit_point = hit.collider.transform.position + offset_correction;
+            else
+                ret.hit_point = hit.point + offset_correction; 
             ret.go_hit = hit.collider.gameObject;            
         }
         else

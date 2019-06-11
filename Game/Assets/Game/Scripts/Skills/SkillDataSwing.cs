@@ -25,7 +25,7 @@ public class SkillDataSwing : SkillData
 
         }
 
-        Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
+        Destroy(display, 3);
     }
 
 

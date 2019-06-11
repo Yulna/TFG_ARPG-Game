@@ -24,5 +24,7 @@ MonoBehaviour:
   cooldown: 0
   range: 202
   range_mult: 1
-  precision: 1
-  speed: 30
+  precision: 2
+  speed: 60
+  dash_trail: {fileID: 7517931502307400111, guid: 50c0f41fea9e4a74987eea7796505887,
+    type: 3}

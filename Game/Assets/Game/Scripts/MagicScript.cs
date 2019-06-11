@@ -9,11 +9,16 @@ public class MagicScript : MonoBehaviour
     public Sprite item_sprite;
     public DamageType dmg_type;
 
+    public Item special_item;
+
     int count;
     // Start is called before the first frame update
     void Start()
     {
         count = 0;
+
+        special_item.item_buffs[0] = new BuffTripleTornado();
+
     }
 
     // Update is called once per frame
@@ -29,7 +34,16 @@ public class MagicScript : MonoBehaviour
 
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+        
+            GameObject new_item = Instantiate(special_item.item_world_display, transform.position, transform.rotation);
+            ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
+            iw_comp.item_data = special_item;
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             CharacterController.instance.DamagePlayer(100, dmg_type);
         }

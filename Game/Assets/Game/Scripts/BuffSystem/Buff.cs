@@ -18,7 +18,12 @@ public class Buff
         type = b_type;        
         variable = b_variable;
         if (type == BuffType.BUFF_STAT_ADD)
-            magnitude = (int)b_magnitude;
+        {
+            if (magnitude > 1)
+                magnitude = (int)b_magnitude;
+            else
+                magnitude = Mathf.Round(b_magnitude * 100.0f) / 100.0f;
+        }
         else
         {
             magnitude = Mathf.Round(b_magnitude * 100.0f) / 100.0f;
@@ -65,7 +70,7 @@ public class Buff
         active = false;
     }
 
-    public string GetBuffDescription()
+    public virtual string GetBuffDescription()
     {
         string ret;
 

@@ -9,11 +9,17 @@ public class SkillDataSting : SkillData
     public float lenght_range;
     public float width_range;
 
-    public override void SkillCastBehaviour(CastInfo cast_info)
-    {        
-        cast_info.end_pos = cast_info.origin_pos + (cast_info.dir * lenght_range);       
+    public float display_speed;
 
-        GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.identity);
+    public override void SkillCastBehaviour(CastInfo cast_info)
+    {
+        cast_info.origin_pos += Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
+        cast_info.end_pos = cast_info.origin_pos + (cast_info.dir * lenght_range);
+
+
+        GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.LookRotation(cast_info.dir, Vector3.up));
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.InitInstance(SkillBehaviour, cast_info);
 
@@ -35,12 +41,18 @@ public class SkillDataSting : SkillData
         if (closest_dist < Mathf.Infinity && closest_enemy != null)
             closest_enemy.GetComponent<EnemySimple>().Hurt(5);
 
-        Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
+        //Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
     }
 
 
     public override void SkillBehaviour(ref CastInfo cast_info, GameObject instance)
     {
         //Instant cast/damage spell void behaviour to prevent warnings
+
+        instance.transform.position += cast_info.dir * Time.deltaTime * display_speed;
+        cast_info.curr_dist += Time.deltaTime * display_speed;
+
+        if (cast_info.curr_dist >= lenght_range)
+            Destroy(instance);
     }
 }

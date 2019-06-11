@@ -26,7 +26,7 @@ public class StatReader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateStatText();
     }
 
     public void UpdateStatText()

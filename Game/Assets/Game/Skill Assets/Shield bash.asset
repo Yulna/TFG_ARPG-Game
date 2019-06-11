@@ -16,7 +16,7 @@ MonoBehaviour:
   skill_icon: {fileID: 21300000, guid: 6d5290898f51dd84492e8abe70608108, type: 3}
   skill_type: 1
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-  skill_display: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00,
+  skill_display: {fileID: 7517931502307400111, guid: 50a300ef9e891bf42a9275d17b6d9f61,
     type: 3}
   skill_dmg_mult: 1
   cast_time_mult: 0

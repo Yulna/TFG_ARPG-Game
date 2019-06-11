@@ -16,7 +16,7 @@ MonoBehaviour:
   skill_icon: {fileID: 21300000, guid: 5557b96503c95e0489144634cdfcfbc3, type: 3}
   skill_type: 1
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-  skill_display: {fileID: 1972207730512856, guid: ea4fb55d0227e604386f44f905cfe7c0,
+  skill_display: {fileID: 7517931502307400111, guid: e5f4779efe8fa034c870ca162d1b1f1d,
     type: 3}
   skill_dmg_mult: 1
   cast_time_mult: 0
@@ -26,5 +26,5 @@ MonoBehaviour:
   duration_mult: 1
   atk_speed: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
   as_percent_aug: 2.5
-  curr_duration: 1.1981745
-  is_active: 1
+  curr_duration: 0
+  is_active: 0
