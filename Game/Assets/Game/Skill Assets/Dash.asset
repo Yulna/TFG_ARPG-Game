@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9817306c9bf69ac409fbcc073306da8a, type: 3}
+  m_Name: Dash
+  m_EditorClassIdentifier: 
+  skill_name: Dash
+  skill_icon: {fileID: 21300000, guid: 0ffe953e19b92494f805c94ff05953d6, type: 3}
+  skill_type: 1
+  weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
+  skill_display: {fileID: 2965110468868468335, guid: ae627856a95ebfe4ab286bfd49d8b3cc,
+    type: 3}
+  skill_dmg_mult: 1
+  cast_time_mult: 0
+  cost: 0
+  cooldown: 0
+  range: 202
+  range_mult: 1
+  precision: 1
+  speed: 30

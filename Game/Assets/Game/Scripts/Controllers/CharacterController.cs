@@ -71,17 +71,48 @@ public class CharacterController : MonoBehaviour
     public SkillController skill_controller;
     public Inventory inventory;
 
+    //UI
+    public GameObject inventory_canvas;
+    public GameObject character_stats_canvas;
+
     // Start is called before the first frame update
     void Start()
     {
         dmg_half_reduction = 100;
         curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
         curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
+
+        inventory_canvas.SetActive(false);
+        character_stats_canvas.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Resource/health regen
+        if (curr_health < variables_stats[(int)StatId.MaxHealth].Buffed_value)
+        {
+            curr_health += variables_stats[(int)StatId.HealthRegen].Buffed_value * Time.deltaTime;
+            if (curr_health > variables_stats[(int)StatId.MaxHealth].Buffed_value)
+                curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
+        }
+
+        if (curr_resource < variables_stats[(int)StatId.MaxResource].Buffed_value)
+        {
+            curr_resource += variables_stats[(int)StatId.ResourceRegen].Buffed_value * Time.deltaTime;
+            if (curr_resource > variables_stats[(int)StatId.MaxResource].Buffed_value)
+                curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
+        }
+
+        if (Input.GetKeyUp(KeyCode.I))
+            inventory_canvas.SetActive(!inventory_canvas.activeSelf);
+        if (Input.GetKeyUp(KeyCode.C))
+            character_stats_canvas.SetActive(!character_stats_canvas.activeSelf);
+        //Don't read inputs if UI active
+        if (inventory_canvas.activeSelf || character_stats_canvas.activeSelf)
+            return;
+
+        //Read game inputs
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Processing Left Click");
@@ -111,7 +142,16 @@ public class CharacterController : MonoBehaviour
             }                   
         }
 
-        if(Input.GetKeyUp(KeyCode.Alpha1))
+        if (Input.GetMouseButtonDown(1))
+        {
+            RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
+            if (ray_hit.hitted)
+            {
+                skill_controller.CastSkill(SkillButton.RMC, ray_hit);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
             if (ray_hit.hitted)
@@ -147,11 +187,7 @@ public class CharacterController : MonoBehaviour
         //Testing space
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
-            if (ray_hit.hitted)
-            {
-                skill_controller.TestingTEst(ray_hit);
-            }
+        
         }
       
     }
@@ -208,7 +244,7 @@ public class CharacterController : MonoBehaviour
     public void DamagePlayer(float dmg_value, DamageType type)
     {
         float true_damage;
-
+        Debug.Log("Player Damaged");
         if (type != DamageType.DmgTrue)
         {
             float armor_mitigation = dmg_half_reduction / (dmg_half_reduction + variables_stats[(int)StatId.Armor].Buffed_value);
@@ -230,6 +266,27 @@ public class CharacterController : MonoBehaviour
         //Don't want display to mark 0 health because health value is 0.XX
         if (curr_health < 1 && curr_health > 0)
             curr_health = 1;
+    }
+
+    public void HealPlayer(float health_value)
+    {
+        if (curr_health >= variables_stats[(int)StatId.MaxHealth].Buffed_value)
+            return;
+
+        if ((health_value + curr_health) > variables_stats[(int)StatId.MaxHealth].Buffed_value)
+            curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
+        else
+            curr_health += health_value;
+    }
+
+    public float GetHealthPercentile()
+    {        
+        return curr_health / variables_stats[(int)StatId.MaxHealth].Buffed_value;
+    }
+
+    public float GetResourcePercentile()
+    {
+        return curr_resource / variables_stats[(int)StatId.MaxResource].Buffed_value;
     }
 
 }

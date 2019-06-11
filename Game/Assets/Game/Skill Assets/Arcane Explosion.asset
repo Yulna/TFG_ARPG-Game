@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6962a368c429649b3c90499390661a, type: 3}
+  m_Name: Arcane Explosion
+  m_EditorClassIdentifier: 
+  skill_name: Arcane Explosion
+  skill_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
+  skill_type: 2
+  weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
+  skill_display: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9,
+    type: 3}
+  skill_dmg_mult: 1
+  cast_time_mult: 0
+  cost: 0
+  cooldown: 0
+  projectile_range: 20
+  projectile_range_mult: 1
+  projectile_area: 1
+  effect_area: 2
+  effect_area_mult: 1
+  projectile_speed: 0.2
+  explosion_display: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3,
+    type: 3}

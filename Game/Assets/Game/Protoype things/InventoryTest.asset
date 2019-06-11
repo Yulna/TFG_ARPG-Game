@@ -12,33 +12,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c7600559acd048b70e67fb4e8df58, type: 3}
   m_Name: InventoryTest
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - item_name: Epic Helmet
+    item_icon: {fileID: 21300000, guid: 01475452c4fde80458f90ceab39790c4, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 0
+      magnitude: 79
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 0
+      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
+      active: 0
+    - type: 1
+      magnitude: 1.49
+      variable: {fileID: 11400000, guid: 19fba87b5b477bf48b32ccde9fd2632d, type: 2}
+      active: 0
+    - type: 1
+      magnitude: 2.47
+      variable: {fileID: 11400000, guid: 15d34c1be1f040848aed2898e8441a64, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 254
+      variable: {fileID: 11400000, guid: 9c9e48164b56bc34690bbfc226d1e93c, type: 2}
+      active: 0
+  - item_name: Rare Pants
+    item_icon: {fileID: 21300000, guid: 0c0cf540b5f48d146bd5df87b29b6755, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 3
+    item_buffs:
+    - type: 0
+      magnitude: 70
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 0
+    - type: 1
+      magnitude: 1.48
+      variable: {fileID: 11400000, guid: 19fba87b5b477bf48b32ccde9fd2632d, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 53
+      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
+      active: 0
+    - type: 1
+      magnitude: 2.24
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 0
   equiped_items:
-  - item_name: MAgic thingy
-    item_icon: {fileID: 21300000, guid: bcf6f858e24028a47ba42be10595afea, type: 3}
-    item_world_display: {fileID: 0}
+  - item_name: Epic Helmet
+    item_icon: {fileID: 21300000, guid: 01475452c4fde80458f90ceab39790c4, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
     equip_slot_id: 0
-    item_buffs: []
+    item_buffs:
+    - type: 0
+      magnitude: 35
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 44
+      variable: {fileID: 11400000, guid: 65f1e8b4a3ea2484cb62f7d03e5e2244, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 33
+      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 16
+      variable: {fileID: 11400000, guid: ac817754710327e46ad6783d2b28b67e, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 460
+      variable: {fileID: 11400000, guid: 9c9e48164b56bc34690bbfc226d1e93c, type: 2}
+      active: 1
   - item_name: 
     item_icon: {fileID: 0}
     item_world_display: {fileID: 0}
     equip_slot_id: 0
     item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
+  - item_name: Epic Gloves
+    item_icon: {fileID: 21300000, guid: 92bb7ea0301e09c4a9f1b59f57727a5f, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 2
+    item_buffs:
+    - type: 0
+      magnitude: 62
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 280
+      variable: {fileID: 11400000, guid: 9c9e48164b56bc34690bbfc226d1e93c, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 2.0575798
+      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 1
+      variable: {fileID: 11400000, guid: 9c55ca52130a4d44083a671a1dfa8f2f, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 1.5174526
+      variable: {fileID: 11400000, guid: 888710f020eb8524ca6a19d0a606bbfc, type: 2}
+      active: 1
+  - item_name: Common Pants
+    item_icon: {fileID: 21300000, guid: 0c0cf540b5f48d146bd5df87b29b6755, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 3
+    item_buffs:
+    - type: 0
+      magnitude: 48
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 1.32
+      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
+      active: 1
+  - item_name: Common Boots
+    item_icon: {fileID: 21300000, guid: 799e301c5e7842044a76a7710dc8e594, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 4
+    item_buffs:
+    - type: 0
+      magnitude: 42
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 1.81
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+  - item_name: Common Sword
+    item_icon: {fileID: 21300000, guid: 71cbb757b04523543b055e40ae4a7f69, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 5
+    item_buffs:
+    - type: 0
+      magnitude: 71
+      variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 2.8
+      variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
+      active: 1
   item_change:
     m_PersistentCalls:
       m_Calls:

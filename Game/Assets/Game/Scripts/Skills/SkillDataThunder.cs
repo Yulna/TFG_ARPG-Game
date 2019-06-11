@@ -21,20 +21,23 @@ public class SkillDataThunder : SkillData
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(effect_area * effect_area_mult, effect_area * effect_area_mult, effect_area * effect_area_mult);
         instance.InitInstance(SkillBehaviour, cast_info);
+
+        //test
+        Collider[] hit_colliders = Physics.OverlapSphere(cast_info.end_pos, effect_area * effect_area_mult);
+        Debug.Log("doing Explosion damage");
+        for (int i = 0; i < hit_colliders.Length; i++)
+        {
+            if (hit_colliders[i].gameObject.tag == "Enemy")
+                hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
+
+        }
+
         Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
     }
 
 
     public override void SkillBehaviour(ref CastInfo cast_info, GameObject instance)
     {
-        Collider[] hit_colliders = Physics.OverlapSphere(cast_info.end_pos, effect_area * effect_area_mult);
-
-        int i = 0;
-        while (i < hit_colliders.Length)
-        {
-            if (hit_colliders[i].gameObject.tag == "Enemy")
-                hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
-            i++;
-        }
+        //Instant cast/damage spell void behaviour to prevent warnings
     }
 }

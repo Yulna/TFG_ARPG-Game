@@ -19,7 +19,8 @@ public enum ItemRarity
 {
     Undefined = 0,
     Common = 1,
-    Rare = 2,
+    Uncommon = 2,
+    Rare = 3,
     Epic = 4,
     Unique = 5 
 }
@@ -43,6 +44,8 @@ public class Inventory : ScriptableObject
             equiped_items[i].ActivateBuffs();
         }
         item_change.Invoke();
+
+        //Init inventory array
     }
 
     private void OnDisable()
@@ -59,7 +62,7 @@ public class Inventory : ScriptableObject
         {
             for (int i = 0; i < items.Count; i++)
             {
-                if (items[i].item_name == null || items[i].item_name == "")
+                if (items[i] == null || items[i].item_name == null || items[i].item_name == "")
                 {
                     items[i] = new_item;
                     item_change.Invoke();
@@ -77,19 +80,30 @@ public class Inventory : ScriptableObject
         }
     }
 
-    public bool RemoveItem(Item item)
+    public bool RemoveItem(int item_index)
     {
-        if (items.Contains(item))
+        if(item_index > items.Count)
+            return false;
+        
+
+        if (items[item_index] != null || items[item_index].item_name != null || items[item_index].item_name != "")
         {
-            items.Remove(item);
+            Item to_drop = items[item_index];
+            GameObject to_drop_world= Instantiate(to_drop.item_world_display, CharacterController.instance.GetPlayerTransform().position, Quaternion.identity);
+            to_drop_world.GetComponent<ItemWorld>().item_data = to_drop;
+
+            //items.Remove(items[item_index]);
+            items[item_index] = null;
+
             item_change.Invoke();
+
             return true;
         }
         else
         {
             Debug.LogWarning("Item is not in inventory");
             return false;
-        }
+        }  
     }
 
     public void EquipItem(int index)
@@ -101,7 +115,7 @@ public class Inventory : ScriptableObject
         Debug.Log("item equiped");
         EquipSlot slot_to_equip = items[index].equip_slot_id;
 
-         if(equiped_items[(int)slot_to_equip].item_name == "" || equiped_items[(int)slot_to_equip].item_name == null)
+         if(equiped_items[(int)slot_to_equip] == null || equiped_items[(int)slot_to_equip].item_name == "" || equiped_items[(int)slot_to_equip].item_name == null)
          {
             equiped_items[(int)slot_to_equip] = items[index];
             items[index] = null;
@@ -129,7 +143,7 @@ public class Inventory : ScriptableObject
         //Iterate item list and replace the fisrt void item with the current equiped one
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].item_name == "" || items[i].item_name == null)
+            if (items[i] == null || items[i].item_name == "" || items[i].item_name == null)
             {
                 equiped_items[(int)slot_id].DeactivateBuffs();
                 items[i] = equiped_items[(int)slot_id];
@@ -145,7 +159,7 @@ public class Inventory : ScriptableObject
 
     public Sprite GetSpriteFromIndex(int index)
     {
-        if (index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
+        if (index < items.Count && index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
             return items[index].item_icon;
         else
             return null;
@@ -154,6 +168,22 @@ public class Inventory : ScriptableObject
     {
         if (equiped_items[(int)slot_id] != null && equiped_items[(int)slot_id].item_name != null && equiped_items[(int)slot_id].item_name != "")
             return equiped_items[(int)slot_id].item_icon;
+        else
+            return null;
+    }
+
+    public string GetDescriptionFromIndex(int index)
+    {
+        if (index < items.Count && index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
+            return items[index].GetItemDescription();
+        else
+            return null;
+    }
+
+    public string GetNameFromIndex(int index)
+    {
+        if (index < items.Count && index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
+            return items[index].item_name;
         else
             return null;
     }

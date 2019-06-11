@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
     public GameObject items_display_feet;
     public GameObject items_display_weapon;
 
+    public Sprite items_sprite_head;
+    public Sprite items_sprite_chest;
+    public Sprite items_sprite_arms;
+    public Sprite items_sprite_legs;
+    public Sprite items_sprite_feet;
+    public Sprite items_sprite_weapon;
+
     [SerializeField]
     bool[] armor_stat_table;
     [SerializeField]
@@ -57,7 +64,8 @@ public class GameManager : MonoBehaviour
                 i == (int)StatId.MoveSpeed || i == (int)StatId.Armor ||
                 i == (int)StatId.PhysicRes || i == (int)StatId.FireRes ||
                 i == (int)StatId.WaterRes || i == (int)StatId.ShockRes ||
-                i == (int)StatId.EarthRes)
+                i == (int)StatId.EarthRes || i == (int)StatId.AttackSpeed ||
+                i == (int)StatId.WeaponDmg)
             {
                 armor_stat_table[i] = true;
             }
@@ -89,14 +97,42 @@ public class GameManager : MonoBehaviour
     {        
         EquipSlot rand_slot = (EquipSlot)Random.Range(0, (int)EquipSlot._numSlots);
 
-        int rarity_dice = Random.Range(0,5);
+        int rarity_dice = Random.Range(1,6);
 
         Item ret_item = new Item();
         ret_item.equip_slot_id = rand_slot;
-        ret_item.item_world_display = items_display_legs;
-        ret_item.item_name = "test item";
+        switch (ret_item.equip_slot_id)
+        {
+            case EquipSlot.Head:
+                ret_item.item_world_display = items_display_head;
+                ret_item.item_icon = items_sprite_head;
+                break;
+            case EquipSlot.Chest:
+                ret_item.item_world_display = items_display_chest;
+                ret_item.item_icon = items_sprite_chest;
+                break;
+            case EquipSlot.Arms:
+                ret_item.item_world_display = items_display_arms;
+                ret_item.item_icon = items_sprite_arms;
+                break;
+            case EquipSlot.Legs:
+                ret_item.item_world_display = items_display_legs;
+                ret_item.item_icon = items_sprite_legs;
+                break;
+            case EquipSlot.Feet:
+                ret_item.item_world_display = items_display_feet;
+                ret_item.item_icon = items_sprite_feet;
+                break;
+            case EquipSlot.Weapon:
+                ret_item.item_world_display = items_display_weapon;
+                ret_item.item_icon = items_sprite_weapon;
+                break;
+            default:
+                break;
+        }
 
-        ret_item.item_buffs = GetItemBuffs(ItemRarity.Epic, ret_item.equip_slot_id);
+        ret_item.item_name = GenItemName((ItemRarity)rarity_dice, ret_item.equip_slot_id);
+        ret_item.item_buffs = GetItemBuffs((ItemRarity)rarity_dice, ret_item.equip_slot_id);
 
         return ret_item;
     }
@@ -130,6 +166,7 @@ public class GameManager : MonoBehaviour
         }
 
         int buff_dice = Random.Range(0, (int)StatId._numId);
+        buff_dice = (int)StatId.AttackSpeed;
         for (int i = 1, loop_stoper = 0; i < buff_num;)
         {
             if (available_buffs[buff_dice])
@@ -139,7 +176,7 @@ public class GameManager : MonoBehaviour
                 //Random with int the maxa is EXCLUSIVE
                 int buff_type_dice = Random.Range(0, 2);
 
-                //TODO randomize add and mult
+                
                 ret[i] = new Buff((BuffType)buff_type_dice,
                     Random.Range(value_table[buff_dice, buff_type_dice, (int)BuffRange.MinRange], value_table[buff_dice, buff_type_dice, (int)BuffRange.MaxRange]),
                     CharacterController.instance.GetStat((StatId)buff_dice));
@@ -164,4 +201,56 @@ public class GameManager : MonoBehaviour
         }
         return ret;
     }
+
+    public string GenItemName(ItemRarity rarity, EquipSlot slot_id)
+    {
+        string ret = "";
+
+        switch (rarity)
+        {
+            case ItemRarity.Common:
+                ret += "Common ";
+                break;
+            case ItemRarity.Uncommon:
+                ret += "Uncommon ";
+                break;
+            case ItemRarity.Rare:
+                ret += "Rare ";
+                break;
+            case ItemRarity.Epic:
+                ret += "Epic ";
+                break;
+            case ItemRarity.Unique:
+                break;
+            default:
+                break;
+        }
+
+        switch (slot_id)
+        {
+            case EquipSlot.Head:
+                ret += "Helmet";
+                break;
+            case EquipSlot.Chest:
+                ret += "Breastplate";
+                break;
+            case EquipSlot.Arms:
+                ret += "Gloves";
+                break;
+            case EquipSlot.Legs:
+                ret += "Pants";
+                break;
+            case EquipSlot.Feet:
+                ret += "Boots";
+                break;
+            case EquipSlot.Weapon:
+                ret += "Sword";
+                break;
+            default:
+                break;
+        }
+
+        return ret;
+    }
+
 }

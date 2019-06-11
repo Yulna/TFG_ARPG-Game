@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dragon Breath
   m_EditorClassIdentifier: 
   skill_name: 
-  skill_icon: {fileID: 0}
+  skill_icon: {fileID: 21300000, guid: f902aae7f022ee5499e5ff2c007b2c46, type: 3}
   skill_type: 0
-  weapon_dmg: {fileID: 0}
+  weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 1973075987484898, guid: bccc7a794e75b2a44a4b0dac69160b7b,
     type: 3}
   skill_dmg_mult: 0

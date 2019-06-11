@@ -20,6 +20,10 @@ public class CharacterControllerEditor : Editor
     //Camera 
     private SerializedProperty camera_property;
 
+    //UI
+    private SerializedProperty inventory_canvas_property;
+    private SerializedProperty character_stats_canvas_property;
+
     private void OnEnable()
     {
         stats_base_property = serializedObject.FindProperty("base_stats");
@@ -31,7 +35,8 @@ public class CharacterControllerEditor : Editor
         curr_health_property = serializedObject.FindProperty("curr_health");
         curr_resource_property = serializedObject.FindProperty("curr_resource");
         dmg_half_reduction_property = serializedObject.FindProperty("dmg_half_reduction");
-
+        inventory_canvas_property = serializedObject.FindProperty("inventory_canvas");
+        character_stats_canvas_property = serializedObject.FindProperty("character_stats_canvas");
     }
 
     public override void OnInspectorGUI()
@@ -67,6 +72,12 @@ public class CharacterControllerEditor : Editor
             EditorGUILayout.PropertyField(inventory_property);
         }
 
+        {
+            EditorGUILayout.Separator();
+            EditorGUILayout.LabelField("UI Elements", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(inventory_canvas_property);
+            EditorGUILayout.PropertyField(character_stats_canvas_property);
+        }
 
         EditorGUILayout.ObjectField(camera_property);
         serializedObject.ApplyModifiedProperties();

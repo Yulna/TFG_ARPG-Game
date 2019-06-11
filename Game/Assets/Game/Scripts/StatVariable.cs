@@ -8,6 +8,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class StatVariable : ScriptableObject
 {
+    public string variable_name;
     [SerializeField]
     private float base_value;
     [SerializeField]
@@ -23,22 +24,23 @@ public class StatVariable : ScriptableObject
     {
         sum_value = 0;
         mult_value = 1;
+        UpdateBuffedValue();
     }
 
     public float Base_value
     {
         get { return base_value; }
-        set { base_value = value; stat_Change.Invoke(); }
+        set { base_value = value; stat_Change.Invoke(); UpdateBuffedValue(); }
     }
     public float Sum_value
     {
         get { return sum_value; }
-        set { sum_value = value; stat_Change.Invoke(); }
+        set { sum_value = value; stat_Change.Invoke(); UpdateBuffedValue(); }
     }
     public float Mult_value
     {
         get { return mult_value; }
-        set { mult_value = value; stat_Change.Invoke(); }
+        set { mult_value = value; stat_Change.Invoke(); UpdateBuffedValue(); }
     }
     public float Buffed_value
     {

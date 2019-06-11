@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Spirit Refuge", menuName = "Chambers of Elrankat/Skills/Spirit Refuge")]
 public class SkillDataSpiritRefuge : SkillData
 {
+    public StatVariable health_regen;
+    public float heal_mult;
     public float range;
     public float duration;
     public float effect_area;
@@ -27,6 +29,14 @@ public class SkillDataSpiritRefuge : SkillData
     public override void SkillBehaviour(ref CastInfo cast_info, GameObject instance)
     {        
         Collider[] hit_colliders = Physics.OverlapSphere(cast_info.end_pos, effect_area*effect_area_mult);
+
+        for (int i = 0; i < hit_colliders.Length; i++)
+        {
+            if (hit_colliders[i].gameObject.tag == "Player")
+            {
+                CharacterController.instance.HealPlayer(health_regen.Buffed_value * heal_mult);
+            }
+        }
 
         cast_info.curr_duration += Time.deltaTime;
         if (cast_info.curr_duration > duration)

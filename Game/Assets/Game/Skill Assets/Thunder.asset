@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Thunder
   m_EditorClassIdentifier: 
   skill_name: 
-  skill_icon: {fileID: 0}
+  skill_icon: {fileID: 21300000, guid: bcdc06a7f1ae17f49a1cf132d6831bab, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
@@ -23,5 +23,6 @@ MonoBehaviour:
   cost: 0
   cooldown: 0
   range: 10
+  range_mult: 0
   effect_area: 1
   effect_area_mult: 1

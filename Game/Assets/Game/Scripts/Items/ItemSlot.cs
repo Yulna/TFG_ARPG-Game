@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -10,6 +11,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int item_index;
     public Image slot_image;
     public GameObject item_info_display;
+    public TextMeshProUGUI item_info_name;
+    public TextMeshProUGUI item_info_description;
     //public GameObject equiped_data;
 
     private void Start()
@@ -18,13 +21,19 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         item_info_display.SetActive(false);       
         slot_image.sprite = pc_inventory.GetSpriteFromIndex(item_index);
         if (slot_image.sprite != null)
-            slot_image.enabled = true;     
+            slot_image.enabled = true;
+        UpdateInfo();
     }
 
     //TODO: Make comparasion with equiped items
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        item_info_display.SetActive(true);
+        if (slot_image.IsActive())
+        {
+            item_info_description.SetText(pc_inventory.GetDescriptionFromIndex(item_index));
+            item_info_name.SetText(pc_inventory.GetNameFromIndex(item_index));
+            item_info_display.SetActive(true);
+        }
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {
@@ -36,6 +45,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if(pointerEventData.button == PointerEventData.InputButton.Right)
         {
             pc_inventory.EquipItem(item_index);
+            item_info_display.SetActive(false);
+        }
+
+        if (pointerEventData.button == PointerEventData.InputButton.Left && Input.GetKey(KeyCode.LeftControl))
+        {
+            pc_inventory.RemoveItem(item_index);
+            item_info_display.SetActive(false);
         }
     }
 
@@ -46,12 +62,14 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             Debug.LogError("Inventory display slot has no image assinged");
             return;
         }
-        Debug.Log("Updating item UI");
         slot_image.sprite = pc_inventory.GetSpriteFromIndex(item_index);
         if (slot_image.sprite != null)
             slot_image.enabled = true;
         else
             slot_image.enabled = false;
+
+        //item_info_description.SetText(pc_inventory.GetDescriptionFromIndex(item_index));
+        //item_info_name.SetText(pc_inventory.GetNameFromIndex(item_index));
     }
 
 }

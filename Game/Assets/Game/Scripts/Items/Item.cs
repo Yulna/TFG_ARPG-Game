@@ -39,5 +39,18 @@ public class Item
 
     //TODO: Item Display GO factory?¿
 
+    public string GetItemDescription()
+    {
+        string ret = "";
+
+
+        for (int i = 0; i < item_buffs.Length; i++)
+        {
+            ret += item_buffs[i].GetBuffDescription() + "\n";       
+        }
+
+        return ret;
+    }
+
 }
 

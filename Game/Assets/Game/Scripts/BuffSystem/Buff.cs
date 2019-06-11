@@ -20,7 +20,11 @@ public class Buff
         if (type == BuffType.BUFF_STAT_ADD)
             magnitude = (int)b_magnitude;
         else
-            magnitude = b_magnitude;
+        {
+            magnitude = Mathf.Round(b_magnitude * 100.0f) / 100.0f;
+            if (magnitude > 1)
+                Mathf.Round(magnitude);
+        }
     }
 
     public BuffType type;
@@ -59,5 +63,25 @@ public class Buff
             variable.Mult_value /= magnitude;
         }
         active = false;
+    }
+
+    public string GetBuffDescription()
+    {
+        string ret;
+
+        ret = "Increase " + variable.name + " by ";
+
+        if (type == BuffType.BUFF_STAT_ADD)
+        {
+            ret += magnitude + " units";
+        }
+        if (type == BuffType.BUFF_STAT_MULT)
+        {
+            if((magnitude * 100) > 1)
+                ret += Mathf.Round((magnitude * 100) - 100) + "%";
+            else
+                ret += (magnitude * 100) - 100 + "%";
+        }
+        return ret;
     }
 }

@@ -25,6 +25,7 @@ public class SkillInstance : MonoBehaviour
             curr_behaviour = new_behaviour;
             base_behaviour = new_behaviour;
             cast_info = new_cast_info;
+            cast_info.hitted_colliders = new List<Collider>();
         }
         else
             Debug.LogError("skillbehvaiour already initiated");
@@ -51,5 +52,19 @@ public class SkillInstance : MonoBehaviour
     public void ResetBehaviour()
     {
         curr_behaviour = base_behaviour;
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 1);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 2);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 3);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(cast_info.end_pos, 1);
     }
 }

@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class EnemySimple : MonoBehaviour
 {
-    public int health;
+    public float health;
+    public float base_damage;
+    public float damage_mult;
+    public DamageType dmg_type;
     public float base_attack_range;
     public float base_attack_speed;
     public float view_range;
     public float memory_time;
     public float attack_timer;
+    public float move_speed;
+
+
+    Animator npc_animator;
     NavMeshAgent npc_agent;
     Transform pc_transform;
 
@@ -23,16 +31,57 @@ public class EnemySimple : MonoBehaviour
 
     private bool alive = true;
 
+    //push variables
+    private bool being_pushed = false;
+    private float push_force;
+    private Vector3 push_dest;
+    public float push_precision;
+    public float push_speed;
+
+    //Stun variables
+    private bool stunned;
+    private float stun_duration;
+
+    //Slow variables
+    private bool slowed;
+    private float slow_duration;
+    private float slow_percentile;
+
     private void Start()
     {
+        stunned = false;
+        push_force = 1.0f;
+        being_pushed = false;
         alive = true;
+
+        npc_animator = GetComponent<Animator>();
         npc_agent = GetComponent<NavMeshAgent>();
         player_found = false;
-        pc_transform = CharacterController.instance.move_controller.transform;          
+        pc_transform = CharacterController.instance.move_controller.transform;
+
+        npc_agent.speed = move_speed;
+        npc_animator.SetInteger("Action", 1);
     }
 
     void Update()
     {
+        if (being_pushed)
+            PushSelf();
+        
+        if(stunned)
+        {
+            stun_duration -= Time.deltaTime;
+            if (stun_duration <= 0)
+                stunned = false;
+            return;
+        }
+        if(slowed)
+        {
+            slow_duration -= Time.deltaTime;
+            if (slow_duration <= 0)
+                EndSlow();
+        }
+
         memory_timer += Time.deltaTime;
         attack_timer -= Time.deltaTime;
 
@@ -64,22 +113,23 @@ public class EnemySimple : MonoBehaviour
             if(PathCompleted())
             {
 
-                if (Vector3.Distance(pc_transform.position,transform.position) <= base_attack_range)
+                if (Vector3.Distance(pc_transform.position,transform.position) <= base_attack_range && attack_timer <= 0)
                 {
+                    //DO ATTACK
                     attack_timer = 1 / base_attack_speed;
-                    Collider[] hit_colliders = Physics.OverlapSphere(transform.position, base_attack_range);
+                    Collider[] hit_colliders = Physics.OverlapSphere(transform.position, base_attack_range, LayerMask.GetMask("Player"));
+
 
                     for(int i = 0; i < hit_colliders.Length; i++)
                     {
-                        if (hit_colliders[i].gameObject.tag == "Player") ;
+                            npc_animator.SetTrigger("AttackTrigger");
+                            Vector3 player_dir = hit_colliders[i].gameObject.transform.position - transform.position;
 
-                        Vector3 enemy_dir = hit_colliders[i].gameObject.transform.position - transform.position;
-                        float player_angle = Vector3.Angle(enemy_dir, transform.position);
-                        if (player_angle < 45f)
-                        {
-                            Debug.Log("player destructit");
-                            CharacterController.instance.DamagePlayer(10, DamageType.DmgFire);
-                        }
+                            float player_angle = Vector3.Angle(player_dir, transform.forward);
+                            if (player_angle < 45f)
+                            {
+                                CharacterController.instance.DamagePlayer(base_damage * damage_mult, dmg_type);
+                            }
                     }                    
                 }
             }
@@ -96,8 +146,9 @@ public class EnemySimple : MonoBehaviour
         return false;
     }
 
-    public void Hurt(int value)
+    public void Hurt(float value)
     {
+        Debug.Log("enemy damaged");
         if (value > health)
         {
             health = 0;
@@ -115,6 +166,13 @@ public class EnemySimple : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(gameObject.transform.position, view_range);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(gameObject.transform.position, base_attack_range);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, push_dest);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(push_dest, push_precision);
     }
 
     private void Die()
@@ -134,5 +192,49 @@ public class EnemySimple : MonoBehaviour
 
         alive = false;
         Destroy(gameObject);
+    }
+
+    private void PushSelf()
+    {
+        if (Vector3.Distance(transform.position, push_dest) > push_precision)
+        {
+            Vector3 push_dir = push_dest - transform.position;
+            push_dir.Normalize();
+            GetComponent<NavMeshAgent>().Warp(transform.position + (push_dir * Time.deltaTime * push_force * push_speed));
+        }
+        else
+        {
+            being_pushed = false;
+        }
+    }
+
+    public void PushTowards(Vector3 dir, float force)
+    {
+        being_pushed = true;
+        push_force = force;
+        push_dest = transform.position + dir * force;
+    }
+
+    public void Stun(float duration)
+    {
+        stunned = true;
+        stun_duration = duration;
+    }
+
+    public void ApplySlow(float percentile, float duration)
+    {
+        if (percentile > 1)
+            slow_percentile = 1;
+        else
+            slow_percentile = percentile;
+
+        npc_agent.speed *= (1 - slow_percentile); 
+        slow_duration = duration;
+        slowed = true;
+    }
+    public void EndSlow()
+    {
+        npc_agent.speed = move_speed;
+        slowed = false;
     }
 }
