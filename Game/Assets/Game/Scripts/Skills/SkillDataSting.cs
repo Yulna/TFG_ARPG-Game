@@ -39,7 +39,7 @@ public class SkillDataSting : SkillData
             }
         }
         if (closest_dist < Mathf.Infinity && closest_enemy != null)
-            closest_enemy.GetComponent<EnemySimple>().Hurt(5);
+            closest_enemy.GetComponent<EnemySimple>().Hurt(weapon_dmg.Buffed_value * skill_dmg_mult);
 
         //Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
     }
@@ -54,5 +54,19 @@ public class SkillDataSting : SkillData
 
         if (cast_info.curr_dist >= lenght_range)
             Destroy(instance);
+    }
+
+
+    public override string GetDescription()
+    {
+        string ret_des = "";
+
+        ret_des += "Pierce enemies in front of you, dealing (";
+        ret_des += weapon_dmg.Buffed_value * skill_dmg_mult;
+        ret_des += ") ";
+        ret_des += skill_dmg_mult * 100;
+        ret_des += "% weapon damge to the first enemy hit";
+
+        return ret_des;
     }
 }

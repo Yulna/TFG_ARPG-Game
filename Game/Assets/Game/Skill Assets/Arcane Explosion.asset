@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Arcane Explosion
   m_EditorClassIdentifier: 
   skill_name: Arcane Explosion
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 7517931502307400111, guid: 714334665bf85894d8f900fe271200ad,
     type: 3}
-  skill_dmg_mult: 1
+  skill_dmg_mult: 2
   cast_time_mult: 0
-  cost: 0
+  cost: 50
   cooldown: 0
-  projectile_range: 20
+  cd_timer: 0
+  projectile_range: 15
   projectile_range_mult: 1
   projectile_area: 1
   effect_area: 2

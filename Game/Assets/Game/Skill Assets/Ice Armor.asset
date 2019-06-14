@@ -13,20 +13,24 @@ MonoBehaviour:
   m_Name: Ice Armor
   m_EditorClassIdentifier: 
   skill_name: Ice armor
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: 84349b42828f67b42b03a0306eeb56ee, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 7517931502307400111, guid: d3a7fe8b39cf43c46a1a250113a8c1f0,
     type: 3}
-  skill_dmg_mult: 1
+  skill_dmg_mult: 0.2
   cast_time_mult: 0
   cost: 0
-  cooldown: 2
-  duration: 10
+  cooldown: 10
+  cd_timer: 0
+  duration: 30
   duration_mult: 1
   effect_area: 3
   effect_area_mult: 1
-  slow_magnitude: 0.9
+  slow_magnitude: 0.7
   slow_duration: 1.5
+  armor: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+  armor_add_augment: 100
   curr_duration: 1.8678359
-  is_active: 1
+  is_active: 0

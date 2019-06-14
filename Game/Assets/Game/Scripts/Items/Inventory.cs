@@ -45,6 +45,21 @@ public class Inventory : ScriptableObject
         }
     }
 
+    public void InitInventory()
+    {
+        for(int i=0; i < items.Count; i++)
+        {
+            if (items[i].item_rarity == ItemRarity.Unique)
+                items[i] = GameManager.instance.GetUniqueFromName(items[i].item_name);
+        }
+
+        for (int i = 0; i < equiped_items.Length; i++)
+        {
+            if (equiped_items[i].item_rarity == ItemRarity.Unique)
+                equiped_items[i] = GameManager.instance.GetUniqueFromName(equiped_items[i].item_name);
+        }
+    }
+
     public void ActivateEquipBuffs()
     {
         for (int i = 0; i < equiped_items.Length; i++)
@@ -56,17 +71,19 @@ public class Inventory : ScriptableObject
 
     public bool AddItem (Item new_item)
     {        
+        
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] == null || items[i].item_name == null || items[i].item_name == "")
+            {
+                items[i] = new_item;
+                item_change.Invoke();
+                return true;
+            }
+        }
+
         if (items.Count < max_space)
         {
-            for (int i = 0; i < items.Count; i++)
-            {
-                if (items[i] == null || items[i].item_name == null || items[i].item_name == "")
-                {
-                    items[i] = new_item;
-                    item_change.Invoke();
-                    return true;
-                }
-            }
             items.Add(new_item);
             item_change.Invoke();
             return true;
@@ -153,6 +170,14 @@ public class Inventory : ScriptableObject
         
         Debug.Log("Not enough space in the inventory");      
         return;
+    }
+
+    public EquipSlot GetItemSlot(int index)
+    {
+        if (index < items.Count && index < max_space && items[index] != null && items[index].item_name != null && items[index].item_name != "")
+            return items[index].equip_slot_id;
+        else
+            return EquipSlot._numSlots;
     }
 
     public Sprite GetSpriteFromIndex(int index)

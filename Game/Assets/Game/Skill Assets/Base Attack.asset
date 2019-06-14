@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Base Attack
   m_EditorClassIdentifier: 
   skill_name: 
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: d33f0f3ba2d76274ea6c75ca0127cab0, type: 3}
   skill_type: 1
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}

@@ -12,6 +12,12 @@ public class SkillDataWindFury : SkillData
     public float curr_duration;
     public bool is_active;
 
+    private void OnEnable()
+    {
+        skill_cast_del = SkillCastBehaviour;
+        cd_timer = 0;
+        is_active = false;
+    }
 
     public override void SkillCastBehaviour(CastInfo cast_info)
     {
@@ -40,5 +46,15 @@ public class SkillDataWindFury : SkillData
             is_active = false;
             atk_speed.Mult_value /= as_percent_aug;
         }
+    }
+
+    public override string GetDescription()
+    {
+        string ret_des = "";
+
+        ret_des += "Call wind spirits to imubue yourself increasing your attack speed by ";
+        ret_des += (as_percent_aug * 100) - 100 + "%";
+
+        return ret_des;
     }
 }

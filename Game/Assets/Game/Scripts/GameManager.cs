@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Debug.LogError("More than one game manager created");
+
+        LoadUniqueItems();
     }
 
 
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
     public Sprite items_sprite_feet;
     public Sprite items_sprite_weapon;
 
+    public Item[] unique_items_table;
+
     [SerializeField]
     bool[] armor_stat_table;
     [SerializeField]
@@ -46,7 +50,6 @@ public class GameManager : MonoBehaviour
     public float[] add_max_roll;
     public float[] mult_min_roll;
     public float[] mult_max_roll;
-
 
     private void Start()
     {
@@ -99,42 +102,52 @@ public class GameManager : MonoBehaviour
 
         int rarity_dice = Random.Range(1,6);
 
-        Item ret_item = new Item();
-        ret_item.equip_slot_id = rand_slot;
-        switch (ret_item.equip_slot_id)
+        if (rarity_dice != (int)ItemRarity.Unique && false)
         {
-            case EquipSlot.Head:
-                ret_item.item_world_display = items_display_head;
-                ret_item.item_icon = items_sprite_head;
-                break;
-            case EquipSlot.Chest:
-                ret_item.item_world_display = items_display_chest;
-                ret_item.item_icon = items_sprite_chest;
-                break;
-            case EquipSlot.Arms:
-                ret_item.item_world_display = items_display_arms;
-                ret_item.item_icon = items_sprite_arms;
-                break;
-            case EquipSlot.Legs:
-                ret_item.item_world_display = items_display_legs;
-                ret_item.item_icon = items_sprite_legs;
-                break;
-            case EquipSlot.Feet:
-                ret_item.item_world_display = items_display_feet;
-                ret_item.item_icon = items_sprite_feet;
-                break;
-            case EquipSlot.Weapon:
-                ret_item.item_world_display = items_display_weapon;
-                ret_item.item_icon = items_sprite_weapon;
-                break;
-            default:
-                break;
+            Item ret_item = new Item();
+            ret_item.item_rarity = (ItemRarity)rarity_dice;
+            ret_item.equip_slot_id = rand_slot;
+            switch (ret_item.equip_slot_id)
+            {
+                case EquipSlot.Head:
+                    ret_item.item_world_display = items_display_head;
+                    ret_item.item_icon = items_sprite_head;
+                    break;
+                case EquipSlot.Chest:
+                    ret_item.item_world_display = items_display_chest;
+                    ret_item.item_icon = items_sprite_chest;
+                    break;
+                case EquipSlot.Arms:
+                    ret_item.item_world_display = items_display_arms;
+                    ret_item.item_icon = items_sprite_arms;
+                    break;
+                case EquipSlot.Legs:
+                    ret_item.item_world_display = items_display_legs;
+                    ret_item.item_icon = items_sprite_legs;
+                    break;
+                case EquipSlot.Feet:
+                    ret_item.item_world_display = items_display_feet;
+                    ret_item.item_icon = items_sprite_feet;
+                    break;
+                case EquipSlot.Weapon:
+                    ret_item.item_world_display = items_display_weapon;
+                    ret_item.item_icon = items_sprite_weapon;
+                    break;
+                default:
+                    break;
+            }
+
+            ret_item.item_name = GenItemName((ItemRarity)rarity_dice, ret_item.equip_slot_id);
+            ret_item.item_buffs = GetItemBuffs((ItemRarity)rarity_dice, ret_item.equip_slot_id);
+
+            return ret_item;
         }
-
-        ret_item.item_name = GenItemName((ItemRarity)rarity_dice, ret_item.equip_slot_id);
-        ret_item.item_buffs = GetItemBuffs((ItemRarity)rarity_dice, ret_item.equip_slot_id);
-
-        return ret_item;
+        else
+        {
+            Item ret_item = unique_items_table[3];
+            ret_item.item_rarity = ItemRarity.Unique;
+            return ret_item;
+        }
     }
 
     public Buff[] GetItemBuffs(ItemRarity rarity, EquipSlot slot_id)
@@ -253,4 +266,22 @@ public class GameManager : MonoBehaviour
         return ret;
     }
 
+    public void LoadUniqueItems()
+    {
+
+        unique_items_table[0].item_buffs[unique_items_table[0].item_buffs.Length - 1] = new BuffTripleTornado();
+        unique_items_table[1].item_buffs[unique_items_table[1].item_buffs.Length - 1] = new BuffBiggerAE();
+        unique_items_table[2].item_buffs[unique_items_table[2].item_buffs.Length - 1] = new BuffTrueFreeze();
+        unique_items_table[3].item_buffs[unique_items_table[3].item_buffs.Length - 1] = new BuffThunderGod();
+    }
+
+    public Item GetUniqueFromName(string unique_name)
+    {
+        for(int i=0; i < unique_items_table.Length; i++)
+        {
+            if (unique_items_table[i].item_name == unique_name)
+                return unique_items_table[i];
+        }
+        return null;
+    }
 }

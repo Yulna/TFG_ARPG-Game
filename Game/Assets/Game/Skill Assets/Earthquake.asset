@@ -13,19 +13,21 @@ MonoBehaviour:
   m_Name: Earthquake
   m_EditorClassIdentifier: 
   skill_name: Earthqake
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: 45e9736ddac56c34187b158c831977d4, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 7517931502307400111, guid: 6e3cd7eee5b9c17469a8046b8cdbcc50,
     type: 3}
-  skill_dmg_mult: 1
-  cast_time_mult: 0
-  cost: 0
-  cooldown: 0
+  skill_dmg_mult: 3
+  cast_time_mult: 1
+  cost: 35
+  cooldown: 5
+  cd_timer: 0
   effect_area: 4
   effect_area_mult: 1
   duration: 5
   duration_mult: 1
-  stun_duration: 0
+  stun_duration: 1.5
   slow_magnitude: 0.5
-  slow_duration: 2
+  slow_duration: 1

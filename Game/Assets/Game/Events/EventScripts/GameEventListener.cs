@@ -8,9 +8,9 @@ public class GameEventListener : MonoBehaviour
     public GameEvent game_event;
     public UnityEvent response;
 
-    private void OnEnable()
+    private void Awake()
     { game_event.RegisterListener(this); }
-    private void OnDisable()
+    private void OnDestroy()
     { game_event.UnregisterListener(this); }
 
     public void OnEventRaised()

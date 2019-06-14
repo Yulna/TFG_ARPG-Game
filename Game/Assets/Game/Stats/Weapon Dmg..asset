@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Weapon Dmg.
   m_EditorClassIdentifier: 
   variable_name: 
-  base_value: 8
-  sum_value: 0
+  base_value: 40
+  sum_value: 87.72
   mult_value: 1
-  buffed_value: 8
+  buffed_value: 95.72
   stat_Change:
     m_PersistentCalls:
       m_Calls:

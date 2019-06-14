@@ -23,7 +23,7 @@ public class SkillDataShieldBash : SkillData
         {
             if (hit_colliders[i].gameObject.tag == "Enemy")
             {
-                hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
+                hit_colliders[i].GetComponent<EnemySimple>().Hurt(weapon_dmg.Buffed_value * skill_dmg_mult);
                 hit_colliders[i].GetComponent<EnemySimple>().PushTowards(cast_info.dir, push_force);
                 hit_colliders[i].GetComponent<EnemySimple>().Stun(stun_duration);
             }
@@ -39,4 +39,16 @@ public class SkillDataShieldBash : SkillData
         //Instant cast/damage spell void behaviour to prevent warnings
     }
 
+    public override string GetDescription()
+    {
+        string ret_des = "";
+
+        ret_des += "Hit enemies in front of you with increadible force, dealing (";
+        ret_des += weapon_dmg.Buffed_value * skill_dmg_mult;
+        ret_des += ") ";
+        ret_des += skill_dmg_mult * 100;
+        ret_des += "% weapon damge pushing enemies hit backwards and stunning them for " + stun_duration + " seconds";
+
+        return ret_des;
+    }
 }

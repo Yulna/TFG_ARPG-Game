@@ -81,6 +81,7 @@ public class CharacterController : MonoBehaviour
     {
         dmg_half_reduction = 100;
         ui_open = false;
+        inventory.InitInventory();
         inventory.ActivateEquipBuffs();
         inventory_canvas.SetActive(false);
         character_stats_canvas.SetActive(false);
@@ -116,7 +117,7 @@ public class CharacterController : MonoBehaviour
             return;
 
         //Read game inputs
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
         {
             Debug.Log("Processing Left Click");
             int mask = LayerMask.GetMask("Floor", "Enemy", "Item");
@@ -132,9 +133,7 @@ public class CharacterController : MonoBehaviour
                 else if (ray_hit.layer_hit == LayerMask.NameToLayer("Enemy"))
                 {
                     Debug.Log("Enemy Attacked");
-                    move_controller.MoveToEnemy(ray_hit.go_hit.transform);
-                    //TODO: Cast skill LMB(Attack)
-                    skill_controller.CastSkill(SkillButton.LMB, ray_hit);
+                    move_controller.MoveToEnemy(ray_hit.go_hit.transform);                    
                 }
                 else if (ray_hit.layer_hit == LayerMask.NameToLayer("Item"))
                 {
@@ -143,6 +142,15 @@ public class CharacterController : MonoBehaviour
                     move_controller.MoveToPosition(ray_hit.hit_point);
                 }
             }                   
+        }
+
+        if(Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift))
+        {
+            RayHitInfo ray_hit = RayCastHandle(Input.mousePosition, LayerMask.GetMask("Floor", "Enemy"));
+            if (ray_hit.hitted)
+            {
+                skill_controller.CastSkill(SkillButton.LMB, ray_hit);
+            }
         }
 
         if (Input.GetMouseButtonDown(1))

@@ -14,6 +14,7 @@ public class SkillData : ScriptableObject
 {
     //General info  
     public string skill_name;
+    public string skill_description;
     public Sprite skill_icon;
     public SkillType skill_type;
     public StatVariable weapon_dmg;
@@ -22,29 +23,33 @@ public class SkillData : ScriptableObject
     public float cast_time_mult;
     public float cost;              //Resource cost of the skill
     public float cooldown;          //Cooldown of the skill
+    public float cd_timer;
 
 
     public delegate void SkillCast(CastInfo cast_info);
-    SkillCast skill_cast_del = null;
+    public SkillCast skill_cast_del = null;
+
 
     private void OnEnable()
     {
         skill_cast_del = SkillCastBehaviour;
+        cd_timer = 0;
     }
 
     public void CastSkill(CastInfo cast_info)
     {
+        cd_timer = cooldown;
         if (skill_cast_del != null)
             skill_cast_del(cast_info);
     }
 
 
-    
+
     //Skill cast basic method
     public virtual void SkillCastBehaviour(CastInfo cast_info)
     {
         GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.identity);
-        SkillInstance instance =  display.AddComponent<SkillInstance>();
+        SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.InitInstance(SkillBehaviour, cast_info);
     }
 
@@ -59,13 +64,46 @@ public class SkillData : ScriptableObject
 
 
     //Cast and behviour modifiers methods
-    public void AddCastBehaviour( SkillCast new_cast)
+    public void AddCastBehaviour(SkillCast new_cast)
     {
         skill_cast_del += new_cast;
     }
 
-    public void RemoveCastBehaviour( SkillCast old_cast)
+    public void RemoveCastBehaviour(SkillCast old_cast)
     {
         skill_cast_del -= old_cast;
+    }
+
+    public bool IsOnCooldown()
+    {
+        if (cd_timer <= 0)
+            return false;
+        else
+            return true;
+    }
+
+    public float GetCDPercentile()
+    {
+        if (cooldown == 0)
+            return 0;
+        else
+            return cd_timer / cooldown;
+    }
+
+    public virtual string GetName()
+    {
+        return name;
+    }
+
+    public virtual string GetCostString()
+    {
+        if (cost == 0)
+            return "No cost";
+        return cost.ToString() + " Mana"; 
+    }
+
+    public virtual string GetDescription()
+    {
+        return "Skill description";
     }
 }

@@ -403,7 +403,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -452,6 +452,10 @@ MonoBehaviour:
   attack_timer: 1
   move_speed: 5
   drop_chance: 50
+  death_particle: {fileID: 1680937006522702, guid: f5933e79cbb33c14cadcc4d779aa4245,
+    type: 3}
+  hit_praticle: {fileID: 1146961906002798, guid: 04f6f308bd2d35947a3a6b2a626d1980,
+    type: 3}
   memory_timer: 0
   player_found: 0
   push_precision: 2
@@ -2770,21 +2774,6 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.9528302
       objectReference: {fileID: 0}
-    - target: {fileID: 198714219175306258, guid: a968112194abc8f40b4c04a190e0816e,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.54958594
-      objectReference: {fileID: 0}
-    - target: {fileID: 198714219175306258, guid: a968112194abc8f40b4c04a190e0816e,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.3160377
-      objectReference: {fileID: 0}
-    - target: {fileID: 198714219175306258, guid: a968112194abc8f40b4c04a190e0816e,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 198746605690256082, guid: a968112194abc8f40b4c04a190e0816e,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
@@ -2796,6 +2785,21 @@ PrefabInstance:
       value: 0.6642723
       objectReference: {fileID: 0}
     - target: {fileID: 198746605690256082, guid: a968112194abc8f40b4c04a190e0816e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198714219175306258, guid: a968112194abc8f40b4c04a190e0816e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.54958594
+      objectReference: {fileID: 0}
+    - target: {fileID: 198714219175306258, guid: a968112194abc8f40b4c04a190e0816e,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.3160377
+      objectReference: {fileID: 0}
+    - target: {fileID: 198714219175306258, guid: a968112194abc8f40b4c04a190e0816e,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 1

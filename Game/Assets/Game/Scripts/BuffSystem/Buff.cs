@@ -72,6 +72,9 @@ public class Buff
 
     public virtual string GetBuffDescription()
     {
+        if (type == BuffType.BUFF_SKILL_MOD)
+            return "";
+
         string ret;
 
         ret = "Increase " + variable.name + " by ";

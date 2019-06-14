@@ -403,7 +403,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -452,6 +452,10 @@ MonoBehaviour:
   attack_timer: 1
   move_speed: 5
   drop_chance: 50
+  death_particle: {fileID: 1022467295468940, guid: 3845c058642164c4aa72204c65011e98,
+    type: 3}
+  hit_praticle: {fileID: 1146961906002798, guid: 04f6f308bd2d35947a3a6b2a626d1980,
+    type: 3}
   memory_timer: 0
   player_found: 0
   push_precision: 2

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Phys. Resist.
   m_EditorClassIdentifier: 
   variable_name: 
-  base_value: 100
+  base_value: 0
   sum_value: 0
   mult_value: 1
   buffed_value: 100

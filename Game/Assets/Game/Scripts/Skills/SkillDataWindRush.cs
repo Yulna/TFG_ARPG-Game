@@ -34,7 +34,7 @@ public class SkillDataWindRush : SkillData
         {
             if (hit_colliders[i].gameObject.tag == "Enemy" && !cast_info.hitted_colliders.Contains(hit_colliders[i]))
             {
-                hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
+                hit_colliders[i].GetComponent<EnemySimple>().Hurt(weapon_dmg.Buffed_value * skill_dmg_mult);
                 hit_colliders[i].GetComponent<EnemySimple>().PushTowards(cast_info.dir, push_force);
                 cast_info.hitted_colliders.Add(hit_colliders[i]);
             }
@@ -44,5 +44,18 @@ public class SkillDataWindRush : SkillData
         {
             Destroy(instance);
         }
+    }
+
+    public override string GetDescription()
+    {
+        string ret_des = "";
+
+        ret_des += "Create a tornado that moves towards the cursor, dealing (";
+        ret_des += weapon_dmg.Buffed_value * skill_dmg_mult;
+        ret_des += ") ";
+        ret_des += skill_dmg_mult * 100;
+        ret_des += "% weapon damge to enemies in its path and pushing them backwards";
+
+        return ret_des;
     }
 }

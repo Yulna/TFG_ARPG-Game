@@ -13,6 +13,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public GameObject item_info_display;
     public TextMeshProUGUI item_info_name;
     public TextMeshProUGUI item_info_description;
+
+    public GameObject equip_item_info_display;
+    public TextMeshProUGUI equip_item_info_name;
+    public TextMeshProUGUI equip_item_info_description;
     //public GameObject equiped_data;
 
     private void Start()
@@ -33,11 +37,19 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             item_info_description.SetText(pc_inventory.GetDescriptionFromIndex(item_index));
             item_info_name.SetText(pc_inventory.GetNameFromIndex(item_index));
             item_info_display.SetActive(true);
+
+            
+            
+            equip_item_info_description.SetText(pc_inventory.GetDescriptionFromSlot(pc_inventory.GetItemSlot(item_index)));
+            equip_item_info_name.SetText(pc_inventory.GetNameFromSlot(pc_inventory.GetItemSlot(item_index)));
+            if (equip_item_info_name.text != null )
+                equip_item_info_display.SetActive(true);
         }
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         item_info_display.SetActive(false);
+        equip_item_info_display.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)

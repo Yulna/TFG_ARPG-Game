@@ -32,9 +32,12 @@ public class EquipedItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }  
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        item_info_description.SetText(pc_inventory.GetDescriptionFromSlot(slot_id));
-        item_info_name.SetText(pc_inventory.GetNameFromSlot(slot_id));
-        item_info_display.SetActive(true);
+        if (slot_image.IsActive())
+        {
+            item_info_description.SetText(pc_inventory.GetDescriptionFromSlot(slot_id));
+            item_info_name.SetText(pc_inventory.GetNameFromSlot(slot_id));
+            item_info_display.SetActive(true);
+        }
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {

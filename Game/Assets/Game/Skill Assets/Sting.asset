@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Sting
   m_EditorClassIdentifier: 
   skill_name: Sting
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: de54c55ced30a6240b0b78a0ebfa7c7e, type: 3}
   skill_type: 1
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 7517931502307400111, guid: d9c319dc6b634bd4791778458d04cba6,
     type: 3}
-  skill_dmg_mult: 1
-  cast_time_mult: 0
-  cost: 0
-  cooldown: 0
-  lenght_range: 5
+  skill_dmg_mult: 5
+  cast_time_mult: 1
+  cost: 20
+  cooldown: 4
+  cd_timer: -0.013361864
+  lenght_range: 4
   width_range: 1
   display_speed: 50

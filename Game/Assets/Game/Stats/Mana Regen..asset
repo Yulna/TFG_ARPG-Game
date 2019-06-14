@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mana Regen.
   m_EditorClassIdentifier: 
   variable_name: 
-  base_value: 10
+  base_value: 5
   sum_value: 0
   mult_value: 1
   buffed_value: 10

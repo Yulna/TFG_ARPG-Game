@@ -13,16 +13,18 @@ MonoBehaviour:
   m_Name: Dash
   m_EditorClassIdentifier: 
   skill_name: Dash
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: 0ffe953e19b92494f805c94ff05953d6, type: 3}
   skill_type: 1
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 2965110468868468335, guid: ae627856a95ebfe4ab286bfd49d8b3cc,
     type: 3}
-  skill_dmg_mult: 1
+  skill_dmg_mult: 0.5
   cast_time_mult: 0
-  cost: 0
-  cooldown: 0
-  range: 202
+  cost: 10
+  cooldown: 1
+  cd_timer: 0
+  range: 40
   range_mult: 1
   precision: 2
   speed: 60

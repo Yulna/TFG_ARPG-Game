@@ -26,7 +26,7 @@ public class SkillDataEarthquake : SkillData
         {
             if (hit_colliders[i].gameObject.tag == "Enemy")
             {
-                hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
+                hit_colliders[i].GetComponent<EnemySimple>().Hurt(weapon_dmg.Buffed_value * skill_dmg_mult);
                 hit_colliders[i].GetComponent<EnemySimple>().Stun(stun_duration);
             }
 
@@ -44,7 +44,6 @@ public class SkillDataEarthquake : SkillData
         {
             if (hit_colliders[i].gameObject.tag == "Enemy")
             {
-                //hit_colliders[i].GetComponent<EnemySimple>().Hurt(5);
                 hit_colliders[i].GetComponent<EnemySimple>().ApplySlow(slow_magnitude,slow_duration);
                 cast_info.hitted_colliders.Add(hit_colliders[i]);
             }
@@ -52,5 +51,20 @@ public class SkillDataEarthquake : SkillData
 
         if (cast_info.curr_duration >= (duration * duration_mult))
             Destroy(instance);
+    }
+
+    public override string GetDescription()
+    {
+        string ret_des = "";
+
+        ret_des += "Shake the ground arround you, damaging enemies for (";
+        ret_des += weapon_dmg.Buffed_value * skill_dmg_mult;
+        ret_des += ") ";
+        ret_des += skill_dmg_mult * 100;
+        ret_des += "% weapon damge and stunning them for " + stun_duration + " seconds.";
+        ret_des += "\nThe earthquake leaves a unstable zone behind during " + duration * duration_mult +
+                    " seconds which slows enemies inside it by " + slow_magnitude * 100 + "%";
+
+        return ret_des;
     }
 }

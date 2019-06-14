@@ -75,21 +75,21 @@ public class SkillController : MonoBehaviour
             CharacterController.instance.ui_open = skill_selection_UI.activeSelf;
         }
         //TODO: Update equiped skills for CD
-
-        //TESt region
-        //TODO: remove it
-        if (Input.GetKeyDown(KeyCode.P))
+        for(int i = 0; i < 6; i++)
         {
-            test.AddCastBehaviour(SkillCastMod);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            test.RemoveCastBehaviour(SkillCastMod);
+            if (equip_skills[i].cd_timer > 0)
+                equip_skills[i].cd_timer -= Time.deltaTime;
         }
     }
 
     public void CastSkill(SkillButton skill_index, RayHitInfo hit_info)
     {
+        if(equip_skills[(int)skill_index].IsOnCooldown())
+        {
+            Debug.Log("Skill is on cd");
+            return;
+        }
+
         if (cast_timer > 0)
         {
             Debug.Log("Already casting a skill");
@@ -101,11 +101,15 @@ public class SkillController : MonoBehaviour
             else
                 cast_timer = 1 / (equip_skills[(int)skill_index].cast_time_mult * attack_speed.Buffed_value);
 
-            CharacterController.instance.SpendResource(equip_skills[(int)skill_index].cost);
-            equip_skills[(int)skill_index].CastSkill(GetCastInfo(transform.position, hit_info.hit_point));
+            if (CharacterController.instance.SpendResource(equip_skills[(int)skill_index].cost))
+            {
+                CharacterController.instance.move_controller.StopMovement();
+                equip_skills[(int)skill_index].CastSkill(GetCastInfo(transform.position, hit_info.hit_point));
+                transform.rotation = Quaternion.LookRotation(hit_info.hit_point - (transform.position + Vector3.up * 1.5f), Vector3.up);
+            }
         }
+       
     }
-
 
     public void SetSelected(int id)
     {
@@ -141,13 +145,63 @@ public class SkillController : MonoBehaviour
             return null;
     }
         
-
-    //TODO: remove
-    public void SkillCastMod(CastInfo cast_info)
+    public float GetSkillCDDisplayPercentile(SkillButton button_id)
     {
-        GameObject display = Instantiate(test.skill_display, cast_info.origin_pos, Quaternion.identity);
-        SkillInstance instance = display.AddComponent<SkillInstance>();
-        cast_info.dir = cast_info.dir * -1.0f;
-        instance.InitInstance(test.SkillBehaviour, cast_info);
+        return equip_skills[(int)button_id].GetCDPercentile();
+    }
+
+
+    public string GetSkillNameFromSkillbar(SkillButton button_id)
+    {
+        if (equip_skills[(int)button_id] != null)
+            return equip_skills[(int)button_id].GetName();
+        else
+            return "";
+    }
+    public string GetSkillCostFromSkillbar(SkillButton button_id)
+    {
+        if (equip_skills[(int)button_id] != null)
+            return equip_skills[(int)button_id].GetCostString();
+        else
+            return "";
+    }
+    public string GetSkillDescriptionFromSkillbar(SkillButton button_id)
+    {
+        if (equip_skills[(int)button_id] != null)
+            return equip_skills[(int)button_id].GetDescription();
+        else
+            return "";
+    }
+
+    public string GetSkillNameFromSkillList(int list_id)
+    {
+        if (char_skill_list[list_id] != null)
+            return char_skill_list[list_id].GetName();
+        else
+            return "";
+    }
+    public string GetSkillCostFromSkillList(int list_id)
+    {
+        if (char_skill_list[list_id] != null)
+            return char_skill_list[list_id].GetCostString();
+        else
+            return "";
+    }
+    public string GetSkillDescriptionFromSkillList(int list_id)
+    {
+        if (char_skill_list[list_id] != null)
+            return char_skill_list[list_id].GetDescription();
+        else
+            return "";
+    }
+
+    public SkillData GetSkillByName(string skill_name)
+    {
+        for (int i = 0; i < char_skill_list.Length; i++)
+        {
+            if (char_skill_list[i].name == skill_name)
+                return char_skill_list[i];
+        }
+        return null;
     }
 }

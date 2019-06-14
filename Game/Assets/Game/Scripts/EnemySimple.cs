@@ -24,6 +24,9 @@ public class EnemySimple : MonoBehaviour
 
     public int drop_chance;
 
+    public GameObject death_particle;
+    public GameObject hit_praticle;
+
     [SerializeField]
     float memory_timer;
     [SerializeField]
@@ -158,6 +161,7 @@ public class EnemySimple : MonoBehaviour
             health -= value;
         }
 
+        Destroy(Instantiate(hit_praticle, transform.position + Vector3.up, Quaternion.identity), 5);
         if (health <= 0)
             Die();
     }
@@ -191,6 +195,9 @@ public class EnemySimple : MonoBehaviour
         }
 
         alive = false;
+        GameObject death_boom = Instantiate(death_particle, transform.position + Vector3.up, Quaternion.Euler(-90,180,0));
+        death_boom.transform.localScale = new Vector3(2, 2, 2);
+        Destroy(death_boom, 5);
         Destroy(gameObject);
     }
 
@@ -223,12 +230,16 @@ public class EnemySimple : MonoBehaviour
 
     public void ApplySlow(float percentile, float duration)
     {
+        //Return if enemy has a bigger slow
+        if (slowed && percentile < slow_percentile)
+            return;
+
         if (percentile > 1)
             slow_percentile = 1;
         else
             slow_percentile = percentile;
 
-        npc_agent.speed *= (1 - slow_percentile); 
+        npc_agent.speed = move_speed * (1 - slow_percentile); 
         slow_duration = duration;
         slowed = true;
     }

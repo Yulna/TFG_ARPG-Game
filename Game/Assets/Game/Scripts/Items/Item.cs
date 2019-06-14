@@ -15,6 +15,7 @@ public class Item
     }
 
     public string item_name;
+    public ItemRarity item_rarity;
     public Sprite item_icon;
     public GameObject item_world_display;                                        //TODO: Change to another place // somewhere scriptable?
     public EquipSlot equip_slot_id;

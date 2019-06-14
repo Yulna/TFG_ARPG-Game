@@ -40,12 +40,16 @@ public class MovementController : MonoBehaviour
         }
         else if(!move_ended)
         {
-            Debug.Log("move now");
             pc_animator.SetBool("Moving", true);
             pc_animator.SetFloat("Velocity Z", 10.0f);
             if (to_follow != null && to_follow.position != pc_agent.destination)
                 pc_agent.SetDestination(to_follow.position);            
         }        
+    }
+
+    public void StopMovement()
+    {
+        pc_agent.destination = transform.position;
     }
 
     public void MoveToPosition(Vector3 destination)

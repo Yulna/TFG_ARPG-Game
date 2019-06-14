@@ -34,12 +34,26 @@ public class SkillDataSpiritRefuge : SkillData
         {
             if (hit_colliders[i].gameObject.tag == "Player")
             {
-                CharacterController.instance.HealPlayer(health_regen.Buffed_value * heal_mult);
+                CharacterController.instance.HealPlayer(health_regen.Buffed_value * heal_mult * Time.deltaTime);
             }
         }
 
         cast_info.curr_duration += Time.deltaTime;
         if (cast_info.curr_duration > duration)
             Destroy(instance);
+    }
+
+    public override string GetDescription()
+    {
+        string ret_des = "";
+
+        ret_des += "Bless a nearby area, while standing inside the area heal yourself ";
+        ret_des += health_regen.Buffed_value * heal_mult + " life per second";
+
+        ret_des += "\nHeal value is equal to ";
+        ret_des += heal_mult * 100;
+        ret_des += "% of your natural health regeneration";
+
+        return ret_des;
     }
 }

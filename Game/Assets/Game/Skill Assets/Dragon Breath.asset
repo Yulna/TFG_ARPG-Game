@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Dragon Breath
   m_EditorClassIdentifier: 
   skill_name: 
+  skill_description: 
   skill_icon: {fileID: 21300000, guid: f902aae7f022ee5499e5ff2c007b2c46, type: 3}
   skill_type: 0
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
   skill_display: {fileID: 7517931502307400111, guid: c4bbec2519b18574fb5ac9df06ae2efd,
     type: 3}
-  skill_dmg_mult: 0
+  skill_dmg_mult: 1.5
   cast_time_mult: 0
-  cost: 0
+  cost: 15
   cooldown: 0
+  cd_timer: 0
   range: 4
   range_mult: 1
   angle: 90

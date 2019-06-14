@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf2d37c31bb0cc4e989ae228895019a, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: 
-  base_value: 100
-  sum_value: 0
+  variable_name: 
+  base_value: 10
+  sum_value: 77
   mult_value: 1
-  buffed_value: 0
+  buffed_value: 177
   stat_Change:
     m_PersistentCalls:
       m_Calls: []

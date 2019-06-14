@@ -6,7 +6,7 @@ public class BuffTripleTornado : Buff
 {
     public BuffTripleTornado() : base(BuffType.BUFF_SKILL_MOD, 0, null)
     {
-        skill_modified = (SkillDataWindRush)CharacterController.instance.skill_controller.char_skill_list[5];
+        skill_modified = (SkillDataWindRush)CharacterController.instance.skill_controller.GetSkillByName("Wind Rush");
     }
 
     //Must be Wind Rush

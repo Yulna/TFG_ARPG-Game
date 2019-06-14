@@ -15,8 +15,8 @@ MonoBehaviour:
   variable_name: 
   base_value: 100
   sum_value: 0
-  mult_value: 1
-  buffed_value: 100
+  mult_value: 1.22
+  buffed_value: 122
   stat_Change:
     m_PersistentCalls:
       m_Calls: []
