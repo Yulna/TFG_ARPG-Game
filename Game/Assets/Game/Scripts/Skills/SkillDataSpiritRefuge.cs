@@ -19,10 +19,10 @@ public class SkillDataSpiritRefuge : SkillData
             cast_info.end_pos = cast_info.origin_pos + (cast_info.dir * range);   
         }     
         
-        GameObject display = Instantiate(skill_display, cast_info.end_pos, Quaternion.identity);
+        GameObject display = Instantiate(skill_display, cast_info.end_pos + Vector3.down, Quaternion.identity);
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(effect_area * effect_area_mult, effect_area * effect_area_mult, effect_area * effect_area_mult);
-        instance.InitInstance(SkillBehaviour, cast_info);
+        instance.InitInstance(skill_instance_del, cast_info);
     }
 
 

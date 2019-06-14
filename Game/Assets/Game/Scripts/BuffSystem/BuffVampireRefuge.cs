@@ -14,12 +14,12 @@ public class BuffVampireRefuge : Buff
 
     public override void EnableBuff()
     {
-        skill_modified.AddCastBehaviour(SkillCastBehaviourMod);
+        skill_modified.AddInstanceBehaviour(SkillInstanceBehaviourMod);
     }
 
     public override void DisableBuff()
     {
-        skill_modified.RemoveCastBehaviour(SkillCastBehaviourMod);
+        skill_modified.RemoveInstanceBehaviour(SkillInstanceBehaviourMod);
     }
 
     public override string GetBuffDescription()
@@ -28,8 +28,18 @@ public class BuffVampireRefuge : Buff
     }
 
 
-    public void SkillCastBehaviourMod(CastInfo cast_info)
+    public void SkillInstanceBehaviourMod(ref CastInfo cast_info, GameObject instance)
     {
-        skill_modified.cd_timer = 0;
+
+        Collider[] hit_colliders = Physics.OverlapSphere(cast_info.end_pos, skill_modified.effect_area * skill_modified.effect_area_mult);
+
+        for (int i = 0; i < hit_colliders.Length; i++)
+        {
+            if (hit_colliders[i].gameObject.tag == "Enemy")
+            {
+                hit_colliders[i].GetComponent<EnemySimple>().Hurt((skill_modified.weapon_dmg.Buffed_value * 0.1f) * Time.deltaTime);
+                skill_modified.cd_timer -= Time.deltaTime;
+            }
+        }
     }
 }

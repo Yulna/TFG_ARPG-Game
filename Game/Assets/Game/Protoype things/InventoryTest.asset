@@ -13,156 +13,318 @@ MonoBehaviour:
   m_Name: InventoryTest
   m_EditorClassIdentifier: 
   items:
-  - item_name: Common Sword
-    item_icon: {fileID: 21300000, guid: 71cbb757b04523543b055e40ae4a7f69, type: 3}
+  - item_name: EXPLOSION
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
     item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
       type: 3}
     equip_slot_id: 5
-    item_buffs:
-    - type: 0
-      magnitude: 63
-      variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.23
-      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
-      active: 0
-  - item_name: Pants
-    item_icon: {fileID: 21300000, guid: 0c0cf540b5f48d146bd5df87b29b6755, type: 3}
-    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
-      type: 3}
-    equip_slot_id: 3
-    item_buffs:
-    - type: 0
-      magnitude: 26
-      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.37
-      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.92
-      variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 430.69
-      variable: {fileID: 11400000, guid: 9c9e48164b56bc34690bbfc226d1e93c, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 76.97
-      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 106.34
-      variable: {fileID: 11400000, guid: 15d34c1be1f040848aed2898e8441a64, type: 2}
-      active: 0
-  - item_name: Rare Pants
-    item_icon: {fileID: 21300000, guid: 0c0cf540b5f48d146bd5df87b29b6755, type: 3}
-    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
-      type: 3}
-    equip_slot_id: 3
-    item_buffs:
-    - type: 0
-      magnitude: 35
-      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 0.57
-      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 26.57
-      variable: {fileID: 11400000, guid: 888710f020eb8524ca6a19d0a606bbfc, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.22
-      variable: {fileID: 11400000, guid: 19fba87b5b477bf48b32ccde9fd2632d, type: 2}
-      active: 0
-  - item_name: Rare Breastplate
-    item_icon: {fileID: 21300000, guid: b1bd89f28a0a20c4384713e1395e81ed, type: 3}
-    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
-      type: 3}
-    equip_slot_id: 1
-    item_buffs:
-    - type: 0
-      magnitude: 49
-      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.42
-      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.56
-      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.22
-      variable: {fileID: 11400000, guid: 65f1e8b4a3ea2484cb62f7d03e5e2244, type: 2}
-      active: 0
-  - item_name: Triple Tornado
-    item_icon: {fileID: 21300000, guid: e6ace752584dde24eac821a5935adc8b, type: 3}
-    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
-      type: 3}
-    equip_slot_id: 4
     item_buffs:
     - type: 2
       magnitude: 0
       variable: {fileID: 0}
       active: 0
-  equiped_items:
   - item_name: 
+    item_rarity: 0
     item_icon: {fileID: 0}
     item_world_display: {fileID: 0}
     equip_slot_id: 0
     item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: Epic Pants
-    item_icon: {fileID: 21300000, guid: 0c0cf540b5f48d146bd5df87b29b6755, type: 3}
+  - item_name: EXPLOSION
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
     item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
       type: 3}
-    equip_slot_id: 3
+    equip_slot_id: 5
     item_buffs:
-    - type: 0
-      magnitude: 77
-      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
       active: 0
-    - type: 0
-      magnitude: 0.55
-      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
-      active: 0
-    - type: 1
-      magnitude: 1.22
-      variable: {fileID: 11400000, guid: 15d34c1be1f040848aed2898e8441a64, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 87.72
-      variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-      active: 0
-    - type: 0
-      magnitude: 22.25
-      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
+  - item_name: ThunderGod
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: bcdc06a7f1ae17f49a1cf132d6831bab, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
       active: 0
   - item_name: 
+    item_rarity: 0
     item_icon: {fileID: 0}
     item_world_display: {fileID: 0}
     equip_slot_id: 0
     item_buffs: []
   - item_name: 
+    item_rarity: 0
     item_icon: {fileID: 0}
     item_world_display: {fileID: 0}
     equip_slot_id: 0
     item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  equiped_items:
+  - item_name: ThunderGod
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: bcdc06a7f1ae17f49a1cf132d6831bab, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 0
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Freze
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 84349b42828f67b42b03a0306eeb56ee, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 1
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Vampire thing
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 10bbd67773bf8b74cb8258f85dfe656d, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 2
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
+  - item_name: EXPLOSION
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 5
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
   item_change:
     m_PersistentCalls:
       m_Calls:

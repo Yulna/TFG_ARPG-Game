@@ -28,11 +28,14 @@ public class SkillData : ScriptableObject
 
     public delegate void SkillCast(CastInfo cast_info);
     public SkillCast skill_cast_del = null;
+  
+    public SkillInstance.SkillBehaviour skill_instance_del;
 
 
     private void OnEnable()
     {
         skill_cast_del = SkillCastBehaviour;
+        skill_instance_del = SkillBehaviour;
         cd_timer = 0;
     }
 
@@ -72,6 +75,16 @@ public class SkillData : ScriptableObject
     public void RemoveCastBehaviour(SkillCast old_cast)
     {
         skill_cast_del -= old_cast;
+    }
+
+    public void AddInstanceBehaviour(SkillInstance.SkillBehaviour new_cast)
+    {
+        skill_instance_del += new_cast;
+    }
+
+    public void RemoveInstanceBehaviour(SkillInstance.SkillBehaviour old_cast)
+    {
+        skill_instance_del -= old_cast;
     }
 
     public bool IsOnCooldown()
