@@ -25,6 +25,6 @@ MonoBehaviour:
   cooldown: 5
   cd_timer: 0
   range: 7
-  range_mult: 0
-  effect_area: -75
-  effect_area_mult: 1.4551915e-11
+  range_mult: 1
+  effect_area: 1
+  effect_area_mult: 0.5

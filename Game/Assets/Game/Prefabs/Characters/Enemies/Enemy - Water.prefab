@@ -420,7 +420,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -451,6 +451,8 @@ MonoBehaviour:
   memory_time: 5
   attack_timer: 1
   move_speed: 5
+  attack_particle: {fileID: 1503859245115456, guid: f912532b5710eb6429ad86a7083557cd,
+    type: 3}
   drop_chance: 50
   death_particle: {fileID: 1022467295468940, guid: 3845c058642164c4aa72204c65011e98,
     type: 3}
