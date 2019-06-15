@@ -21,6 +21,7 @@ public class SkillDataIceArmor : SkillData
     private void OnEnable()
     {
         skill_cast_del = SkillCastBehaviour;
+        skill_instance_del = SkillBehaviour;
         cd_timer = 0;
         is_active = false;
     }

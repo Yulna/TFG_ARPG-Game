@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Item ret_item = unique_items_table[4];
+            Item ret_item = unique_items_table[0];
             ret_item.item_rarity = ItemRarity.Unique;
             return ret_item;
         }
@@ -274,6 +274,10 @@ public class GameManager : MonoBehaviour
         unique_items_table[2].item_buffs[unique_items_table[2].item_buffs.Length - 1] = new BuffTrueFreeze();
         unique_items_table[3].item_buffs[unique_items_table[3].item_buffs.Length - 1] = new BuffThunderGod();
         unique_items_table[4].item_buffs[unique_items_table[4].item_buffs.Length - 1] = new BuffVampireRefuge();
+        unique_items_table[5].item_buffs[unique_items_table[5].item_buffs.Length - 1] = new BuffWindPower();
+        unique_items_table[6].item_buffs[unique_items_table[6].item_buffs.Length - 1] = new BuffPiercingSting();
+        unique_items_table[7].item_buffs[unique_items_table[7].item_buffs.Length - 1] = new BuffFourDragonFire();
+        unique_items_table[8].item_buffs[unique_items_table[8].item_buffs.Length - 1] = new BuffCircleTornado();
     }
 
     public Item GetUniqueFromName(string unique_name)

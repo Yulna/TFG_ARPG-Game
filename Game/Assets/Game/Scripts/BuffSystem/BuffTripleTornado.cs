@@ -31,21 +31,27 @@ public class BuffTripleTornado : Buff
 
     public void SkillCastBehaviourModPositive(CastInfo cast_info)
     {
+        cast_info.origin_pos += Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
         cast_info.dir = Quaternion.Euler(0, 25, 0) * cast_info.dir;
 
         GameObject display = GameObject.Instantiate(skill_modified.skill_display, cast_info.origin_pos, Quaternion.identity);
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(skill_modified.effect_area * skill_modified.effect_area_mult, skill_modified.effect_area * skill_modified.effect_area_mult, skill_modified.effect_area * skill_modified.effect_area_mult);
-        instance.InitInstance(skill_modified.SkillBehaviour, cast_info);
+        instance.InitInstance(skill_modified.skill_instance_del, cast_info);
     }
 
     public void SkillCastBehaviourModNegative(CastInfo cast_info)
     {
+        cast_info.origin_pos += Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
         cast_info.dir = Quaternion.Euler(0, -25, 0) * cast_info.dir;
 
         GameObject display = GameObject.Instantiate(skill_modified.skill_display, cast_info.origin_pos, Quaternion.identity);
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(skill_modified.effect_area * skill_modified.effect_area_mult, skill_modified.effect_area * skill_modified.effect_area_mult, skill_modified.effect_area * skill_modified.effect_area_mult);
-        instance.InitInstance(skill_modified.SkillBehaviour, cast_info);
+        instance.InitInstance(skill_modified.skill_instance_del, cast_info);
     }
 }

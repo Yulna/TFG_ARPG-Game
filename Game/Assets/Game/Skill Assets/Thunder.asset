@@ -17,14 +17,14 @@ MonoBehaviour:
   skill_icon: {fileID: 21300000, guid: bcdc06a7f1ae17f49a1cf132d6831bab, type: 3}
   skill_type: 2
   weapon_dmg: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-  skill_display: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
+  skill_display: {fileID: 7517931502307400111, guid: f1c61b1e70993dc49bd373a839b4a0f4,
     type: 3}
   skill_dmg_mult: 5
   cast_time_mult: 0
-  cost: 150
+  cost: 260
   cooldown: 5
   cd_timer: 0
   range: 7
   range_mult: 0
-  effect_area: -13
-  effect_area_mult: 0.015625
+  effect_area: -75
+  effect_area_mult: 1.4551915e-11

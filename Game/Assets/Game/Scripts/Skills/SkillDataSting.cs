@@ -18,7 +18,6 @@ public class SkillDataSting : SkillData
         cast_info.dir.Normalize();
         cast_info.end_pos = cast_info.origin_pos + (cast_info.dir * lenght_range);
 
-
         GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.LookRotation(cast_info.dir, Vector3.up));
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.InitInstance(SkillBehaviour, cast_info);

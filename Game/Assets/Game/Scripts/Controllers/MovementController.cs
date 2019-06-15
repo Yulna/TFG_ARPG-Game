@@ -54,12 +54,16 @@ public class MovementController : MonoBehaviour
 
     public void MoveToPosition(Vector3 destination)
     {
+        if (CharacterController.instance.skill_controller.cast_timer > 0)
+            return;
         pc_agent.destination = destination;
         move_ended = false;
     }
 
     public void MoveToEnemy(Transform enemy_transform)
     {
+        if (CharacterController.instance.skill_controller.cast_timer > 0)
+            return;
         to_follow = enemy_transform;
         pc_agent.SetDestination(to_follow.position);
         move_ended = false;

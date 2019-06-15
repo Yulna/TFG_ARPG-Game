@@ -15,7 +15,7 @@ public class BuffThunderGod : Buff
     public override void EnableBuff()
     {
         skill_modified.cost += 110;
-        skill_modified.effect_area -= 2;
+        skill_modified.effect_area_mult *= 2;
         skill_modified.AddCastBehaviour(SkillCastBehaviourMod);
     }
 

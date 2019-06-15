@@ -16,17 +16,19 @@ public class SkillDataWindRush : SkillData
 
     public override void SkillCastBehaviour(CastInfo cast_info)
     {
+        cast_info.origin_pos += Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
         GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.identity);
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(effect_area * effect_area_mult, effect_area * effect_area_mult, effect_area * effect_area_mult);
-        instance.InitInstance(SkillBehaviour, cast_info);
+        instance.InitInstance(skill_instance_del, cast_info);
     }
 
 
     public override void SkillBehaviour(ref CastInfo cast_info, GameObject instance)
     {
         instance.transform.Translate(cast_info.dir * projectile_speed, Space.World);
-        cast_info.curr_dist += cast_info.dir.magnitude * projectile_speed;
 
         Collider[] hit_colliders = Physics.OverlapSphere(instance.transform.position, effect_area * effect_area_mult);
 
@@ -40,7 +42,7 @@ public class SkillDataWindRush : SkillData
             }
         }
 
-        if (cast_info.curr_dist >= (projectile_range * projectile_range_mult))
+        if (Vector3.Distance(cast_info.origin_pos, instance.transform.position) >= (projectile_range * projectile_range_mult))
         {
             Destroy(instance);
         }

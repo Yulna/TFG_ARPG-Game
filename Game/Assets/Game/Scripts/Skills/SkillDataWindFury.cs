@@ -15,6 +15,7 @@ public class SkillDataWindFury : SkillData
     private void OnEnable()
     {
         skill_cast_del = SkillCastBehaviour;
+        skill_instance_del = SkillBehaviour;
         cd_timer = 0;
         is_active = false;
     }
@@ -25,7 +26,7 @@ public class SkillDataWindFury : SkillData
         {
             GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.identity);
             SkillInstance instance = display.AddComponent<SkillInstance>();
-            instance.InitInstance(SkillBehaviour, cast_info);
+            instance.InitInstance(skill_instance_del, cast_info);
             atk_speed.Mult_value *= as_percent_aug;
         }
 

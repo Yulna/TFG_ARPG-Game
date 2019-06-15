@@ -16,7 +16,7 @@ public class EnemySimple : MonoBehaviour
     public float memory_time;
     public float attack_timer;
     public float move_speed;
-
+    public GameObject attack_particle;
 
     Animator npc_animator;
     NavMeshAgent npc_agent;
@@ -120,19 +120,21 @@ public class EnemySimple : MonoBehaviour
                 {
                     //DO ATTACK
                     attack_timer = 1 / base_attack_speed;
-                    Collider[] hit_colliders = Physics.OverlapSphere(transform.position, base_attack_range, LayerMask.GetMask("Player"));
 
+                    Collider[] hit_colliders = Physics.OverlapSphere(transform.position, base_attack_range, LayerMask.GetMask("Player"));
 
                     for(int i = 0; i < hit_colliders.Length; i++)
                     {
-                            npc_animator.SetTrigger("AttackTrigger");
-                            Vector3 player_dir = hit_colliders[i].gameObject.transform.position - transform.position;
-
-                            float player_angle = Vector3.Angle(player_dir, transform.forward);
-                            if (player_angle < 45f)
-                            {
-                                CharacterController.instance.DamagePlayer(base_damage * damage_mult, dmg_type);
-                            }
+                        npc_animator.SetTrigger("AttackTrigger");
+                        Vector3 player_dir = hit_colliders[i].gameObject.transform.position - transform.position;
+                        player_dir.Normalize();
+                        transform.rotation = Quaternion.LookRotation(player_dir, Vector3.up);
+                        float player_angle = Vector3.Angle(player_dir, transform.forward);
+                        if (player_angle < 45f)
+                        {
+                            CharacterController.instance.DamagePlayer(base_damage * damage_mult, dmg_type);
+                            Destroy(Instantiate(attack_particle, transform.position + Vector3.up + player_dir, Quaternion.identity), 5);
+                        }
                     }                    
                 }
             }

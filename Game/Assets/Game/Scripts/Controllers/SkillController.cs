@@ -27,8 +27,8 @@ public struct CastInfo
 
 public class SkillController : MonoBehaviour
 {
-    public SkillData test;
 
+    Animator pc_animator;
     public GameObject skill_selection_UI;
     int selected_id;
     public StatVariable attack_speed;
@@ -45,9 +45,16 @@ public class SkillController : MonoBehaviour
 
     public UnityEvent skill_change;
 
+    private bool is_attacking;
+
     // Start is called before the first frame update
     void Start()
     {
+        is_attacking = false;
+        pc_animator = GetComponent<Animator>();
+        pc_animator.SetInteger("Weapon", 0);
+        pc_animator.SetInteger("Action", 2);
+
         for (int i = 0; i < char_skill_list.Length; i++)
         {
             skill_icons[i].color = Color.white;
@@ -68,6 +75,14 @@ public class SkillController : MonoBehaviour
     void Update()
     {
         cast_timer -= Time.deltaTime;
+        if (cast_timer <= 0 && is_attacking)
+        {
+            pc_animator.SetInteger("Weapon", 0);
+            pc_animator.SetTrigger("InstantSwitchTrigger");
+            pc_animator.speed = 1;
+            is_attacking = false;
+        }
+
         if (Input.GetKeyUp(KeyCode.S))
         {
             //Enable/Disable Skill selection UI
@@ -104,6 +119,13 @@ public class SkillController : MonoBehaviour
             if (CharacterController.instance.SpendResource(equip_skills[(int)skill_index].cost))
             {
                 CharacterController.instance.move_controller.StopMovement();
+                if (cast_timer != 0)
+                {
+                    pc_animator.SetInteger("Weapon", 1);
+                    pc_animator.speed = 1 / cast_timer;
+                    pc_animator.SetTrigger("AttackTrigger");
+                    is_attacking = true;
+                }
                 equip_skills[(int)skill_index].CastSkill(GetCastInfo(transform.position, hit_info.hit_point));
                 transform.rotation = Quaternion.LookRotation(hit_info.hit_point - (transform.position + Vector3.up * 1.5f), Vector3.up);
             }

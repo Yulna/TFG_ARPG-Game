@@ -14,6 +14,8 @@ public class SkillDataDragonBreath : SkillData
     public override void SkillCastBehaviour(CastInfo cast_info)
     {
         cast_info.origin_pos += Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
         GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.LookRotation(cast_info.dir,new Vector3(0,1,0)));
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(range * range_mult, range * range_mult, range * range_mult);

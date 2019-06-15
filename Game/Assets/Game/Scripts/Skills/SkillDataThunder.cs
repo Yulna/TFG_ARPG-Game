@@ -32,7 +32,7 @@ public class SkillDataThunder : SkillData
 
         }
 
-        Destroy(display, display.GetComponent<ParticleSystem>().main.duration);
+        Destroy(display, 5);
     }
 
 
