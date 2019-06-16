@@ -23,7 +23,7 @@ MonoBehaviour:
   cast_time_mult: 0
   cost: 10
   cooldown: 1
-  cd_timer: 0
+  cd_timer: -0.013464641
   range: 40
   range_mult: 1
   precision: 2

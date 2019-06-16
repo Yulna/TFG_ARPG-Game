@@ -15,6 +15,9 @@ public class SkillDataDash : SkillData
 
     public override void SkillCastBehaviour(CastInfo cast_info)
     {
+        cast_info.end_pos -= Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
         if (Vector3.Distance(cast_info.end_pos, cast_info.origin_pos) > range)
         {
             cast_info.end_pos = cast_info.origin_pos + (cast_info.dir * range);
@@ -47,6 +50,7 @@ public class SkillDataDash : SkillData
 
     public override void SkillBehaviour(ref CastInfo cast_info, GameObject instance)
     {
+        cast_info.curr_duration += Time.deltaTime;
         //Instant cast/damage spell void behaviour to prevent warnings
         if (Vector3.Distance(instance.transform.position, cast_info.end_pos) > precision)
         {
@@ -54,13 +58,24 @@ public class SkillDataDash : SkillData
 
             Vector3 push_dir = cast_info.end_pos - instance.transform.position;
             push_dir.Normalize();
-            CharacterController.instance.move_controller.GetComponent<NavMeshAgent>().Warp(instance.transform.position + (push_dir * Time.deltaTime * speed));
+            //CharacterController.instance.move_controller.GetComponent<NavMeshAgent>().Warp(instance.transform.position + (push_dir * Time.deltaTime * speed));
+            CharacterController.instance.move_controller.transform.position += (push_dir * Time.deltaTime * speed);
+            CharacterController.instance.move_controller.transform.rotation = Quaternion.LookRotation(push_dir);
         }
         else
         {
+            CharacterController.instance.move_controller.GetComponent<NavMeshAgent>().Warp(cast_info.end_pos);
             CharacterController.instance.move_controller.EndJump();
             Destroy(instance);
         }
+
+        if(cast_info.curr_duration >= 0.3f)
+        {
+            CharacterController.instance.move_controller.GetComponent<NavMeshAgent>().Warp(cast_info.end_pos);
+            CharacterController.instance.move_controller.EndJump();
+            Destroy(instance);
+        }
+
     }
 
 

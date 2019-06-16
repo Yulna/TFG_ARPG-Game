@@ -99,7 +99,8 @@ public class EnemySimple : MonoBehaviour
             else if (memory_timer >= memory_time)
             {
                 Debug.Log("Wandering...");
-                npc_agent.SetDestination(Random.insideUnitSphere * 3);
+                Vector2 positions = Random.insideUnitCircle * 5;
+                npc_agent.SetDestination(transform.position + new Vector3(positions.x,0,positions.y));
                 memory_timer = 0;
             }
         }
@@ -179,6 +180,9 @@ public class EnemySimple : MonoBehaviour
         Gizmos.DrawLine(transform.position, push_dest);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(push_dest, push_precision);
+
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(npc_agent.destination, 1);
     }
 
     private void Die()
