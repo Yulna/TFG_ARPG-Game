@@ -16,9 +16,6 @@ public class MagicScript : MonoBehaviour
     void Start()
     {
         count = 0;
-
-        special_item.item_buffs[0] = new BuffTripleTornado();
-
     }
 
     // Update is called once per frame

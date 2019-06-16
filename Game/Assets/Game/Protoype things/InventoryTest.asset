@@ -13,23 +13,68 @@ MonoBehaviour:
   m_Name: InventoryTest
   m_EditorClassIdentifier: 
   items:
+  - item_name: EXPLOSION
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 5
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Vampire thing
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 10bbd67773bf8b74cb8258f85dfe656d, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 2
+    item_buffs:
+    - type: 1
+      magnitude: 0.5
+      variable: {fileID: 11400000, guid: 7a3ea64a2b34a7c42869005922aa4a8f, type: 2}
+      active: 0
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Triple Tornado
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: e6ace752584dde24eac821a5935adc8b, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 5
+    item_buffs:
+    - type: 1
+      magnitude: 2
+      variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
+      active: 1
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Vampire thing
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 10bbd67773bf8b74cb8258f85dfe656d, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 2
+    item_buffs:
+    - type: 1
+      magnitude: 0.5
+      variable: {fileID: 11400000, guid: 7a3ea64a2b34a7c42869005922aa4a8f, type: 2}
+      active: 0
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
   - item_name: Sting Pierce
     item_rarity: 5
     item_icon: {fileID: 21300000, guid: de54c55ced30a6240b0b78a0ebfa7c7e, type: 3}
     item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
       type: 3}
     equip_slot_id: 4
-    item_buffs:
-    - type: 2
-      magnitude: 0
-      variable: {fileID: 0}
-      active: 0
-  - item_name: Win furry attack
-    item_rarity: 5
-    item_icon: {fileID: 21300000, guid: 5557b96503c95e0489144634cdfcfbc3, type: 3}
-    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
-      type: 3}
-    equip_slot_id: 0
     item_buffs:
     - type: 2
       magnitude: 0
@@ -46,66 +91,99 @@ MonoBehaviour:
       magnitude: 0
       variable: {fileID: 0}
       active: 0
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
+  - item_name: EXPLOSION
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 5
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: EXPLOSION
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 743eb09f25eb7a148ae781595bd06743, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 5
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Epic Helmet
+    item_rarity: 4
+    item_icon: {fileID: 21300000, guid: 01475452c4fde80458f90ceab39790c4, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
     equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
+    item_buffs:
+    - type: 0
+      magnitude: 38
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 0.52
+      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 39.73
+      variable: {fileID: 11400000, guid: 65f1e8b4a3ea2484cb62f7d03e5e2244, type: 2}
+      active: 0
+    - type: 0
+      magnitude: 35.47
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 0
+    - type: 1
+      magnitude: 1.79
+      variable: {fileID: 11400000, guid: a9ef1ddb8b26f3f4c8581a824aee7766, type: 2}
+      active: 0
+  - item_name: Sting Pierce
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: de54c55ced30a6240b0b78a0ebfa7c7e, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 4
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Freze
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 84349b42828f67b42b03a0306eeb56ee, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 1
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Freze
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 84349b42828f67b42b03a0306eeb56ee, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 1
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
+  - item_name: Win furry attack
+    item_rarity: 5
+    item_icon: {fileID: 21300000, guid: 5557b96503c95e0489144634cdfcfbc3, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
     equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
+    item_buffs:
+    - type: 2
+      magnitude: 0
+      variable: {fileID: 0}
+      active: 0
   - item_name: 
     item_rarity: 0
     item_icon: {fileID: 0}
@@ -286,29 +364,46 @@ MonoBehaviour:
     item_world_display: {fileID: 0}
     equip_slot_id: 0
     item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: 
-    item_rarity: 0
-    item_icon: {fileID: 0}
-    item_world_display: {fileID: 0}
-    equip_slot_id: 0
-    item_buffs: []
-  - item_name: Sting Pierce
-    item_rarity: 5
-    item_icon: {fileID: 21300000, guid: de54c55ced30a6240b0b78a0ebfa7c7e, type: 3}
+  - item_name: Common Gloves
+    item_rarity: 1
+    item_icon: {fileID: 21300000, guid: 92bb7ea0301e09c4a9f1b59f57727a5f, type: 3}
     item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
       type: 3}
-    equip_slot_id: 4
+    equip_slot_id: 2
     item_buffs:
-    - type: 2
-      magnitude: 0
-      variable: {fileID: 0}
-      active: 0
+    - type: 0
+      magnitude: 32
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 1.48
+      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
+      active: 1
+  - item_name: Uncommon Pants
+    item_rarity: 2
+    item_icon: {fileID: 21300000, guid: 0c0cf540b5f48d146bd5df87b29b6755, type: 3}
+    item_world_display: {fileID: 1528524722, guid: f3b96b258a3a19649aec7a4e976c674b,
+      type: 3}
+    equip_slot_id: 3
+    item_buffs:
+    - type: 0
+      magnitude: 67
+      variable: {fileID: 11400000, guid: 865ff6b273ce40a4bae001e411fa16f3, type: 2}
+      active: 1
+    - type: 0
+      magnitude: 0.38
+      variable: {fileID: 11400000, guid: 9bd488da86755f9419d1267aaba5cd12, type: 2}
+      active: 1
+    - type: 1
+      magnitude: 1.65
+      variable: {fileID: 11400000, guid: b7d2f6262c020ce45b7fece320dcae98, type: 2}
+      active: 1
+  - item_name: 
+    item_rarity: 0
+    item_icon: {fileID: 0}
+    item_world_display: {fileID: 0}
+    equip_slot_id: 0
+    item_buffs: []
   - item_name: Triple Tornado
     item_rarity: 5
     item_icon: {fileID: 21300000, guid: e6ace752584dde24eac821a5935adc8b, type: 3}
@@ -319,7 +414,7 @@ MonoBehaviour:
     - type: 1
       magnitude: 2
       variable: {fileID: 11400000, guid: d897025f4f3ef2f4eacf3d2b8dd0852b, type: 2}
-      active: 0
+      active: 1
     - type: 2
       magnitude: 0
       variable: {fileID: 0}

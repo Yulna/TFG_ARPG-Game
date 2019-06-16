@@ -181,8 +181,8 @@ public class EnemySimple : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(push_dest, push_precision);
 
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(npc_agent.destination, 1);
+        //Gizmos.color = Color.cyan;
+        //Gizmos.DrawWireSphere(npc_agent.destination, 1);
     }
 
     private void Die()

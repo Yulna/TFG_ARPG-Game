@@ -19,8 +19,10 @@ public class GameManager : MonoBehaviour
         else
             Debug.LogError("More than one game manager created");
 
-        LoadUniqueItems();
+        if (CharacterController.instance != null)
+            LoadUniqueItems();
     }
+
 
 
     public GameObject items_display_head;
@@ -144,7 +146,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Item ret_item = unique_items_table[0];
+            Item ret_item = unique_items_table[Random.Range(0,10)];
             ret_item.item_rarity = ItemRarity.Unique;
             return ret_item;
         }

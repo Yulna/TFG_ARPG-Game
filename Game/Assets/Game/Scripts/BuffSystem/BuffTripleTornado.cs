@@ -6,7 +6,9 @@ public class BuffTripleTornado : Buff
 {
     public BuffTripleTornado() : base(BuffType.BUFF_SKILL_MOD, 0, null)
     {
+        Debug.LogWarning("Creating unique TT");
         skill_modified = (SkillDataWindRush)CharacterController.instance.skill_controller.GetSkillByName("Wind Rush");
+        Debug.LogWarning("Skill mode for TT aquired");
     }
 
     //Must be Wind Rush
