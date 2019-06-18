@@ -14,14 +14,14 @@ public class BuffThunderGod : Buff
 
     public override void EnableBuff()
     {
-        skill_modified.cost += 110;
+        skill_modified.cost += 150;
         skill_modified.effect_area_mult *= 2;
         skill_modified.AddCastBehaviour(SkillCastBehaviourMod);
     }
 
     public override void DisableBuff()
     {
-        skill_modified.cost -= 110;
+        skill_modified.cost -= 150;
         skill_modified.effect_area_mult *= 0.5f;
         skill_modified.RemoveCastBehaviour(SkillCastBehaviourMod);
     }

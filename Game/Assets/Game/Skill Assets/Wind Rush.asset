@@ -23,10 +23,10 @@ MonoBehaviour:
   cast_time_mult: 1
   cost: 30
   cooldown: 5
-  cd_timer: -0.0022684094
+  cd_timer: 0
   projectile_range: 10
   projectile_range_mult: 1
   effect_area: 1
   effect_area_mult: 1
   push_force: 7
-  projectile_speed: 0.05
+  projectile_speed: 0.1

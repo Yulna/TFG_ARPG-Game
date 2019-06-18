@@ -23,6 +23,7 @@ public class CharacterControllerEditor : Editor
     //UI
     private SerializedProperty inventory_canvas_property;
     private SerializedProperty character_stats_canvas_property;
+    private SerializedProperty main_menu_canvas_property;
 
     private void OnEnable()
     {
@@ -37,6 +38,7 @@ public class CharacterControllerEditor : Editor
         dmg_half_reduction_property = serializedObject.FindProperty("dmg_half_reduction");
         inventory_canvas_property = serializedObject.FindProperty("inventory_canvas");
         character_stats_canvas_property = serializedObject.FindProperty("character_stats_canvas");
+        main_menu_canvas_property = serializedObject.FindProperty("main_menu_canvas");
     }
 
     public override void OnInspectorGUI()
@@ -77,6 +79,7 @@ public class CharacterControllerEditor : Editor
             EditorGUILayout.LabelField("UI Elements", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(inventory_canvas_property);
             EditorGUILayout.PropertyField(character_stats_canvas_property);
+            EditorGUILayout.PropertyField(main_menu_canvas_property);
         }
 
         EditorGUILayout.ObjectField(camera_property);

@@ -74,6 +74,7 @@ public class CharacterController : MonoBehaviour
     //UI
     public GameObject inventory_canvas;
     public GameObject character_stats_canvas;
+    public GameObject main_menu_canvas;
     public bool ui_open;
 
     // Start is called before the first frame update
@@ -108,12 +109,40 @@ public class CharacterController : MonoBehaviour
                 curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
         }
 
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (skill_controller.GetSkillSelectionUIStatus())
+            {
+                skill_controller.ForceSkillSelectioUIStatus(false);
+                return;
+            }
+            if (inventory_canvas.activeSelf)
+            {
+                inventory_canvas.SetActive(false);
+                return;
+            }
+            if (character_stats_canvas.activeSelf)
+            {
+                character_stats_canvas.SetActive(false);
+                return;
+            }
+
+            if (main_menu_canvas != null)
+                main_menu_canvas.SetActive(!main_menu_canvas.activeSelf);
+        }
+
+        if (main_menu_canvas.activeSelf)
+            return;
+
         if (Input.GetKeyUp(KeyCode.I))
             inventory_canvas.SetActive(!inventory_canvas.activeSelf);
         if (Input.GetKeyUp(KeyCode.C))
             character_stats_canvas.SetActive(!character_stats_canvas.activeSelf);
+
+
         //Don't read inputs if UI active
-        if (inventory_canvas.activeSelf || character_stats_canvas.activeSelf || ui_open)
+        if (inventory_canvas.activeSelf || character_stats_canvas.activeSelf || skill_controller.skill_selection_UI.activeSelf)
             return;
 
         //Read game inputs
@@ -193,14 +222,7 @@ public class CharacterController : MonoBehaviour
             {
                 skill_controller.CastSkill(SkillButton.NUM_4, ray_hit);
             }
-        }
-
-        //Testing space
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-        
-        }
-      
+        }      
     }
 
     public StatVariable GetStat(StatId id)
@@ -304,4 +326,22 @@ public class CharacterController : MonoBehaviour
         return curr_resource / variables_stats[(int)StatId.MaxResource].Buffed_value;
     }
 
+
+    public string GetHealthNumbers()
+    {
+        return ((int)curr_health).ToString() + "/" + variables_stats[(int)StatId.MaxHealth].Buffed_value;
+    }
+    public string GetResourceNumbers()
+    {
+        return ((int)curr_resource).ToString() + "/" + variables_stats[(int)StatId.MaxResource].Buffed_value;
+    }
+
+    public void CharacterScreenStateSwap()
+    {
+        character_stats_canvas.SetActive(!character_stats_canvas.activeSelf);
+    }
+    public void InventoryScreenStateSwap()
+    {
+        inventory_canvas.SetActive(!inventory_canvas.activeSelf);
+    }
 }

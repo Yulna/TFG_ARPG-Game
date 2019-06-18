@@ -68,6 +68,9 @@ public class EnemySimple : MonoBehaviour
 
     void Update()
     {
+        if (CharacterController.instance.main_menu_canvas.activeSelf)
+            return;
+
         if (being_pushed)
             PushSelf();
         

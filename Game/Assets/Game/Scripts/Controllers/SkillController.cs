@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public enum SkillButton
 {
@@ -30,6 +31,8 @@ public class SkillController : MonoBehaviour
 
     Animator pc_animator;
     public GameObject skill_selection_UI;
+    public TextMeshProUGUI no_more_mana_text;
+    public TextMeshProUGUI on_cd_text;
     int selected_id;
     public StatVariable attack_speed;
     public float cast_timer;
@@ -51,6 +54,8 @@ public class SkillController : MonoBehaviour
     void Start()
     {
         is_attacking = false;
+        no_more_mana_text.CrossFadeAlpha(0, 0, true);
+        on_cd_text.CrossFadeAlpha(0, 0, true);
         pc_animator = GetComponent<Animator>();
         pc_animator.SetInteger("Weapon", 0);
         pc_animator.SetInteger("Action", 2);
@@ -87,9 +92,8 @@ public class SkillController : MonoBehaviour
         {
             //Enable/Disable Skill selection UI
             skill_selection_UI.SetActive(!skill_selection_UI.activeSelf);
-            CharacterController.instance.ui_open = skill_selection_UI.activeSelf;
         }
-        //TODO: Update equiped skills for CD
+
         for(int i = 0; i < 6; i++)
         {
             if (equip_skills[i].cd_timer > 0)
@@ -97,11 +101,21 @@ public class SkillController : MonoBehaviour
         }
     }
 
+    public bool GetSkillSelectionUIStatus()
+    {
+        return skill_selection_UI.activeSelf;
+    }
+
+    public void ForceSkillSelectioUIStatus(bool status)
+    {
+        skill_selection_UI.SetActive(status);
+    }
+
     public void CastSkill(SkillButton skill_index, RayHitInfo hit_info)
     {
         if(equip_skills[(int)skill_index].IsOnCooldown())
         {
-            Debug.Log("Skill is on cd");
+            StartCoroutine(SkillOnCDDisplay());
             return;
         }
 
@@ -128,6 +142,10 @@ public class SkillController : MonoBehaviour
                 }
                 equip_skills[(int)skill_index].CastSkill(GetCastInfo(transform.position, hit_info.hit_point));
                 transform.rotation = Quaternion.LookRotation(hit_info.hit_point - (transform.position + Vector3.up * 1.5f), Vector3.up);
+            }
+            else
+            {
+                StartCoroutine(SkillNoMoreManaDisplay());
             }
         }
        
@@ -225,5 +243,20 @@ public class SkillController : MonoBehaviour
                 return char_skill_list[i];
         }
         return null;
+    }
+
+    
+    IEnumerator SkillOnCDDisplay()
+    {
+        on_cd_text.CrossFadeAlpha(1, 0, true);
+        yield return new WaitForSecondsRealtime(2);
+        on_cd_text.CrossFadeAlpha(0, 1, true);
+    }
+
+    IEnumerator SkillNoMoreManaDisplay()
+    {
+        no_more_mana_text.CrossFadeAlpha(1, 0, true);
+        yield return new WaitForSecondsRealtime(1);
+        no_more_mana_text.CrossFadeAlpha(0, 1, true);
     }
 }

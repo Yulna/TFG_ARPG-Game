@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Mana
   m_EditorClassIdentifier: 
   variable_name: 
-  base_value: 1000
+  base_value: 100
   sum_value: 0
   mult_value: 1
-  buffed_value: 1000
+  buffed_value: 100
   stat_Change:
     m_PersistentCalls:
       m_Calls: []

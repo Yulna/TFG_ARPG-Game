@@ -29,7 +29,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         UpdateInfo();
     }
 
-    //TODO: Make comparasion with equiped items
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         if (slot_image.IsActive())
