@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shock Resist.
   m_EditorClassIdentifier: 
   variable_name: 
-  base_value: 0
+  base_value: 10
   sum_value: 0
   mult_value: 1
   buffed_value: 0

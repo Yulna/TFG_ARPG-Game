@@ -295,7 +295,10 @@ public class CharacterController : MonoBehaviour
         }
 
         if (true_damage > curr_health)
+        {
             curr_health = 0;
+            GetComponent<CESceneLoader>().LoadMainMenu();
+        }
         else
             curr_health -= true_damage;
 
