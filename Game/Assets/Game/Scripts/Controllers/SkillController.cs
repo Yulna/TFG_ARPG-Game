@@ -101,6 +101,17 @@ public class SkillController : MonoBehaviour
         }
     }
 
+    public bool UseBaseAttack(RayHitInfo hit_info)
+    {
+        if(Vector3.Distance(hit_info.hit_point, (transform.position + Vector3.up * 1.5f)) < 2)
+        {
+            CastSkill(SkillButton.LMB, hit_info);
+            return true;
+        }
+
+        return false;
+    }
+
     public bool GetSkillSelectionUIStatus()
     {
         return skill_selection_UI.activeSelf;

@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
         int rarity_dice = Random.Range(1,6);
 
-        if (rarity_dice != (int)ItemRarity.Unique && false)
+        if (rarity_dice != (int)ItemRarity.Unique)
         {
             Item ret_item = new Item();
             ret_item.item_rarity = (ItemRarity)rarity_dice;

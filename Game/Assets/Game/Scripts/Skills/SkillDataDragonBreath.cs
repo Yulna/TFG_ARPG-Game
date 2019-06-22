@@ -19,7 +19,7 @@ public class SkillDataDragonBreath : SkillData
         GameObject display = Instantiate(skill_display, cast_info.origin_pos, Quaternion.LookRotation(cast_info.dir,new Vector3(0,1,0)));
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.transform.localScale = new Vector3(range * range_mult, range * range_mult, range * range_mult);
-        instance.InitInstance(SkillBehaviour, cast_info);
+        instance.InitInstance(skill_instance_del, cast_info);
         Destroy(display, 1.5f);
 
 

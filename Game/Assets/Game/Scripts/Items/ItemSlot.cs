@@ -41,7 +41,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             
             equip_item_info_description.SetText(pc_inventory.GetDescriptionFromSlot(pc_inventory.GetItemSlot(item_index)));
             equip_item_info_name.SetText(pc_inventory.GetNameFromSlot(pc_inventory.GetItemSlot(item_index)));
-            if (equip_item_info_name.text != null )
+            if (equip_item_info_name.text != null || equip_item_info_name.text == "")
                 equip_item_info_display.SetActive(true);
         }
     }

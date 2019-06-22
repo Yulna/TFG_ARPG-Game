@@ -39,11 +39,6 @@ public class MagicScript : MonoBehaviour
             iw_comp.item_data = special_item;
 
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CharacterController.instance.DamagePlayer(100, dmg_type);
-        }
     }
 
 

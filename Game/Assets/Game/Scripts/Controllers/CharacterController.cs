@@ -75,6 +75,7 @@ public class CharacterController : MonoBehaviour
     public GameObject inventory_canvas;
     public GameObject character_stats_canvas;
     public GameObject main_menu_canvas;
+    public GameObject game_over_canvas;
     public bool ui_open;
 
     // Start is called before the first frame update
@@ -86,14 +87,25 @@ public class CharacterController : MonoBehaviour
         inventory.ActivateEquipBuffs();
         inventory_canvas.SetActive(false);
         character_stats_canvas.SetActive(false);
+        game_over_canvas.SetActive(false);
 
         curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
         curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
     }
 
+    public void RecoverAll()
+    {
+        curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
+        curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
+        game_over_canvas.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (game_over_canvas != null && game_over_canvas.activeSelf)
+           return;
+
         //Resource/health regen
         if (curr_health < variables_stats[(int)StatId.MaxHealth].Buffed_value)
         {
@@ -162,7 +174,8 @@ public class CharacterController : MonoBehaviour
                 else if (ray_hit.layer_hit == LayerMask.NameToLayer("Enemy"))
                 {
                     Debug.Log("Enemy Attacked");
-                    move_controller.MoveToEnemy(ray_hit.go_hit.transform);                    
+                    if (!skill_controller.UseBaseAttack(ray_hit))
+                        move_controller.MoveToEnemy(ray_hit.go_hit.transform);                    
                 }
                 else if (ray_hit.layer_hit == LayerMask.NameToLayer("Item"))
                 {
@@ -297,7 +310,9 @@ public class CharacterController : MonoBehaviour
         if (true_damage > curr_health)
         {
             curr_health = 0;
-            GetComponent<CESceneLoader>().LoadMainMenu();
+            game_over_canvas.SetActive(true);
+            move_controller.StopMovement();
+            //GetComponent<CESceneLoader>().LoadMainMenu();
         }
         else
             curr_health -= true_damage;

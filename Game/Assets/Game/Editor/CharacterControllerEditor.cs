@@ -24,6 +24,7 @@ public class CharacterControllerEditor : Editor
     private SerializedProperty inventory_canvas_property;
     private SerializedProperty character_stats_canvas_property;
     private SerializedProperty main_menu_canvas_property;
+    private SerializedProperty game_over_canvas_property;
 
     private void OnEnable()
     {
@@ -39,6 +40,7 @@ public class CharacterControllerEditor : Editor
         inventory_canvas_property = serializedObject.FindProperty("inventory_canvas");
         character_stats_canvas_property = serializedObject.FindProperty("character_stats_canvas");
         main_menu_canvas_property = serializedObject.FindProperty("main_menu_canvas");
+        game_over_canvas_property = serializedObject.FindProperty("game_over_canvas");
     }
 
     public override void OnInspectorGUI()
@@ -80,6 +82,7 @@ public class CharacterControllerEditor : Editor
             EditorGUILayout.PropertyField(inventory_canvas_property);
             EditorGUILayout.PropertyField(character_stats_canvas_property);
             EditorGUILayout.PropertyField(main_menu_canvas_property);
+            EditorGUILayout.PropertyField(game_over_canvas_property);
         }
 
         EditorGUILayout.ObjectField(camera_property);

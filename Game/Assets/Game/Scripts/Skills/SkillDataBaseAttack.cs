@@ -8,6 +8,8 @@ public class SkillDataBaseAttack : SkillData
     public override void SkillCastBehaviour(CastInfo cast_info)
     {
         cast_info.origin_pos += Vector3.up * 1.5f;
+        cast_info.dir = cast_info.end_pos - cast_info.origin_pos;
+        cast_info.dir.Normalize();
         GameObject display = Instantiate(skill_display, cast_info.origin_pos + cast_info.dir, Quaternion.identity);
         SkillInstance instance = display.AddComponent<SkillInstance>();
         instance.InitInstance(SkillBehaviour, cast_info);
@@ -18,10 +20,7 @@ public class SkillDataBaseAttack : SkillData
         {
             if (hit_colliders[i].gameObject.tag == "Enemy")
             {
-                Vector3 enemy_dir = hit_colliders[i].gameObject.transform.position - cast_info.origin_pos;
-                float enemy_angle = Vector3.Angle(enemy_dir, cast_info.dir);
-                if (enemy_angle < 45)
-                    hit_colliders[i].GetComponent<EnemySimple>().Hurt(weapon_dmg.Buffed_value * skill_dmg_mult);
+                hit_colliders[i].GetComponent<EnemySimple>().Hurt(weapon_dmg.Buffed_value * skill_dmg_mult);
             }
         }
         Destroy(display, 2.5f);

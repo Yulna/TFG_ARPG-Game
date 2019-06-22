@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
 public class EnemySimple : MonoBehaviour
 {
+    public float max_health;
     public float health;
     public float base_damage;
     public float damage_mult;
@@ -26,6 +28,7 @@ public class EnemySimple : MonoBehaviour
 
     public GameObject death_particle;
     public GameObject hit_praticle;
+    public Image health_bar;
 
     [SerializeField]
     float memory_timer;
@@ -52,6 +55,7 @@ public class EnemySimple : MonoBehaviour
 
     private void Start()
     {
+        health = max_health;
         stunned = false;
         push_force = 1.0f;
         being_pushed = false;
@@ -68,8 +72,10 @@ public class EnemySimple : MonoBehaviour
 
     void Update()
     {
-        if (CharacterController.instance.main_menu_canvas.activeSelf)
+        if (CharacterController.instance.main_menu_canvas.activeSelf || CharacterController.instance.game_over_canvas.activeSelf)
             return;
+
+        health_bar.fillAmount = (health / max_health);
 
         if (being_pushed)
             PushSelf();
@@ -167,7 +173,7 @@ public class EnemySimple : MonoBehaviour
             health -= value;
         }
 
-        Destroy(Instantiate(hit_praticle, transform.position + Vector3.up, Quaternion.identity), 5);
+        //Destroy(Instantiate(hit_praticle, transform.position + Vector3.up, Quaternion.identity), 5);
         if (health <= 0)
             Die();
     }
