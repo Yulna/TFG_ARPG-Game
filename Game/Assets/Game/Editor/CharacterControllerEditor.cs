@@ -26,6 +26,10 @@ public class CharacterControllerEditor : Editor
     private SerializedProperty main_menu_canvas_property;
     private SerializedProperty game_over_canvas_property;
 
+    //Debug
+    private SerializedProperty invincible_display_property;
+    private SerializedProperty no_mana_display_property;
+
     private void OnEnable()
     {
         stats_base_property = serializedObject.FindProperty("base_stats");
@@ -41,6 +45,8 @@ public class CharacterControllerEditor : Editor
         character_stats_canvas_property = serializedObject.FindProperty("character_stats_canvas");
         main_menu_canvas_property = serializedObject.FindProperty("main_menu_canvas");
         game_over_canvas_property = serializedObject.FindProperty("game_over_canvas");
+        invincible_display_property = serializedObject.FindProperty("invincible_display");
+        no_mana_display_property = serializedObject.FindProperty("no_mana_display");
     }
 
     public override void OnInspectorGUI()
@@ -86,6 +92,14 @@ public class CharacterControllerEditor : Editor
         }
 
         EditorGUILayout.ObjectField(camera_property);
+
+        {
+            EditorGUILayout.Separator();
+            EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(invincible_display_property);
+            EditorGUILayout.PropertyField(no_mana_display_property);
+        }
+
         serializedObject.ApplyModifiedProperties();
     }
 

@@ -78,11 +78,20 @@ public class CharacterController : MonoBehaviour
     public GameObject game_over_canvas;
     public bool ui_open;
 
+    //Debuf
+    public bool invincible;
+    public bool no_mana_cost;
+
+    public GameObject invincible_display;
+    public GameObject no_mana_display;
+
     // Start is called before the first frame update
     void Start()
     {
         dmg_half_reduction = 100;
         ui_open = false;
+        invincible = false;
+        no_mana_cost = false;
         inventory.InitInventory();
         inventory.ActivateEquipBuffs();
         inventory_canvas.SetActive(false);
@@ -91,6 +100,9 @@ public class CharacterController : MonoBehaviour
 
         curr_health = variables_stats[(int)StatId.MaxHealth].Buffed_value;
         curr_resource = variables_stats[(int)StatId.MaxResource].Buffed_value;
+
+        invincible_display.SetActive(invincible);
+        no_mana_display.SetActive(no_mana_cost);
     }
 
     public void RecoverAll()
@@ -235,7 +247,19 @@ public class CharacterController : MonoBehaviour
             {
                 skill_controller.CastSkill(SkillButton.NUM_4, ray_hit);
             }
-        }      
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            invincible = !invincible;
+            invincible_display.SetActive(invincible);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            no_mana_cost = !no_mana_cost;
+            no_mana_display.SetActive(no_mana_cost);
+        }
     }
 
     public StatVariable GetStat(StatId id)
@@ -273,6 +297,9 @@ public class CharacterController : MonoBehaviour
     //Return true when we have enough resource to spend, false otherwise
     public bool SpendResource(float value)
     {
+        if (no_mana_cost)
+            return true;
+
         if (value > curr_resource)
         {
             Debug.Log("Not enough resource");
@@ -293,6 +320,8 @@ public class CharacterController : MonoBehaviour
 
     public void DamagePlayer(float dmg_value, DamageType type)
     {
+        if (invincible)
+            return;
         float true_damage;
         Debug.Log("Player Damaged");
         if (type != DamageType.DmgTrue)

@@ -5,11 +5,7 @@ using UnityEngine;
 public class MagicScript : MonoBehaviour
 {
 
-    public GameObject item_world_prefab;
-    public Sprite item_sprite;
-    public DamageType dmg_type;
-
-    public Item special_item;
+    public GameObject fps_counter;
 
     int count;
     // Start is called before the first frame update
@@ -21,51 +17,20 @@ public class MagicScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.F3))
         {
             Item drop_item = GameManager.instance.GetRandomLoot();
 
-            GameObject new_item = Instantiate(drop_item.item_world_display, transform.position, transform.rotation);
+            GameObject new_item = Instantiate(drop_item.item_world_display, CharacterController.instance.GetPlayerTransform().position + Vector3.up, transform.rotation);
             ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
             iw_comp.item_data = drop_item;
-
         }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
         
-            GameObject new_item = Instantiate(special_item.item_world_display, transform.position, transform.rotation);
-            ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
-            iw_comp.item_data = special_item;
-
-        }
-    }
-
-
-    Item GenerateItem()
-    {
-        Item ret = new Item();
-        ret.item_name = "Item generated % i" + count;
-        count++;
-        ret.equip_slot_id = EquipSlot.Head;
-
-        //TODO put random buff
-        ret.item_buffs = new Buff[2];
-        
-        for(int i = 0; i < ret.item_buffs.Length; i++)
+        if(Input.GetKeyDown(KeyCode.F4))
         {
-            ret.item_buffs[i] = GetBuff();
+            fps_counter.SetActive(!fps_counter.activeSelf);
         }
 
-        return ret;
-    }
-    
-    Buff GetBuff()
-    {
-        Buff ret = new Buff(BuffType.BUFF_STAT_ADD,2,CharacterController.instance.variables_stats[(int)StatId.WeaponDmg]);
-
-
-        return ret;
     }
 
 }
