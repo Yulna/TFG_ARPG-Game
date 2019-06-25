@@ -291,4 +291,9 @@ public class GameManager : MonoBehaviour
         }
         return null;
     }
+
+    public Item GetUniqueByID(int index)
+    {
+        return unique_items_table[index];
+    }
 }

@@ -31,6 +31,18 @@ public class MagicScript : MonoBehaviour
             fps_counter.SetActive(!fps_counter.activeSelf);
         }
 
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                Item drop_item = GameManager.instance.GetUniqueByID(i);
+
+                GameObject new_item = Instantiate(drop_item.item_world_display, CharacterController.instance.GetPlayerTransform().position + Vector3.up * i, transform.rotation);
+                ItemWorld iw_comp = new_item.GetComponent<ItemWorld>();
+                iw_comp.item_data = drop_item;
+            }
+        }
+
     }
 
 }

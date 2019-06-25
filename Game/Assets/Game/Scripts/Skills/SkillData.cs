@@ -9,7 +9,7 @@ public enum SkillType
     SKILL_MAGICAL
 }
 
-[CreateAssetMenu(fileName = "Skill Ball", menuName = "Chambers of Elrankat/Skills/Void Skill")]
+[CreateAssetMenu(fileName = "Void Skill", menuName = "Chambers of Elrankat/Skills/Void Skill")]
 public class SkillData : ScriptableObject
 {
     //General info  
